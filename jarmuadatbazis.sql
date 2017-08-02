@@ -57,7 +57,6 @@ CREATE TABLE `auto` (
 --
 
 CREATE TABLE `felhasznalo` (
-  `id` int(10) NOT NULL,
   `felhasznalo_nev` varchar(30) NOT NULL,
   `jelszo` varchar(100) NOT NULL,
   `vezetek_nev` varchar(100) NOT NULL,
@@ -80,9 +79,9 @@ CREATE TABLE `felhasznalo` (
 -- A tábla adatainak kiíratása `felhasznalo`
 --
 
-INSERT INTO `felhasznalo` (`id`, `felhasznalo_nev`, `jelszo`, `vezetek_nev`, `kereszt_nev`, `szemelyig_szam`, `anyja_vnev`, `anyja_knev`, `email`, `telszam`, `ir_szam`, `varos`, `utca`, `hazszam`, `szuletesi_hely`, `szuletesi_ido`) VALUES
-(1, 'admin', 'admin', '-', '-', '-', '-', '-', '', 0, 0, '-', '-', 0, '-', '2017-08-01'),
-(2, 'main_profile', 'alma', 'alma', 'alma', '124490CN', '-', '-', '', 0, 6710, 'Szeged', 'Alma', 89, 'Szeged', '1996-05-16');
+INSERT INTO `felhasznalo` (`felhasznalo_nev`, `jelszo`, `vezetek_nev`, `kereszt_nev`, `szemelyig_szam`, `anyja_vnev`, `anyja_knev`, `email`, `telszam`, `ir_szam`, `varos`, `utca`, `hazszam`, `szuletesi_hely`, `szuletesi_ido`) VALUES
+('admin', 'admin', '-', '-', '-', '-', '-', '', 0, 0, '-', '-', 0, '-', '2017-08-01'),
+('main_profile', 'alma', 'alma', 'alma', '124490CN', '-', '-', '', 0, 6710, 'Szeged', 'Alma', 89, 'Szeged', '1996-05-16');
 
 -- --------------------------------------------------------
 
@@ -92,7 +91,7 @@ INSERT INTO `felhasznalo` (`id`, `felhasznalo_nev`, `jelszo`, `vezetek_nev`, `ke
 
 CREATE TABLE `jarmukolcsonzes` (
   `id` int(10) NOT NULL,
-  `felhasznalo_id` int(10) NOT NULL,
+  `felhasznalo_nev` varchar(30) NOT NULL,
   `jarmutipus_id` int(10) NOT NULL,
   `marka_id` int(10) NOT NULL,
   `mettol` date NOT NULL,
@@ -185,6 +184,12 @@ CREATE TABLE `motor` (
   `munkautem` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+CREATE TABLE `belepes` (
+  `felhasznalo_nev` varchar(30) PRIMARY KEY,
+  `jelszo` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Indexek a kiírt táblákhoz
 --
@@ -201,14 +206,14 @@ ALTER TABLE `auto`
 -- A tábla indexei `felhasznalo`
 --
 ALTER TABLE `felhasznalo`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`felhasznalo_nev`);
 
 --
 -- A tábla indexei `jarmukolcsonzes`
 --
 ALTER TABLE `jarmukolcsonzes`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `felhasznalo_id` (`felhasznalo_id`),
+  ADD KEY `felhasznalo_id` (`felhasznalo_nev`),
   ADD KEY `jarmutipus_id` (`jarmutipus_id`),
   ADD KEY `marka_id` (`marka_id`);
 
@@ -245,8 +250,6 @@ ALTER TABLE `auto`
 --
 -- AUTO_INCREMENT a táblához `felhasznalo`
 --
-ALTER TABLE `felhasznalo`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT a táblához `jarmukolcsonzes`
 --
@@ -277,7 +280,7 @@ ALTER TABLE `auto`
 -- Megkötések a táblához `jarmukolcsonzes`
 --
 ALTER TABLE `jarmukolcsonzes`
-  ADD CONSTRAINT `jarmukolcsonzes_ibfk_1` FOREIGN KEY (`felhasznalo_id`) REFERENCES `felhasznalo` (`id`),
+  ADD CONSTRAINT `jarmukolcsonzes_ibfk_1` FOREIGN KEY (`felhasznalo_nev`) REFERENCES `felhasznalo` (`felhasznalo_nev`),
   ADD CONSTRAINT `jarmukolcsonzes_ibfk_2` FOREIGN KEY (`jarmutipus_id`) REFERENCES `jarmutipus` (`id`),
   ADD CONSTRAINT `jarmukolcsonzes_ibfk_3` FOREIGN KEY (`marka_id`) REFERENCES `marka` (`id`);
 
