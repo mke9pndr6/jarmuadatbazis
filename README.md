@@ -1,0 +1,2 @@
+# jarmuadatbazis
+# jarmuadatbazis
