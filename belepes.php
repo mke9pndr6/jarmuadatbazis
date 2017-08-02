@@ -164,6 +164,14 @@
 								$login_user = mysqli_query($conn, $login_sql);
 								$count_loggedinuser = mysqli_num_rows($login_user);
 								
+								if(mysqli_num_rows($login_user) == 0){
+									
+									echo '<tr>
+										<td height = "33px" id = "styleofwords7a">Hibás felhasználónév/jelszó!</td>
+									</tr>';
+								}
+									
+								
 								if(mysqli_num_rows($login_user) == 1){
 									
 									$sql = "INSERT INTO belepes
@@ -199,6 +207,7 @@
 											</tr>';										
 									}
 								}
+									
 							}
 							
 						?>

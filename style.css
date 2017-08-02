@@ -70,13 +70,14 @@
 			
 			font-family: "Electrolize";
 			text-align: left;
-			background: rgb(0, 87, 130); 
+			background: rgb(0, 81, 119); 
 			color: #ffffff;
 			padding: 0 0 0 1%;
 			/*display: block;*/
 			margin: 0 0 0 0;
 			width: 100%;
 		}
+		
 		
 		#styleofwords3{
 			font-size: 18px;
@@ -95,7 +96,7 @@
 			
 			font-family: "Electrolize";
 			text-align: left;
-			background: rgb(29 ,116, 131);
+			background: rgb(0, 87, 130);
 			color: red;
 			padding: 0 0 0 0;
 			/*display: block;*/
@@ -108,7 +109,7 @@
 			
 			font-family: "Electrolize";
 			text-align: left;
-			background: rgb(29 ,116, 131);
+			background: rgb(0, 87, 130);
 			color: #ffffff;
 			padding: 0 0 0 0%;
 			/*display: block;*/
@@ -121,7 +122,7 @@
 			
 			font-family: "Electrolize";
 			text-align: left;
-			background: rgb(29 ,116, 131);
+			background: rgb(0, 87, 130);
 			color: #ffffff;
 			padding: 0 0 0 19%;
 			/*display: block;*/
@@ -225,7 +226,7 @@
 			
 			font-family: "Electrolize";
 			text-align: right;
-			background: rgb(29 ,116, 131);
+			background: rgb(0, 87, 130);
 			color: #ffffff;
 			padding: 0 12 0 29;
 			/*display: block;*/
@@ -239,7 +240,7 @@
 			
 			font-family: "Electrolize";
 			text-align: left;
-			background: rgb(29 ,116, 131);
+			background: rgb(0, 87, 130);
 			color: red;
 			padding: 3.5px;
 			/*display: block;*/
@@ -251,7 +252,7 @@
 			
 			font-family: "Electrolize";
 			text-align: left;
-			background: rgb(29 ,116, 131);
+			background: rgb(0, 87, 130);
 			color: rgb(0,111,36);
 			padding: 0 0 0 16px;
 			/*display: block;*/
@@ -263,7 +264,7 @@
 			
 			font-family: "Electrolize";
 			text-align: left;
-			background: rgb(29 ,116, 131);
+			background: rgb(0, 87, 130);
 			color: #ffffff;
 			padding: 3.5px;
 			/*display: block;*/
@@ -277,7 +278,7 @@
 			
 			font-family: "Electrolize";
 			text-align: right;
-			background: rgb(29 ,116, 131);
+			background: rgb(0, 87, 130);
 			color: #ffffff;
 			padding: 0 12 0 29;
 			/*display: block;*/
@@ -291,7 +292,7 @@
 			
 			font-family: "Electrolize";
 			text-align: left;
-			background: rgb(29 ,116, 131);
+			background: rgb(0, 87, 130);
 			color: #ffffff;
 			padding: 3.5px;
 			/*display: block;*/
@@ -303,11 +304,25 @@
 			
 			font-family: "Electrolize";
 			text-align: left;
-			background: rgb(29 ,116, 131); 
+			background: rgb(0, 87, 130); 
 			color: red;
 			padding: 3.5px;
 			/*display: block;*/
 			margin: 0 0 0 1;
+		}
+		
+		
+		#styleofwords2c{
+			font-size: 18px;
+			
+			font-family: "Electrolize";
+			text-align: left;
+			background: rgb(0, 87, 130); 
+			color: #ffffff;
+			padding: 0 12% 0 29%;
+			/*display: block;*/
+			margin: 0 0 0 0;
+			width: 100%;
 		}
 		
 		
@@ -349,7 +364,7 @@
 			/**/
 			font-family: "Electrolize", Helvetica, light;
 			text-align: center;
-			background: rgb(0, 81, 119);
+			background: #0B3861;
 			color: #ffffff;
 			padding: 3% 0 1% 0%;
 			display: block;
@@ -528,6 +543,30 @@
 		.button:hover {background-color: #000000}
 
 		.button:active {
+		background-color: #000000;
+		box-shadow: 0px #000000;
+		
+		}
+		
+		.buttonlog {
+		padding: 3% 2%;
+		font-size: 15px;
+		
+		font-family: "Electrolize";
+		text-align: left;
+		width: 100%;
+		height: 100%;
+		cursor: pointer;
+		outline: none;
+		color: #fff;
+		background-color: rgb(0, 81, 119);
+		border: none;
+		border-radius: 0 0 0 0;
+		}
+
+		.buttonlog:hover {background-color: #000000}
+
+		.buttonlog:active {
 		background-color: #000000;
 		box-shadow: 0px #000000;
 		

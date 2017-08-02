@@ -116,21 +116,90 @@
 											<td height = "33px" id = "styleofwords9"><input type = "password" style="height:26px; width: 100%;" name = "login_jelszo" size = "45" required /></td>
 										</tr>
 										<tr>
-											<td height = "33px" id = "styleofwords2b"><a href = "regisztracio.php">regisztráció</a></td>
+											<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"></font></td>
 										</tr>
 										<tr>
-											<td height = "33px" id = "styleofwords2b"><a href = "regisztracio.php">elfelejtett jelszó</a></td>
+											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="regisztracio.php";'>Még nem regisztrált?</td></button>
+										</tr>
+										<tr>
+											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="regisztracio.php";'>Elfelejtette jelszavát?</td></button>
 										</tr>
 										<tr>
 											<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"></font></td>
 										</tr>
+										
+										<?php
+								
+											if(isset($_POST['bejelentkezes_dropdown'])){
+										
+												$login_felh_nev = $_POST['login_felh'];
+												$login_jelszo = $_POST['login_jelszo'];
+												
+												$adminf = "admin";
+												$adminj = "admin";
+												
+												$login_sql = "SELECT Felhasznalo.felhasznalo_nev, Felhasznalo.jelszo FROM Felhasznalo
+												WHERE Felhasznalo.felhasznalo_nev = '".$login_felh_nev."' AND Felhasznalo.jelszo = '".$login_jelszo."' LIMIT 1";
+												
+												$login_user = mysqli_query($conn, $login_sql);
+												$count_loggedinuser = mysqli_num_rows($login_user);
+												
+												if(mysqli_num_rows($login_user) == 0){
+													
+													echo '<tr>
+														<td height = "33px" id = "styleofwords7a">Hibás felhasználónév/jelszó!</td>
+													</tr>';
+												}
+													
+												
+												if(mysqli_num_rows($login_user) == 1){
+													
+													$sql = "INSERT INTO belepes
+													(felhasznalo_nev, jelszo) 
+													VALUES('".$login_felh_nev."','".$login_jelszo."');";
+													
+													mysqli_query($conn, $sql);
+													
+													if($login_felh_nev == $adminf && $login_jelszo == $adminj){
+														echo '<tr>
+																<td height = "33px" id = "styleofwords7a3">Sikeres bejelentkezés! Üdvözöljük, '.$login_felh_nev.'!</td>
+															</tr>
+															<tr>
+																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "index.php" id = "styleofword2"
+																style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">tovább a kínálathoz!</a></font></td>
+															</tr>
+															<tr>
+																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"></font></td>
+															</tr>';				
+													}
+													
+													else{
+														
+														echo '<tr>
+																<td height = "33px" id = "styleofwords7a3">Sikeres bejelentkezés! Üdvözöljük, '.$login_felh_nev.'!</td>
+															</tr>
+															<tr>
+																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "index.php" id = "styleofword2"
+																style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">tovább a kínálathoz!</a></font></td>
+															</tr>
+															<tr>
+																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"></font></td>
+															</tr>';										
+													}
+												}
+													
+											}
+									
+										?>
+										
 										</table>
 										<table align = "center" width = "100%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
 											<tr>
-												<td width = "100%"><input type = "submit" class = "inputlog" value = "Bejelentkezés" name = "bejelentkezes" /></td>
+												<td width = "100%"><input type = "submit" class = "inputlog" value = "Bejelentkezés" name = "bejelentkezes_dropdown" /></td>
 											</tr>
 										</table>
 									</div>
+						</form>
 					</li>
 						
 					</li>
