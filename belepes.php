@@ -109,6 +109,9 @@
 			</br>
 			</br>
 			</br>
+			</br>
+			</br>
+			</br>
 			
 		<form method = "POST" action = "belepes.php" enctype = "multipart/form-data" name = "register">
 			<div align = "center">
