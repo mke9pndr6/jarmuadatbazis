@@ -15,6 +15,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta HTTP-EQUIV="Content-Language" Content="hu">
 		<link rel = "stylesheet" href = "style.css"/>
+		<link href='https://fonts.googleapis.com/css?family=Electrolize' rel='stylesheet'>
 	<head>
 		<title>
 			Regisztráció

@@ -19,6 +19,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta HTTP-EQUIV="Content-Language" Content="hu">
 		<link rel = "stylesheet" href = "style.css"/>
+		<link href='https://fonts.googleapis.com/css?family=Electrolize' rel='stylesheet'>
 	<head>
 		<title>
 			Kezdőlap
@@ -157,25 +158,34 @@
 								$adminf = "admin";
 								$adminj = "admin";
 								
-								/*$login_sql = "SELECT Felhasznalo.felhasznalo_nev, Felhasznalo.jelszo FROM Felhasznalo
-								WHERE Felhasznalo.felhasznalo_nev = '$login_felh_nev' AND Felhasznalo.jelszo = '$login_jelszo'";*/
+								$login_sql = "SELECT Felhasznalo.felhasznalo_nev, Felhasznalo.jelszo FROM Felhasznalo
+								WHERE Felhasznalo.felhasznalo_nev = '".$login_felh_nev."' AND Felhasznalo.jelszo = '".$login_jelszo."' LIMIT 1";
 								
-								$login_user = mysqli_query($conn, "SELECT Felhasznalo.felhasznalo_nev, Felhasznalo.jelszo FROM Felhasznalo
-								WHERE Felhasznalo.felhasznalo_nev = '".$login_felh_nev."' AND Felhasznalo.jelszo = '".$login_jelszo."' LIMIT 1");
+								$login_user = mysqli_query($conn, $login_sql);
 								$count_loggedinuser = mysqli_num_rows($login_user);
 								
 								if(mysqli_num_rows($login_user) == 1){
 									
+									$sql = "INSERT INTO belepes
+									(felhasznalo_nev, jelszo) 
+									VALUES('".$login_felh_nev."','".$login_jelszo."');";
+									
+									mysqli_query($conn, $sql);
+									
 									if($login_felh_nev == $adminf && $login_jelszo == $adminj){
-										echo "üdv";
+										echo '<tr>
+												<td height = "33px" id = "styleofwords7a3">Sikeres bejelentkezés! Üdvözöljük, '.$login_felh_nev.'!</td>
+											</tr>
+											<tr>
+												<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "index.php" id = "styleofword2"
+												style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">tovább a kínálathoz!</a></font></td>
+											</tr>
+											<tr>
+												<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"></font></td>
+											</tr>';				
 									}
 									
 									else{
-										$sql = "INSERT INTO belepes
-											(felhasznalo_nev, jelszo) 
-											VALUES('".$login_felh_nev."','".$login_jelszo."');";
-									
-										mysqli_query($conn, $sql);
 										
 										echo '<tr>
 												<td height = "33px" id = "styleofwords7a3">Sikeres bejelentkezés! Üdvözöljük, '.$login_felh_nev.'!</td>

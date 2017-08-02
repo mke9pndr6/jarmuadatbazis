@@ -12,13 +12,14 @@
 <?php 
 	include('connection.php');
 	include('controller.php');
-	//include('style.php');
+	//include('style.css');
 ?>
 
 <html>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta HTTP-EQUIV="Content-Language" Content="hu">
 		<link rel = "stylesheet" href = "style.css"/>
+		<link href='https://fonts.googleapis.com/css?family=Electrolize' rel='stylesheet'/>
 	<head>
 		<title>
 			Kezdőlap
@@ -94,7 +95,45 @@
 					<li><a href="index.php">Kezdőlap</a></li>
 					<li><a href="kereses.php">Keresés</a></li>
 					<li><a href="regisztracio.php">Regisztráció</a></li>
-					<li><a href="belepes.php">Belépés</a></li>
+					<li>
+						<a href="belepes.php">Belépés</a>
+							<form method = "POST" action = "index.php" enctype = "multipart/form-data" name = "login_index">
+								<div align = "center">
+									<table align = "center" width = "100%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
+										<tr>
+											<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"></font></td>
+										</tr>
+										<tr>
+											<td height = "33px" id = "styleofwords2"><font id = "styleofwords2">Felhasználónév</font></td>
+										</tr>
+										<tr>
+											<td height = "33px" id = "styleofwords9"><input type = "text" style="height:26px; width: 100%;" name = "login_felh" size = "45" required /></td>
+										</tr>
+										<tr>
+											<td height = "33px" id = "styleofwords2"><font id = "styleofwords2">Jelszó</font></td>
+										</tr>
+										<tr>
+											<td height = "33px" id = "styleofwords9"><input type = "password" style="height:26px; width: 100%;" name = "login_jelszo" size = "45" required /></td>
+										</tr>
+										<tr>
+											<td height = "33px" id = "styleofwords2b"><a href = "regisztracio.php">regisztráció</a></td>
+										</tr>
+										<tr>
+											<td height = "33px" id = "styleofwords2b"><a href = "regisztracio.php">elfelejtett jelszó</a></td>
+										</tr>
+										<tr>
+											<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"></font></td>
+										</tr>
+										</table>
+										<table align = "center" width = "100%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
+											<tr>
+												<td width = "100%"><input type = "submit" class = "inputlog" value = "Bejelentkezés" name = "bejelentkezes" /></td>
+											</tr>
+										</table>
+									</div>
+					</li>
+						
+					</li>
 				</ul>
 				<div style = "clear:both"></div>
 			</div>
