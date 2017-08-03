@@ -190,7 +190,9 @@
 											</tr>
 											<tr>
 												<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"></font></td>
-											</tr>';				
+											</tr>';
+											
+											header("url: admin_main.php");
 									}
 									
 									else{

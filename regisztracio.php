@@ -243,22 +243,19 @@
 			</table>
 			</div>
 			
-			
+			<div align = "center">
 			<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
 				<form method = "POST" action = "regisztracio.php" enctype = "multipart/form-data" name = "register">
 				
 			<!--felhasználói fiók adatai-->
-				
-			<div align = "center">
-				<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
+	
 					<tr>
-						<td width = "60%" height = "33px" id = "styleofwords2" >
+						<td width = "100%" height = "33px" id = "styleofwords2" >
 						<font id = "styleofwords2">Felhasználói fiók adatai</font></td>
 						<td width = "40%" height = "33px" id = "styleofwords2"><font id = "styleofwords2"></font></td>
 					</tr>
 				</table>
 			</div>
-			
 			<div align = "center">
 				<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
 					<tr>
@@ -388,6 +385,8 @@
 								$utca = $_POST['utca'];
 								$hazszam = $_POST['hazszam'];
 								
+								$email_ures = "";
+								
 								$szulhely = $_POST['szuletesi_hely'];
 								$szulido = $_POST['szuletesi_ido'];
 								
@@ -400,7 +399,9 @@
 								
 								//helyes regisztrációhoz szükséges adatok ellenőrzése
 								
-								if($jelszo1 == $jelszo2 && (!$count_email > 0) && (!$count_idnumber > 0) && (!$count_user > 0)){
+								if($jelszo1 == $jelszo2 && (!$count_email > 0) && (!$count_idnumber > 0) && (!$count_user > 0) && (!$email == $email_ures)){
+									
+									//$jelszo1 = md5($jelszo1);
 									
 									$sql = "INSERT INTO felhasznalo
 											(felhasznalo_nev, jelszo, vezetek_nev, kereszt_nev,

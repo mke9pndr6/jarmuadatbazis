@@ -14,7 +14,7 @@ class Controller{
 		
 		include('connection.php');		
 		$result = mysqli_query( $conn,"SELECT marka.megnevezes from marka, jarmutipus
-		where marka.jarmutipus_id = jarmutipus.id and jarmutipus.id = 1 order by marka.megnevezes ASC;");
+		where marka.jarmutipus_id = jarmutipus.id and jarmutipus.id = 'Autó' order by marka.megnevezes ASC;");
 		mysqli_close($conn);
 		return $result;
 		echo $result;
@@ -25,7 +25,7 @@ class Controller{
 		
 		include('connection.php');		
 		$result = mysqli_query( $conn,"SELECT marka.megnevezes from marka, jarmutipus
-		where marka.jarmutipus_id = jarmutipus.id and jarmutipus.id = 2 order by marka.megnevezes ASC;");
+		where marka.jarmutipus_id = jarmutipus.id and jarmutipus.id = 'Motor' order by marka.megnevezes ASC;");
 		mysqli_close($conn);
 		return $result;
 		echo $result;
