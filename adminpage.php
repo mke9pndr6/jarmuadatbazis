@@ -103,16 +103,16 @@
 									<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="autok_modositasa.php";'>Autók módosítása</td></button>
 								</tr>
 								<tr>
-									<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="autok_torlese";'>Autók törlése</td></button>
+									<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="autok_torlese.php";'>Autók törlése</td></button>
 								</tr>
 								<tr>
-									<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="motorok_hozzadasa";'>Motorok hozzáadása</td></button>
+									<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="motorok_hozzaadasa.php";'>Motorok hozzáadása</td></button>
 								</tr>
 								<tr>
-									<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="motorok_modositasa";'>Motorok módosítása</td></button>
+									<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="motorok_modositasa.php";'>Motorok módosítása</td></button>
 								</tr>
 								<tr>
-									<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="motorok_torlese";'>Motorok törlése</td></button>
+									<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="motorok_torlese.php";'>Motorok törlése</td></button>
 								</tr>
 							</table>
 						</div>

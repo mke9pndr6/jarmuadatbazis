@@ -192,7 +192,7 @@
 												<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"></font></td>
 											</tr>';
 											
-											header("url: admin_main.php");
+											//header("url: admin_main.php");
 									}
 									
 									else{

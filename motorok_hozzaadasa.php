@@ -23,7 +23,7 @@
 		<link href='https://fonts.googleapis.com/css?family=Electrolize' rel='stylesheet'/>
 	<head>
 		<title>
-			Autók hozzáadása
+			Motorok hozzáadása
 		</title>
 		
 		<script type = "text/javascript">
@@ -247,18 +247,17 @@
 			
 			
 			<div align = "center">
-				<form method = "POST" action = "autok_hozzaadasa.php" enctype = "multipart/form-data" name = "car_upload">
+				<form method = "POST" action = "motorok_hozzaadasa.php" enctype = "multipart/form-data" name = "motor_upload">
 					<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
 						<tr>
-							<td height = "0px"  width = "90%" id = "styleofwords2a"><font id = "styleofwords2a">Autók hozzáadása az adatbázishoz</font></td>
+							<td height = "0px"  width = "90%" id = "styleofwords2a"><font id = "styleofwords2a">Motorok hozzáadása az adatbázishoz</font></td>
 							<td height = "0px"  width = "10%" id = "styleofwords2a"><font id = "styleofwords2a"></font></td>
 						</tr>
 					
 						<tr>
 							<td height = "33px" id = "styleofwords10" >Márka<font id = "styleofwords12"></font></td>
-							<td height = "33px" id = "styleofwords11"><input  type = "number"  
+							<td height = "33px" id = "styleofwords11"><input type = "number"  
 							style="height:26px;" name = "marka_id" size = "45" placeholder = "pl.: 1 = Mercedes" required/>
-						
 							</td>
 						</tr>
 						<tr>
@@ -288,17 +287,14 @@
 							<td height = "33px" id = "styleofwords11"><input type = "number" style="height:26px;" name = "evjarat" size = "45" required /></td>
 						</tr>
 						<tr>
-							<td height = "33px" id = "styleofwords7" >Autó állapota<font id = "styleofwords8"></font></td>
+							<td height = "33px" id = "styleofwords7" >Motor állapota<font id = "styleofwords8"></font></td>
 							<td height = "33px" id = "styleofwords9"><input type = "text" style="height:26px;" name = "allapot" size = "45" required /></td>
 						</tr>
 						<tr>
 							<td height = "33px" id = "styleofwords7" >Km/h állása<font id = "styleofwords8"/></td>
 							<td height = "33px" id = "styleofwords9"><input type = "number" style="height:26px;" name = "km_ora_allasa" size = "45" required/></td>
 						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" >Szállítható személyek száma<font id = "styleofwords8"/></td>
-							<td height = "33px" id = "styleofwords9"><input type = "number" style="height:26px; width: 100%;" name = "szallithato_szemelyek" size = "45" placeholder = "" required/></td>
-						</tr>
+			
 						<tr>
 							<td height = "33px" id = "styleofwords7" >Üzemanyag fajtája<font id = "styleofwords8"></font></td>
 							<td height = "33px" id = "styleofwords9"><input type = "text" style="height:26px; width: 100%;" name = "uzemanyag" size = "45" placeholder = "Benzin/Dízel" required /></td>
@@ -336,8 +332,8 @@
 							<td height = "33px" id = "styleofwords9"><input type = "number" step = "0.01" style="height:26px; width: 100%;" name = "gyorsulas" size = "45" placeholder = "" required /></td>
 						</tr>
 						<tr>
-							<td height = "33px" id = "styleofwords7" >Oktánszám<font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords9"><input type = "number" style="height:26px; width: 100%;" name = "oktanszam" size = "45" placeholder = "" required /></td>
+							<td height = "33px" id = "styleofwords7" >Munkaütem<font id = "styleofwords8"></font></td>
+							<td height = "33px" id = "styleofwords9"><input type = "number" style="height:26px; width: 100%;" name = "munkautem" size = "45" placeholder = "" required /></td>
 						</tr>
 						<tr>
 							<td height = "33px" id = "styleofwords7" ><font id = "styleofwords8"></font></td>
@@ -348,7 +344,7 @@
 						
 						<?php
 						
-							if(isset($_POST['autofelvetel'])){
+							if(isset($_POST['motorfelvetel'])){
 								
 								$marka_id = $_POST['marka_id'];
 								$jarmutipus_id = $_POST['jarmutipus_id'];
@@ -359,7 +355,7 @@
 								$evjarat = $_POST['evjarat'];
 								$allapot = $_POST['allapot'];
 								$km_ora_allasa = $_POST['km_ora_allasa'];
-								$szallithato_szemelyek = $_POST['szallithato_szemelyek'];
+						
 								$uzemanyag = $_POST['uzemanyag'];
 								$hengerurtartalom = $_POST['hengerurtartalom'];
 								$teljesitmeny = $_POST['teljesitmeny'];
@@ -369,32 +365,32 @@
 								$atlagfogyasztas = $_POST['atlagfogyasztas'];
 								$vegsebesseg = $_POST['vegsebesseg'];
 								$gyorsulas = $_POST['gyorsulas'];
-								$oktanszam = $_POST['oktanszam'];
+								$munkautem = $_POST['munkautem'];
 								
 								
 				
 		
 								
-								$sql = "INSERT INTO auto
+								$sql = "INSERT INTO motor
 											(marka_id, jarmutipus_id, ar_1, ar_2, ar_3, marka_tipus,
-											evjarat, allapot, km_ora_allasa, szallithato_szemelyek, uzemanyag,
+											evjarat, allapot, km_ora_allasa, uzemanyag,
 											hengerurtartalom, teljesitmeny, sajat_tomeg, maximalis_tomeg,
-											tank_meret, atlagfogyasztas, vegsebesseg, gyorsulas, oktanszam) 
+											tank_meret, atlagfogyasztas, vegsebesseg, gyorsulas, munkautem) 
 											VALUES('".$marka_id."','".$jarmutipus_id."','".$ar_1."','".$ar_2."',
-											'".$ar_3."','".$marka_tipus."','".$evjarat."','".$allapot."','".$km_ora_allasa."',
-											'".$szallithato_szemelyek."','".$uzemanyag."','".$hengerurtartalom."',
+											'".$ar_3."','".$marka_tipus."','".$evjarat."','".$allapot."',
+											'".$km_ora_allasa."','".$uzemanyag."','".$hengerurtartalom."',
 											'".$teljesitmeny."','".$sajat_tomeg."','".$maximalis_tomeg."','".$tank_meret."',
-											'".$atlagfogyasztas."','".$vegsebesseg."','".$gyorsulas."','".$oktanszam."');";
+											'".$atlagfogyasztas."','".$vegsebesseg."','".$gyorsulas."','".$munkautem."');";
 							
 											
 								mysqli_query($conn, $sql);
 								$last_id = mysqli_insert_id($conn);
 								
-								$carNameSql = "SELECT marka.megnevezes, auto.marka_tipus FROM marka, auto
-												WHERE marka.id = auto.marka_id AND auto.id = '".$last_id."'";
+								$motorNameSql = "SELECT marka.megnevezes, motor.marka_tipus FROM marka, motor
+												WHERE marka.id = motor.marka_id AND motor.id = '".$last_id."'";
 								//echo $carNameSql;
-								$carName = mysqli_query($conn, $carNameSql);
-								while($row = mysqli_fetch_assoc($carName)) {
+								$motorName = mysqli_query($conn, $motorNameSql);
+								while($row = mysqli_fetch_assoc($motorName)) {
 									echo '<div align = "center">
 											<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
 												<tr>
@@ -404,13 +400,12 @@
 											</table>
 										</div>';
 								}
-								
 							}
 
 						?>
 						<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
 							<tr>
-								<td width = "100%"><input type = "submit" class = "input" value = "Autó felvétele" name = "autofelvetel" /></td>
+								<td width = "100%"><input type = "submit" class = "input" value = "Motor felvétele" name = "motorfelvetel" /></td>
 							</tr>
 					</table>
 				</form>
