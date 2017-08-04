@@ -301,12 +301,12 @@
 						<td height = "33px" id = "styleofwords9"><input type = "text" style="height:26px;" name = "anyjakereszt" size = "45" required /></td>
 					</tr>
 					<tr>
-						<td height = "33px" id = "styleofwords10" >Email<font id = "styleofwords8a"/></td>
-						<td height = "33px" id = "styleofwords11"><input type = "email" style="height:26px;" name = "emailcim" size = "45" /></td>
+						<td height = "33px" id = "styleofwords10" >Email<font id = "styleofwords8"/>*</td>
+						<td height = "33px" id = "styleofwords11"><input type = "email" style="height:26px;" name = "emailcim" size = "45"required /></td>
 					</tr>
 					<tr>
 						<td height = "33px" id = "styleofwords7" >Telefonszám<font id = "styleofwords8a"/></td>
-						<td height = "33px" id = "styleofwords9"><input type = "number" style="height:25px; width: 100%;" name = "tel" size = "45" placeholder = "+36/06 nélkül adja meg, pl: 709999999"/></td>
+						<td height = "33px" id = "styleofwords9"><input type = "number" style="height:26px; width: 100%;" name = "tel" size = "45" placeholder = "+36/06 nélkül adja meg, pl: 709999999"/></td>
 					</tr>
 					
 					<!-- lakcím adatok -->
@@ -317,7 +317,7 @@
 					</tr>
 					<tr>
 						<td height = "33px" id = "styleofwords7" >Irányítószám<font id = "styleofwords8">*</font></td>
-						<td height = "33px" id = "styleofwords9"><input type = "number" style="height:25px; width: 100%;" name = "iranyitoszam" size = "45" placeholder = "" required /></td>
+						<td height = "33px" id = "styleofwords9"><input type = "number" style="height:26px; width: 100%;" name = "iranyitoszam" size = "45" placeholder = "" required /></td>
 					</tr>
 					<tr>
 						<td height = "33px" id = "styleofwords7" >Város<font id = "styleofwords8">*</font></td>
@@ -550,7 +550,7 @@
 				</form>
 			</table>
 			</div>
-
+			</div>
 			</br>
 			</br>
 			</br>
