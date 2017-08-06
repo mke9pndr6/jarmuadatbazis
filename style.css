@@ -341,6 +341,7 @@
 			padding: 0px;
 			/*opacity: 0.97;
 			filter: alpha(opacity=0);*/
+			font-family: "Electrolize";
 		}
 		
 		
@@ -399,6 +400,7 @@
 		ul#menu li a:hover{
 			background: #000000;
 			transition: all 1s ease-in-out;
+			font-family: "Electrolize";
 		}
 		
 		ul#menu li div{
@@ -418,12 +420,14 @@
 		ul#menu li div a:nth-child(odd){
 			display: block;
 			background-color: rgb(29 ,116, 131);
+			font-family: "Electrolize";
 			
 		}
 		
 		ul#menu li div a:nth-child(even){
 			display: block;
 			background-color: rgb(29 ,116, 131);
+			font-family: "Electrolize";
 			
 		}
 		
@@ -432,22 +436,35 @@
 			background: #000000;
 			opacity:0.9;
 			transition: 0.35s ease;
+			font-family: "Electrolize";
 		}
 		
 		
 		
 		#tableborders2 {                              
 			border-style: solid;
-			border-color: #009933 #ffffff #009933 #009933;
+			border-color: #0B3861 #ffffff #0B3861 #0B3861;
 			border-width: 0.5px;
 			margin: 0 0.5px 0 0;
+			font-family: "Electrolize";
+			text-align: left;
+			background-color: #0B3861;
+			color: #ffffff;
+			height: 5%;
 		}
 		
 		
 		#tableborders3 {
 			border-style: solid;
-			border-color: #009933 #009933 #009933 #ffffff ;
+			border-color: #0B3861 #ffffff #ffffff #0B3861;
 			border-width: 0.5px;
+			margin: 0 0.5px 0 0;
+			font-family: "Electrolize";
+			text-align: left;
+			background-color: #0B3861;
+			color: #ffffff;
+			height: 10%;
+			
 		}
 		
 		
