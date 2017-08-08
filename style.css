@@ -319,6 +319,10 @@
 			padding: 0px;
 			margin: 0px;
 		}
+		
+		.cars{
+			padding: 3% 0 0 0;
+		}
 	
 		div#container{
 			width: 100%;
@@ -378,7 +382,7 @@
 			/**/
 			font-family: "Electrolize";
 			text-align: center;
-			background: #05AB3D;
+			/*background: #05AB3D;*/
 			color: #ffffff;
 			padding: 0px;
 			display: block;
@@ -515,7 +519,7 @@
 			color: #fff;
 			background-color: rgb(0, 81, 119);
 			border: none;
-			border-radius: 0 0 0 18;
+			border-radius: 0 0 18 18;
 		}
 		
 		.inputlog[type=submit]:hover {background-color: #000000}
