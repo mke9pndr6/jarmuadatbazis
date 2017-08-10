@@ -226,13 +226,7 @@
 			</br>
 			</br>
 			</br>
-			</br>
-			</br>
-			</br>
-			</br>
-			</br>
-			</br>
-		
+			
 		
 			
 
@@ -354,14 +348,13 @@
 					</tr>
 				</table>
 			</div>
-			</div align = "center">
+			<div align = "center">
 				<table align = "center" width = "60%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
 					<tr>
 						<td width = "50%"><input type = "submit" onclick = "loginMessage()" class = "input" value = "Kölcsönzés" name = "kolcsonzes" /></td>
 						<td width = "50%"><input type = "submit" onclick = "loginComment()" class = "input" value = "Hozzászólás írása" name = "hozzaszolas" /></td>
 					</tr>
 				</table>
-			
 			</div>
 			
 			</br>
@@ -370,8 +363,7 @@
 			</br>
 			</br>
 			</br>
-			</br>
-			</br>
+	
 			
 					';
 				}
