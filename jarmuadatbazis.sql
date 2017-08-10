@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `auto` (
   `id` int(10) NOT NULL,
-  `marka_id` int(10) NOT NULL,
+  `automarka_id` varchar(60) NOT NULL,
   `jarmutipus_id` varchar(60) NOT NULL,
   `ar_1` int(10) NOT NULL,
   `ar_2` int(10) NOT NULL,
@@ -54,8 +54,8 @@ CREATE TABLE `auto` (
 -- A tábla adatainak kiíratása `auto`
 --
 
-INSERT INTO `auto` (`id`, `marka_id`, `jarmutipus_id`, `ar_1`, `ar_2`, `ar_3`, `marka_tipus`, `evjarat`, `allapot`, `km_ora_allasa`, `szallithato_szemelyek`, `uzemanyag`, `hengerurtartalom`, `teljesitmeny`, `sajat_tomeg`, `maximalis_tomeg`, `tank_meret`, `atlagfogyasztas`, `vegsebesseg`, `gyorsulas`, `oktanszam`) VALUES
-(1, 1, 'Autó', 12190, 10390, 8290, 'CLA 220', 2014, 'Újszerű', 13204, 5, 'Benzin', 2189, 173, 1491, 1970, 60, 8.2, 235, 7.8, 95);
+INSERT INTO `auto` (`id`, `automarka_id`, `jarmutipus_id`, `ar_1`, `ar_2`, `ar_3`, `marka_tipus`, `evjarat`, `allapot`, `km_ora_allasa`, `szallithato_szemelyek`, `uzemanyag`, `hengerurtartalom`, `teljesitmeny`, `sajat_tomeg`, `maximalis_tomeg`, `tank_meret`, `atlagfogyasztas`, `vegsebesseg`, `gyorsulas`, `oktanszam`) VALUES
+(1, 'Mercedes', 'Autó', 12190, 10390, 8290, 'CLA 220', 2014, 'Újszerű', 13204, 5, 'Benzin', 2189, 173, 1491, 1970, 60, 8.2, 235, 7.8, 95);
 
 -- --------------------------------------------------------
 
@@ -127,7 +127,6 @@ CREATE TABLE `jarmukolcsonzes` (
   `id` int(10) NOT NULL,
   `felhasznalo_nev` varchar(30) NOT NULL,
   `jarmutipus_id` varchar(60) NOT NULL,
-  `marka_id` int(10) NOT NULL,
   `mettol` date NOT NULL,
   `meddig` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -156,37 +155,56 @@ INSERT INTO `jarmutipus` (`id`) VALUES
 -- Tábla szerkezet ehhez a táblához `marka`
 --
 
-CREATE TABLE `marka` (
-  `id` int(10) NOT NULL,
-  `megnevezes` varchar(50) NOT NULL,
-  `jarmutipus_id` varchar(60) NOT NULL
+CREATE TABLE `automarka` (
+  `id` varchar(60) NOT NULL
+  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- A tábla adatainak kiíratása `marka`
 --
 
-INSERT INTO `marka` (`id`, `megnevezes`, `jarmutipus_id`) VALUES
-(1, 'Mercedes', 'Autó'),
-(2, 'BMW', 'Autó'),
-(3, 'Toyota', 'Autó'),
-(4, 'Audi', 'Autó'),
-(5, 'Opel', 'Autó'),
-(6, 'Suzuki', 'Autó'),
-(7, 'Suzuki', 'Motor'),
-(8, 'Aprilia', 'Motor'),
-(9, 'BMW', 'Motor'),
-(10, 'Ferrari', 'Autó'),
-(11, 'Piaggio', 'Motor'),
-(12, 'Gilera', 'Motor'),
-(13, 'Keeway', 'Motor'),
-(14, 'Ford', 'Autó'),
-(15, 'Infiniti', 'Autó'),
-(16, 'Nissan', 'Autó'),
-(17, 'Yamaha', 'Motor'),
-(18, 'Chevrolet', 'Autó'),
-(19, 'Alfa Romeo', 'Motor'),
-(20, 'Skoda', 'Motor');
+INSERT INTO `automarka` (`id`) VALUES
+('Mercedes'),
+('BMW'),
+('Toyota'),
+('Audi'),
+('Opel'),
+('Suzuki'),
+('Ferrari'),
+('Ford'),
+('Infiniti'),
+('Nissan'),
+('Yamaha'),
+('Chevrolet'),
+('Alfa Romeo'),
+('Skoda');
+
+
+
+
+
+CREATE TABLE `motormarka` (
+  `id` varchar(60) NOT NULL
+  
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- A tábla adatainak kiíratása `marka`
+--
+
+INSERT INTO `motormarka` (`id`) VALUES
+
+('BMW'),
+('Audi'),
+('Aprilia'),
+('Ferrari'),
+('Gilera'),
+('Keeway'),
+('Nissan'),
+('Yamaha'),
+('Chevrolet');
+
 
 -- --------------------------------------------------------
 
@@ -196,7 +214,7 @@ INSERT INTO `marka` (`id`, `megnevezes`, `jarmutipus_id`) VALUES
 
 CREATE TABLE `motor` (
   `id` int(10) NOT NULL,
-  `marka_id` int(10) NOT NULL,
+  `motormarka_id` varchar(60) NOT NULL,
   `jarmutipus_id` varchar(60) NOT NULL,
   `ar_1` int(10) NOT NULL,
   `ar_2` int(10) NOT NULL,
@@ -226,7 +244,7 @@ CREATE TABLE `motor` (
 --
 ALTER TABLE `auto`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `marka_id` (`marka_id`),
+  ADD KEY `automarka_id` (`automarka_id`),
   ADD KEY `jarmutipus_id` (`jarmutipus_id`);
 
 --
@@ -247,8 +265,7 @@ ALTER TABLE `felhasznalo`
 ALTER TABLE `jarmukolcsonzes`
   ADD PRIMARY KEY (`id`),
   ADD KEY `felhasznalo_id` (`felhasznalo_nev`),
-  ADD KEY `jarmutipus_id` (`jarmutipus_id`),
-  ADD KEY `marka_id` (`marka_id`);
+  ADD KEY `jarmutipus_id` (`jarmutipus_id`);
 
 --
 -- A tábla indexei `jarmutipus`
@@ -259,16 +276,19 @@ ALTER TABLE `jarmutipus`
 --
 -- A tábla indexei `marka`
 --
-ALTER TABLE `marka`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `jarmutipus_id` (`jarmutipus_id`);
+ALTER TABLE `automarka`
+  ADD PRIMARY KEY (`id`);
 
+  
+  
+ALTER TABLE `motormarka`
+  ADD PRIMARY KEY (`id`);
 --
 -- A tábla indexei `motor`
 --
 ALTER TABLE `motor`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `marka_id` (`marka_id`),
+  ADD KEY `motormarka_id` (`motormarka_id`),
   ADD KEY `jarmutipus_id` (`jarmutipus_id`);
 
 --
@@ -288,8 +308,6 @@ ALTER TABLE `jarmukolcsonzes`
 --
 -- AUTO_INCREMENT a táblához `marka`
 --
-ALTER TABLE `marka`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT a táblához `motor`
 --
@@ -303,7 +321,7 @@ ALTER TABLE `motor`
 -- Megkötések a táblához `auto`
 --
 ALTER TABLE `auto`
-  ADD CONSTRAINT `auto_ibfk_1` FOREIGN KEY (`marka_id`) REFERENCES `marka` (`id`),
+  ADD CONSTRAINT `auto_ibfk_1` FOREIGN KEY (`automarka_id`) REFERENCES `automarka` (`id`),
   ADD CONSTRAINT `auto_ibfk_2` FOREIGN KEY (`jarmutipus_id`) REFERENCES `jarmutipus` (`id`);
 
 --
@@ -311,20 +329,17 @@ ALTER TABLE `auto`
 --
 ALTER TABLE `jarmukolcsonzes`
   ADD CONSTRAINT `jarmukolcsonzes_ibfk_1` FOREIGN KEY (`felhasznalo_nev`) REFERENCES `felhasznalo` (`felhasznalo_nev`),
-  ADD CONSTRAINT `jarmukolcsonzes_ibfk_2` FOREIGN KEY (`jarmutipus_id`) REFERENCES `jarmutipus` (`id`),
-  ADD CONSTRAINT `jarmukolcsonzes_ibfk_3` FOREIGN KEY (`marka_id`) REFERENCES `marka` (`id`);
+  ADD CONSTRAINT `jarmukolcsonzes_ibfk_2` FOREIGN KEY (`jarmutipus_id`) REFERENCES `jarmutipus` (`id`);
 
 --
 -- Megkötések a táblához `marka`
 --
-ALTER TABLE `marka`
-  ADD CONSTRAINT `marka_ibfk_1` FOREIGN KEY (`jarmutipus_id`) REFERENCES `jarmutipus` (`id`);
 
 --
 -- Megkötések a táblához `motor`
 --
 ALTER TABLE `motor`
-  ADD CONSTRAINT `motor_ibfk_1` FOREIGN KEY (`marka_id`) REFERENCES `marka` (`id`),
+  ADD CONSTRAINT `motor_ibfk_1` FOREIGN KEY (`motormarka_id`) REFERENCES `motormarka` (`id`),
   ADD CONSTRAINT `motor_ibfk_2` FOREIGN KEY (`jarmutipus_id`) REFERENCES `jarmutipus` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

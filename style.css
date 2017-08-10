@@ -60,7 +60,7 @@
 		
 		
 		#styleofwords2{
-			font-size: 23px;
+			font-size: 18px;
 			
 			font-family: "Electrolize";
 			text-align: left;
@@ -555,6 +555,21 @@
 		border: none;
 		border-radius: 0 0 18 0;
 		}
+		
+		
+		.pop-out
+			{
+				transition: transform .7s;
+			}
+
+			.pop-out:hover
+		{
+				-ms-transform: scale(1.7, 1.7);
+				-webkit-transform: scale(1.7, 1.7);
+				transform: scale(1.7, 1.7);
+		}
+		
+		
 
 		.button:hover {background-color: #000000}
 
@@ -566,7 +581,7 @@
 		
 		.buttonlog {
 		padding: 3% 2%;
-		font-size: 19px;
+		font-size: 18px;
 		
 		font-family: "Electrolize";
 		text-align: left;

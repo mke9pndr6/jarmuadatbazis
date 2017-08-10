@@ -52,7 +52,7 @@
 								
 								while($getCars = mysqli_fetch_assoc($listCars)){
 						
-										echo '<a href = "">'. $getCars['megnevezes']. '</a>';
+										echo '<a href = "">'. $getCars['id']. '</a>';
 								}
 								mysqli_free_result($listCars);
 							?>
@@ -69,7 +69,7 @@
 								$listMotors = $AllCars->ListMotors();
 								
 								while($getCars = mysqli_fetch_assoc($listMotors)){
-									echo '<a href = "">'. $getCars['megnevezes']. '</a>';
+									echo '<a href = "">'. $getCars['id']. '</a>';
 								}
 								mysqli_free_result($listMotors);
 							?>
@@ -81,14 +81,29 @@
 							<?php
 								class Vehicles extends Controller{}
 								
-								$AllVehicles = new Vehicles();
-								$AllVehicles->ListVehicles();
-								$listVehicles = $AllVehicles->ListVehicles();
+								$AllCars = new Cars();
+								$AllCars->ListCars();
+								$listCars = $AllCars->ListCars();
 								
-								while($getCars = mysqli_fetch_assoc($listVehicles)){
-									echo '<a href = "">'. $getCars['megnevezes']. '</a>';
+								//$i = 1;
+								echo '<a href = "autok.php">AUTÓK</a>';
+								while($getCars = mysqli_fetch_assoc($listCars)){
+						
+										echo '<a href = "">'. $getCars['id']. '</a>';
 								}
-								mysqli_free_result($listVehicles);
+								
+								
+								$AllMotors = new Motors();
+								$AllMotors->ListMotors();
+								$listMotors = $AllCars->ListMotors();
+								echo '<a href = "motorok.php">MOTOROK</a>';
+								while($getMotors = mysqli_fetch_assoc($listMotors)){
+									echo '<a href = "">'. $getMotors['id']. '</a>';
+								}
+								
+								
+								mysqli_free_result($listCars);
+								mysqli_free_result($listMotors);
 							?>
 						</div>
 					</li>
@@ -107,14 +122,11 @@
 			</br>
 			</br>
 			</br>
-			</br>
-			</br>
-			</br>
-			</br>
-			
+
 			<div align = "center">
 				<form method = "POST" action = "belepes.php" enctype = "multipart/form-data" name = "login">
-					<table align = "center" width = "28.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
+					<table align = "center" width = "38.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0"
+					style = "border-radius: 22 22 0 0;">
 						<tr>
 							<td height = "33px" id = "styleofwords2a"><font id = "styleofwords2a">Jelentkezzen be a kölcsönzéshez!</font></td>
 						</tr>
@@ -138,11 +150,11 @@
 						</tr>
 						<tr>
 							<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "regisztracio.php" id = "styleofword2"
-							style = "text-decoration: none; text-color: white;"><font size = "3" color = "#ffffff">még nem regisztrált?</a></font></td>
+							style = "text-decoration: none; text-color: white;"><font size = "4" color = "#ffffff">Még nem regisztrált?</a></font></td>
 						</tr>
 						<tr>
 							<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "regisztracio.php" id = "styleofword2"
-							style = "text-decoration: none; text-color: white;"><font size = "3" color = "#ffffff">elfelejtett jelszó</a></font></td>
+							style = "text-decoration: none; text-color: white;"><font size = "4" color = "#ffffff">Elfelejtette jelszavát?</a></font></td>
 						</tr>
 						<tr>
 							<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"></font></td>
@@ -214,7 +226,7 @@
 							
 						?>
 						</table>
-						<table align = "center" width = "28.25%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
+						<table align = "center" width = "38.25%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
 							<tr>
 								<td width = "100%"><input type = "submit" class = "input" value = "Bejelentkezés" name = "bejelentkezes" /></td>
 							</tr>

@@ -13,8 +13,7 @@ class Controller{
 	public function ListCars() {
 		
 		include('connection.php');		
-		$result = mysqli_query( $conn,"SELECT marka.megnevezes from marka, jarmutipus
-		where marka.jarmutipus_id = jarmutipus.id and jarmutipus.id = 'Autó' order by marka.megnevezes ASC;");
+		$result = mysqli_query( $conn,"SELECT automarka.id from automarka order by automarka.id ASC;");
 		mysqli_close($conn);
 		return $result;
 		echo $result;
@@ -24,22 +23,22 @@ class Controller{
 	public function ListMotors() {
 		
 		include('connection.php');		
-		$result = mysqli_query( $conn,"SELECT marka.megnevezes from marka, jarmutipus
-		where marka.jarmutipus_id = jarmutipus.id and jarmutipus.id = 'Motor' order by marka.megnevezes ASC;");
+		$result = mysqli_query( $conn,"SELECT motormarka.id from motormarka order by motormarka.id ASC;");
 		mysqli_close($conn);
 		return $result;
 		echo $result;
 	}
 	
-	public function ListVehicles() {
+	/*public function ListVehicles() {
 		
 		include('connection.php');		
-		$result = mysqli_query( $conn,"SELECT marka.megnevezes from marka, jarmutipus
-		where marka.jarmutipus_id = jarmutipus.id order by marka.megnevezes ASC;");
+		$resultcar = mysqli_query( $conn,"SELECT motormarka.id, automarka.id from automarka, motormarka");
+		$resultmotor =
 		mysqli_close($conn);
-		return $result;
+		return $resultcar;
+		return $resultmotor;
 		echo $result;
-	}
+	}*/
 }
 
 
