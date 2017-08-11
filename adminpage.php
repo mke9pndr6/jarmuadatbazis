@@ -52,7 +52,7 @@
 								
 								while($getCars = mysqli_fetch_assoc($listCars)){
 						
-										echo '<a href = "">'. $getCars['megnevezes']. '</a>';
+										echo '<a href = "">'. $getCars['id']. '</a>';
 								}
 								mysqli_free_result($listCars);
 							?>
@@ -69,26 +69,23 @@
 								$listMotors = $AllCars->ListMotors();
 								
 								while($getCars = mysqli_fetch_assoc($listMotors)){
-									echo '<a href = "">'. $getCars['megnevezes']. '</a>';
+									echo '<a href = "">'. $getCars['id']. '</a>';
 								}
 								mysqli_free_result($listMotors);
 							?>
 						</div>
 					</li>
 					<li>
-						<a href="jarmuvek.php">Összes jármű</a>
+						<a href="hozzaszolasok.php">Hozzászólások</a>
 						<div>
 							<?php
 								class Vehicles extends Controller{}
 								
-								$AllVehicles = new Vehicles();
-								$AllVehicles->ListVehicles();
-								$listVehicles = $AllVehicles->ListVehicles();
 								
-								while($getCars = mysqli_fetch_assoc($listVehicles)){
-									echo '<a href = "">'. $getCars['megnevezes']. '</a>';
-								}
-								mysqli_free_result($listVehicles);
+								echo '<a href = "hozzaszol_autok.php">Autók</a>';
+								
+								echo '<a href = "hozzaszol_motorok.php">Motorok</a>';
+							
 							?>
 						</div>
 					</li>

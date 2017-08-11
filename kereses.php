@@ -87,34 +87,16 @@
 						</div>
 					</li>
 					<li>
-						<a href="jarmuvek.php">Összes jármű</a>
+					<a href="hozzaszolasok.php">Hozzászólások</a>
 						<div>
 							<?php
 								class Vehicles extends Controller{}
 								
-								$AllCars = new Cars();
-								$AllCars->ListCars();
-								$listCars = $AllCars->ListCars();
 								
-								//$i = 1;
-								echo '<a href = "autok.php">AUTÓK</a>';
-								while($getCars = mysqli_fetch_assoc($listCars)){
-						
-										echo '<a href = "">'. $getCars['id']. '</a>';
-								}
+								echo '<a href = "hozzaszol_autok.php">Autók</a>';
 								
-								
-								$AllMotors = new Motors();
-								$AllMotors->ListMotors();
-								$listMotors = $AllCars->ListMotors();
-								echo '<a href = "motorok.php">MOTOROK</a>';
-								while($getMotors = mysqli_fetch_assoc($listMotors)){
-									echo '<a href = "">'. $getMotors['id']. '</a>';
-								}
-								
-								
-								mysqli_free_result($listCars);
-								mysqli_free_result($listMotors);
+								echo '<a href = "hozzaszol_motorok.php">Motorok</a>';
+							
 							?>
 						</div>
 					</li>
@@ -252,7 +234,7 @@
 						</tr>
 					</table>
 			</div>
-			</br>
+			
 			
 			
 				<?php
@@ -268,8 +250,13 @@
 						$count_cars = mysqli_num_rows($carResult);
 						//echo $carResult;
 						//echo $carSearchSql;
+						
+						$rowindex = 1;
+						
+						if($count_cars >= 1){
 						echo '<div align = "center">
-								<table align = "center" width = "43.2%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = " border-color: #ff0000; font-family: Electrolize; color: #fff; font-size: 40px; background: rgb(38 ,98, 133);">
+								<table align = "center" width = "43.2%" id = "cars" id = "styleofwords9"cellpadding = "0" cellspacing = "0" style = " border-color: #ff0000; font-family: Electrolize; color: #fff; font-size: 40px; background: rgb(0, 81, 119);
+								;">
 									<tr>
 										
 										<td width = "100%" align = "center">Találatok száma: '.$count_cars.' db </td>
@@ -280,7 +267,24 @@
 							</br>
 							</br>
 							</br>';
-					
+						}
+						
+						if($count_cars == 0){
+							echo '<div align = "center">
+								<table align = "center" width = "43.2%" id = "cars" id = "styleofwords9"cellpadding = "0" cellspacing = "0" style = " border-color: #ff0000; font-family: Electrolize; color: #fff; font-size: 40px; background: rgb(0, 81, 119);
+								;">
+									<tr>
+										
+										<td width = "100%" align = "center">Nincs találat </td>
+	
+									</tr>
+								</table>
+							</div>
+							</br>
+							</br>
+							</br>';
+						}
+						
 						if (mysqli_num_rows($carResult) > 0) {
 		
 						
@@ -288,12 +292,12 @@
 								
 								echo '
 									<div align = "center" id = "cars">
-										<table align = "center" width = "60%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = "border-style: solid; border-width: 0.5px;
-										margin: 0 0.5px 0 0; border-color: #000;background: rgb(38 ,98, 133); font-family: Electrolize; color: #ffffff; font-size: 14.5px; border-radius: 22 22 0 0" >
+										<table align = "center" width = "70%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = "border-style: solid; border-width: 0.5px;
+										margin: 0 0.5px 0 0; border-color: #000;background: rgb(38 ,98, 133); font-family: Electrolize; color: #ffffff; font-size: 14.5px; border-radius: 22 22 19 19" >
 										<tr>
-											<td width = "25%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right"> </td>
+											<td width = "25%" height = "20px" style = "padding: 0% 0% 0% 6%;" align = "left"><u>'.$rowindex++.'. találat</u></td>
 											<td width = "10%" height = "20px"> </td>
-											<td width = "65%" height = "300px" rowspan = "17" ><img src = "pictures/cla220.jpg" style = "width: 100%; height: 100%;"></td>
+											<td width = "65%" height = "300px" rowspan = "17" ><img alt = "Mercedes-Benz CLA 220" id = "myImg" src = "pictures/cla220.jpg" style = "width: 100%; height: 100%;"></td>
 										</tr>
 										
 										<tr>
@@ -376,16 +380,12 @@
 											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right"></td>
 											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;"></td>
 										</tr>
-									</table>
-								</div>
-								<div align = "center">
-									<table align = "center" width = "60%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
 										<tr>
-											<td width = "50%"><input type = "submit" onclick = "loginMessage()" class = "input" value = "Kölcsönzés" name = "kolcsonzes" /></td>
-											<td width = "50%"><input type = "submit" onclick = "loginComment()" class = "input" value = "Hozzászólás írása" name = "hozzaszolas" /></td>
+											<td width = "50%" colspan = "3"><input type = "submit" onclick = "loginMessage()" class = "input" value = "Kölcsönzés" name = "kolcsonzes" /></td>
 										</tr>
 									</table>
 								</div>
+								
 								
 								</br>
 								</br>
@@ -409,11 +409,13 @@
 						/*$carSearchSql = "SELECT * FROM auto WHERE auto.automarka_id LIKE '%".$autokeres."%' or auto.marka_tipus LIKE '%".$autokeres."%';";
 						$carResult = mysqli_query($conn, $carSearchSql);
 						$count_cars = mysqli_num_rows($carResult);*/
+						$rowindex = 1;
 						
 						$count_motors = mysqli_num_rows($motorResult);
-					
+						
+						if($count_motors >= 1){
 						echo '<div align = "center">
-								<table align = "center" width = "43.2%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = " border-color: #ff0000; font-family: Electrolize; color: #fff; font-size: 40px; background: rgb(38 ,98, 133);">
+								<table align = "center" width = "43.2%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = " border-color: #ff0000; font-family: Electrolize; color: #fff; font-size: 40px; background: rgb(0, 81, 119);">
 									<tr>
 										
 										<td width = "100%" align = "center">Találatok száma: '.$count_motors.' db </td>
@@ -424,17 +426,33 @@
 							</br>
 							</br>
 							</br>';
+						}
+						
+						if($count_motors == 0){
+						echo '<div align = "center">
+								<table align = "center" width = "43.2%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = " border-color: #ff0000; font-family: Electrolize; color: #fff; font-size: 40px; background: rgb(0, 81, 119);">
+									<tr>
+										
+										<td width = "100%" align = "center">Nincs találat </td>
+	
+									</tr>
+								</table>
+							</div>
+							</br>
+							</br>
+							</br>';
+						}
 						
 						while($row = mysqli_fetch_assoc($motorResult)) {
 							
 								echo '
 									<div align = "center" id = "cars">
-									<table align = "center" width = "60%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = "border-style: solid; border-width: 0.5px;
-									margin: 0 0.5px 0 0; border-color: #000;background: rgb(38 ,98, 133); font-family: Electrolize; color: #ffffff; font-size: 14.5px; border-radius: 22 22 0 0;" >
+									<table align = "center" width = "70%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = "border-style: solid; border-width: 0.5px;
+									margin: 0 0.5px 0 0; border-color: #000;background: rgb(38 ,98, 133); font-family: Electrolize; color: #ffffff; font-size: 14.5px; border-radius: 22 22 19 19;" >
 									<tr>
-										<td width = "25%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right"> </td>
+										<td width = "25%" height = "20px" style = "padding: 0% 0% 0% 6%;" align = "left"><u>'.$rowindex++.'. találat</u></td>
 										<td width = "10%" height = "20px"> </td>
-										<td width = "65%" height = "300px" rowspan = "17" ><img src = "pictures/cla220.jpg" style = "width: 100%; height: 100%;"></td>
+										<td width = "65%" height = "300px" rowspan = "17" ><img id = "myImg" src = "pictures/cla220.jpg" style = "width: 100%; height: 100%;"></td>
 									</tr>
 									<tr>
 										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Márka </td>
@@ -516,16 +534,11 @@
 										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right"></td>
 										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;"></td>
 									</tr>
-								</table>
-							</div>
-							<div align = "center">
-								<table align = "center" width = "60%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
 									<tr>
-										<td width = "50%"><input type = "submit" onclick = "loginMessage()" class = "input" value = "Kölcsönzés" name = "kolcsonzes" /></td>
-										<td width = "50%"><input type = "submit" onclick = "loginComment()" class = "input" value = "Hozzászólás írása" name = "hozzaszolas" /></td>
+										<td width = "100%" colspan = "3"><input type = "submit" onclick = "loginMessage()" class = "input" value = "Kölcsönzés" name = "kolcsonzes" /></td>
 									</tr>
 								</table>
-							</div>
+							
 							
 							</br>
 							</br>
@@ -542,6 +555,37 @@
 				?>
 	
 			</form>
+			
+			<div id="myModal" class="modal">
+			  <span class="close">&times;</span>
+			  <img class="modal-content" id="img01">
+			  <div id="caption"></div>
+			</div>
+
+			<script>
+			// Get the modal
+			var modal = document.getElementById('myModal');
+
+			// Get the image and insert it inside the modal - use its "alt" text as a caption
+			var img = document.getElementById('myImg');
+			var modalImg = document.getElementById("img01");
+			var captionText = document.getElementById("caption");
+			img.onclick = function(){
+				modal.style.display = "block";
+				modalImg.src = this.src;
+				captionText.innerHTML = this.alt;
+			}
+
+			// Get the <span> element that closes the modal
+			var span = document.getElementsByClassName("close")[0];
+
+			// When the user clicks on <span> (x), close the modal
+			span.onclick = function() { 
+				modal.style.display = "none";
+			}
+			
+			</script>	
+			
 		</body>
 	</table>
 </html>

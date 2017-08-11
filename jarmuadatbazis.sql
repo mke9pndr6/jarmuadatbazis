@@ -198,6 +198,7 @@ INSERT INTO `motormarka` (`id`) VALUES
 ('BMW'),
 ('Audi'),
 ('Aprilia'),
+
 ('Ferrari'),
 ('Gilera'),
 ('Keeway'),

@@ -76,34 +76,16 @@
 						</div>
 					</li>
 					<li>
-						<a href="jarmuvek.php">Összes jármű</a>
+						<a href="hozzaszolasok.php">Hozzászólások</a>
 						<div>
 							<?php
 								class Vehicles extends Controller{}
 								
-								$AllCars = new Cars();
-								$AllCars->ListCars();
-								$listCars = $AllCars->ListCars();
 								
-								//$i = 1;
-								echo '<a href = "autok.php">AUTÓK</a>';
-								while($getCars = mysqli_fetch_assoc($listCars)){
-						
-										echo '<a href = "">'. $getCars['id']. '</a>';
-								}
+								echo '<a href = "hozzaszol_autok.php">Autók</a>';
 								
-								
-								$AllMotors = new Motors();
-								$AllMotors->ListMotors();
-								$listMotors = $AllCars->ListMotors();
-								echo '<a href = "motorok.php">MOTOROK</a>';
-								while($getMotors = mysqli_fetch_assoc($listMotors)){
-									echo '<a href = "">'. $getMotors['id']. '</a>';
-								}
-								
-								
-								mysqli_free_result($listCars);
-								mysqli_free_result($listMotors);
+								echo '<a href = "hozzaszol_motorok.php">Motorok</a>';
+							
 							?>
 						</div>
 					</li>
