@@ -6,7 +6,7 @@
 	if(isset($_POST['autokeres'])){
 		
 		$autokeres = $_POST['carsearch'];
-		$carSearchSql = "SELECT * FROM  auto WHERE marka_tipus LIKE '%$autokeres%';";
+		$carSearchSql = "SELECT * FROM  auto WHERE marka_tipus LIKE '".%$autokeres%."'";
 		$carResult = mysqli_query($conn, $carSearchSql);
 		if (mysqli_num_rows($carResult) > 0) {
 		
@@ -34,7 +34,7 @@
 	if(isset($_POST['motorkeres'])){
 			
 		$motorkeres = $_POST['motorsearch'];
-		$motorSearchSql = "SELECT * FROM motor WHERE marka_tipus LIKE '%$motorkeres%';";
+		$motorSearchSql = "SELECT * FROM motor WHERE marka_tipus LIKE '".%$motorkeres%."'";
 		$motorResult = mysqli_query($conn, $motorSearchSql);
 		
 		while($row = mysqli_fetch_assoc($motorResult)) {
@@ -62,7 +62,7 @@
 	if(isset($_POST['jarmukeres'])){
 			
 		$jarmukeres = $_POST['vehiclesearch'];
-		$vehicleSearchSql = "SELECT * FROM motor,auto WHERE auto.marka_tipus LIKE '%$jarmukeres%' OR motor.marka_tipus LIKE '%$jarmukeres%';";
+		$vehicleSearchSql = "SELECT * FROM motor,auto WHERE auto.marka_tipus LIKE '%$jarmukeres%' OR motor.marka_tipus LIKE '".%$jarmukeres%."'";
 		$vehicleResult = mysqli_query($conn, $vehicleSearchSql);
 		
 		while($row = mysqli_fetch_assoc($vehicleResult)) {

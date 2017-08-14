@@ -7,8 +7,6 @@
 -->
 
 
-
-
 <?php 
 	include('connection.php');
 	include('controller.php');
@@ -150,7 +148,7 @@
 								$login_jelszo = $_POST['login_jelszo'];
 								
 								$adminf = "admin";
-								$adminj = "admin";
+								$adminj = "admin";							
 								
 								$login_sql = "SELECT Felhasznalo.felhasznalo_nev, Felhasznalo.jelszo FROM Felhasznalo
 								WHERE Felhasznalo.felhasznalo_nev = '".$login_felh_nev."' AND Felhasznalo.jelszo = '".$login_jelszo."' LIMIT 1";
@@ -158,7 +156,26 @@
 								$login_user = mysqli_query($conn, $login_sql);
 								$count_loggedinuser = mysqli_num_rows($login_user);
 								
-								if(mysqli_num_rows($login_user) == 0){
+								
+								$login_user = mysqli_query($conn, $login_sql);
+								$count_loggedinuser = mysqli_num_rows($login_user);
+										
+												
+								//ha újra megpróbálnánk bejelentkezni
+												
+								$login_again = "SELECT * from belepes WHERE felhasznalo_nev = '".$login_felh_nev."' AND jelszo = '".$login_jelszo."'";
+								$query_user = mysqli_query($conn, $login_again);
+								$count_user = mysqli_num_rows($query_user);
+												
+								if($count_user == 1){
+									//akkor hibaüzenet jelenjen meg
+									echo '<tr>
+											<td height = "33px" id = "styleofwords7a" style = "padding: 0; text-align: center;" >Már bejelentkezett!</td>
+										</tr>';
+								}
+								
+								
+								else if(mysqli_num_rows($login_user) == 0){
 									
 									echo '<tr>
 										<td height = "33px" id = "styleofwords7a">Hibás felhasználónév/jelszó!</td>
@@ -166,7 +183,7 @@
 								}
 									
 								
-								if(mysqli_num_rows($login_user) == 1){
+								else if(mysqli_num_rows($login_user) == 1){
 									
 									$sql = "INSERT INTO belepes
 									(felhasznalo_nev, jelszo) 

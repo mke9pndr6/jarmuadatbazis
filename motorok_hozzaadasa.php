@@ -167,7 +167,21 @@
 												$login_user = mysqli_query($conn, $login_sql);
 												$count_loggedinuser = mysqli_num_rows($login_user);
 												
-												if(mysqli_num_rows($login_user) == 0){
+												
+												//ha újra megpróbálnánk bejelentkezni
+												
+												$login_again = "SELECT * from belepes WHERE felhasznalo_nev = '".$login_felh_nev."' AND jelszo = '".$login_jelszo."'";
+												$query_user = mysqli_query($conn, $login_again);
+												$count_user = mysqli_num_rows($query_user);
+												
+												if($count_user == 1){
+													//akkor hibaüzenet jelenjen meg
+													echo '<tr>
+														<td height = "33px" id = "styleofwords7a">Már bejelentkezett!</td>
+													</tr>';
+												}
+												
+												else if(mysqli_num_rows($login_user) == 0){
 													
 													echo '<tr>
 														<td height = "33px" id = "styleofwords7a">Hibás felhasználónév/jelszó!</td>
@@ -175,7 +189,7 @@
 												}
 													
 												
-												if(mysqli_num_rows($login_user) == 1){
+												else if(mysqli_num_rows($login_user) == 1){
 													
 													$sql = "INSERT INTO belepes
 													(felhasznalo_nev, jelszo) 
@@ -191,9 +205,15 @@
 																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "index.php" id = "styleofword2"
 																style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">tovább a kínálathoz!</a></font></td>
 															</tr>
+															
 															<tr>
-																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"></font></td>
-															</tr>';
+																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "jelszo_modosit.php" id = "styleofword2"
+																style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">Új jelszó!</a></font></td>
+															</tr>
+															<tr>
+																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "jelszo_modosit.php" id = "styleofword2"
+																style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">Adatok módosítása</a></font></td>
+															</tr>';																
 													}
 													
 													else{
@@ -203,14 +223,20 @@
 															</tr>
 															<tr>
 																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "index.php" id = "styleofword2"
-																style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">tovább a kínálathoz!</a></font></td>
+																style = "text-decoration: none; text-color: white; text-align: center; padding: 2% 0 0 9%"><font size = "3" color = "#ffffff" align = "center">Tovább a kínálathoz!</a></font></td>
+															</tr>
+															
+															<tr>
+																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "jelszo_modosit.php" id = "styleofword2"
+																style = "text-decoration: none; text-color: white; text-align: center;  padding: 2% 0 0 9%"><font size = "3" color = "#ffffff" align = "center">Új jelszó!</a></font></td>
 															</tr>
 															<tr>
-																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"></font></td>
-															</tr>';										
+																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "jelszo_modosit.php" id = "styleofword2"
+																style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">Adatok módosítása</a></font></td>
+															</tr>';	
 													}
 												}
-													
+												
 											}
 									
 										?>
@@ -237,10 +263,7 @@
 			</br>
 			</br>
 			</br>
-			</br>
-			</br>
-			</br>
-			</br>
+			
 			
 			
 			<div align = "center">
@@ -254,7 +277,7 @@
 						<tr>
 							<td height = "33px" id = "styleofwords10" >Márka<font id = "styleofwords12"></font></td>
 							<td height = "33px" id = "styleofwords11"><input type = "number"  
-							style="height:26px;" name = "marka_id" size = "45" placeholder = "pl.: 1 = Mercedes" required/>
+							style="height:26px;" name = "marka_id" size = "45" placeholder = "pl.: Aprilia" required/>
 							</td>
 						</tr>
 						<tr>
