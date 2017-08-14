@@ -171,8 +171,20 @@
 									//akkor hibaüzenet jelenjen meg
 									echo '<tr>
 											<td height = "33px" id = "styleofwords7a" style = "padding: 0; text-align: center;" >Már bejelentkezett!</td>
-										</tr>';
-								}
+										</tr>
+										<tr>
+												<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "adatok_modositasa.php" id = "styleofword2"
+												style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">Adatok módosítása</a></font></td>
+											</tr>
+											<tr>
+												<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "jelszo_modosit.php" id = "styleofword2"
+												style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">Új jelszó</a></font></td>
+											</tr>
+											<tr>
+												<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"></font></td>
+											</tr>';
+											
+								}	
 								
 								
 								else if(mysqli_num_rows($login_user) == 0){
@@ -197,7 +209,15 @@
 											</tr>
 											<tr>
 												<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "index.php" id = "styleofword2"
-												style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">tovább a kínálathoz!</a></font></td>
+												style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">Tovább a kínálathoz...</a></font></td>
+											</tr>
+											<tr>
+												<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "adatok_modositasa.php" id = "styleofword2"
+												style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">Adatok módosítása</a></font></td>
+											</tr>
+											<tr>
+												<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "jelszo_modosit.php" id = "styleofword2"
+												style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">Új jelszó</a></font></td>
 											</tr>
 											<tr>
 												<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"></font></td>
@@ -213,11 +233,18 @@
 											</tr>
 											<tr>
 												<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "index.php" id = "styleofword2"
-												style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">tovább a kínálathoz!</a></font></td>
+												style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">Tovább a kínálathoz...</a></font></td>
+											</tr>
+												<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "felhasznalo_modosit.php" id = "styleofword2"
+												style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">Adatok módosítása</a></font></td>
+											</tr>
+											<tr>
+												<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "jelszo_modosit.php" id = "styleofword2"
+												style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">Új jelszó</a></font></td>
 											</tr>
 											<tr>
 												<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"></font></td>
-											</tr>';										
+											</tr>';									
 									}
 								}
 									
