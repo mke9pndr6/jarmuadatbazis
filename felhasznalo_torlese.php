@@ -20,6 +20,7 @@
 		<meta HTTP-EQUIV="Content-Language" Content="hu">
 		<link rel = "stylesheet" href = "style.css"/>
 		<link href='https://fonts.googleapis.com/css?family=Electrolize' rel='stylesheet'/>
+		
 	<head>
 		<title>
 			Kezdőlap
@@ -32,10 +33,22 @@
 				});
 			});
 		</script>
+		
+		<script>
+				function loginMessage() {
+					alert("Kérjük jelentkezzen be a kölcsönzéshez!");
+				}
+				
+				function loginComment() {
+					alert("Kérjük jelentkezzen be, hogy tudjon hozzászólást írni!");
+				}
+		</script>
+		
+		
 	</head>
 	
 		<body id = "bgStyle">
-			
+				
 				<div id = "container">
 				<ul id = "menu">
 					<li>
@@ -89,32 +102,7 @@
 							?>
 						</div>
 					</li>
-					<li>
-						<a href="adminpage.php">Kezdőlap</a>
-						<div align = "center">
-							<table align = "center" width = "100%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
-								<tr>
-									<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="autok_hozzaadasa.php";'>Autók hozzáadása</td></button>
-								</tr>
-								<tr>
-									<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="autok_modositasa.php";'>Autók módosítása</td></button>
-								</tr>
-								<tr>
-									<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="autok_torlese.php";'>Autók törlése</td></button>
-								</tr>
-								<tr>
-									<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="motorok_hozzaadasa.php";'>Motorok hozzáadása</td></button>
-								</tr>
-								<tr>
-									<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="motorok_modositasa.php";'>Motorok módosítása</td></button>
-								</tr>
-								<tr>
-									<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="motorok_torlese.php";'>Motorok törlése</td></button>
-								</tr>
-							</table>
-						</div>
-					</li>
-					
+					<li><a href="index.php">Kezdőlap</a></li>
 					<li><a href="kereses.php">Keresés</a></li>
 					<li><a href="regisztracio.php">Regisztráció</a></li>
 					<li>
@@ -288,10 +276,141 @@
 				</ul>
 				<div style = "clear:both"></div>
 			</div>
+			
+			
 			</br>
 			</br>
 			</br>
-		
-		</body>
-	</table>
-</html>
+			</br>
+			</br>
+			</br>
+			</br>
+			</br>
+			
+						<div align = "center">
+				<form method = "POST" action = "felhasznalo_torlese.php" enctype = "multipart/form-data" name = "motor_update">
+					<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
+						<tr>
+							<td height = "0px"  width = "90%" id = "styleofwords2a"><font id = "styleofwords2a">Felhasználó fiók törlése</font></td>
+							<td height = "0px"  width = "10%" id = "styleofwords2a"><font id = "styleofwords2a"></font></td>
+						</tr>
+						<tr>
+							<td height = "33px" id = "styleofwords7" ><font id = "styleofwords8"></font></td>
+							<td height = "33px" id = "styleofwords7" ><font id = "styleofwords8"></font></td>
+						<tr>
+							<td height = "33px" id = "styleofwords7" >Felhasználónév<font id = "styleofwords8"></font></td>
+							<td height = "33px" id = "styleofwords9"><input type = "text" 
+							style="height:26px;" name = "felhasznalo_nev" size = "45" placeholder = "Adja meg felhasználónevét..." required /></td>
+						</tr>
+						<tr>
+							<td height = "33px" id = "styleofwords10" >Jelszó<font id = "styleofwords12"></font></td>
+							<td height = "33px" id = "styleofwords11"><input  type = "password"  
+							style="height:26px;" name = "password" size = "45" placeholder = "Adja meg a jelszavát..." required/>
+						
+							</td>
+						</tr>
+						<tr>
+							<td height = "33px" id = "styleofwords10" >Jelszó újra<font id = "styleofwords12"></font></td>
+							<td height = "33px" id = "styleofwords11"><input  type = "password"  
+							style="height:26px;" name = "password_again" size = "45" placeholder = "Adja meg újra a jelszavát..." required/>
+						
+							</td>
+						</tr>
+							<td height = "33px" id = "styleofwords7" ><font id = "styleofwords8"></font></td>
+							<td height = "33px" id = "styleofwords7" ><font id = "styleofwords8"></font></td>
+						<tr>
+						</table>
+						
+						<?php
+							
+							if(isset($_POST['felh_torles'])){
+								
+								$felhasznalo_nev = $_POST['felhasznalo_nev'];
+								$password = $_POST['password'];
+								$password_again = $_POST['password_again'];
+						
+								//ellenőrizzük a régi jelszó helyességét
+								
+								$query_pass = mysqli_query($conn, "SELECT * FROM Felhasznalo WHERE jelszo = '".$password."'
+								AND felhasznalo_nev = '".$felhasznalo_nev."'");
+								$count_pass = mysqli_num_rows($query_pass);
+								
+								
+								//ha helyes jelszót - felhasználónév párost adunk meg
+								if($count_pass == 1){
+									//ha az új jelszavak megegyeznek
+									if($password == $password_again){
+										
+										//akkor a módosítás megtörténik
+										$deleteuser_sql = "DELETE FROM felhasznalo WHERE felhasznalo_nev = '".$felhasznalo_nev."'";
+										mysqli_query($conn, $deleteuser_sql);
+										
+										echo '<div align = "center">
+											<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
+												<tr>
+													<td height = "33px" id = "styleofwords7a2"></td>
+													<td height = "33px" id = "styleofwords7a2" style = "padding: 0; text-align: center;"> A következő felhasználót töröltük az adatabázisunkból: '.$felhasznalo_nev.'</td>
+												</tr>
+											</table>
+										</div>';
+										
+										$delete_loggedin_user = "DELETE FROM belepes WHERE felhasznalo_nev = '".$felhasznalo_nev."'";
+										mysqli_query($conn, $delete_loggedin_user);
+									}
+									
+									//ha a megadott jelszavak nem egyeznek meg, akkor hibaüzenet
+									if($password != $password_again){
+										die('<div align = "center">
+											<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
+												<tr>
+													<td height = "33px" id = "styleofwords7a" style = "padding: 0; text-align: center;">Az új jelszavak nem egyeznek meg!</td>
+													<td height = "33px" id = "styleofwords7a"></td>
+												</tr>
+												<tr>
+													<td height = "33px" id = "styleofwords7" ><font id = "styleofwords8"></font></td>
+												</tr>
+											</table>
+										</div>
+										<div align = "center">
+											<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
+												<tr>
+													<td width = "100%"><input type = "submit" class = "input" value = "Fiók törlése" name = "felh_torles" /></td>
+												</tr>
+											</table>
+										</div>');
+									}
+								}
+								
+								//ha helytelen a régi jelszó - felhasználónév páros, akkor hibaüzenet
+								if($count_pass == 0){
+									die('<div align = "center">
+											<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
+												<tr>
+													<td height = "33px" id = "styleofwords7a" style = "padding: 0; text-align: center;">Helytelenül adta meg régi jelszavát!</td>
+													<td height = "33px" id = "styleofwords7a"></td>
+												</tr>
+												<tr>
+													<td height = "33px" id = "styleofwords7" ><font id = "styleofwords8"></font></td>
+												</tr>
+											</table>
+										</div>
+										<div align = "center">
+											<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
+												<tr>
+													<td width = "100%"><input type = "submit" class = "input" value = "Fiók törlése" name = "felh_torles" /></td>
+												</tr>
+											</table>
+										</div>');
+								}
+							}
+						?>		
+								
+						
+						<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
+							<tr>
+								<td width = "100%"><input type = "submit" class = "input" value = "Fiók törlése" name = "felh_torles" /></td>
+							</tr>
+						</table>	
+				</form>
+			</div
+			

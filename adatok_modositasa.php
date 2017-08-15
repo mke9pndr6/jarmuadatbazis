@@ -1,24 +1,29 @@
 
+
 <!--
 	version: 0.0.1
 	date: 2017.08.01
 	author: Hegedűs Viktor
 -->
 
+
+
+
 <?php 
 	include('connection.php');
 	include('controller.php');
-	//include('style.php');
+	//include('style.css');
 ?>
 
 <html>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta HTTP-EQUIV="Content-Language" Content="hu">
 		<link rel = "stylesheet" href = "style.css"/>
-		<link href='https://fonts.googleapis.com/css?family=Electrolize' rel='stylesheet'>
+		<link href='https://fonts.googleapis.com/css?family=Electrolize' rel='stylesheet'/>
+		
 	<head>
 		<title>
-			Regisztráció
+			Kezdőlap
 		</title>
 		
 		<script type = "text/javascript">
@@ -29,25 +34,21 @@
 			});
 		</script>
 		
-		<style type="text/css">
-			  
-			  input[type="checkbox"]:required:invalid + label { color: red;}
-			  input[type="checkbox"]:required:valid + label { color: white; }
-		</style>
+		<script>
+				function loginMessage() {
+					alert("Kérjük jelentkezzen be a kölcsönzéshez!");
+				}
+				
+				function loginComment() {
+					alert("Kérjük jelentkezzen be, hogy tudjon hozzászólást írni!");
+				}
+		</script>
 		
-		<style>
-		  input{
-			  border-radius:8px;
-			  -moz-border-radius:8px;
-			  -webkit-border-radius:8px;
-			  margin: 0px;
-		   }
-		   
-		</style>
 		
 	</head>
+	
 		<body id = "bgStyle">
-			
+				
 				<div id = "container">
 				<ul id = "menu">
 					<li>
@@ -163,7 +164,7 @@
 												if($count_user == 1){
 													//akkor hibaüzenet jelenjen meg
 													echo '<tr>
-														<td height = "33px" id = "styleofwords7a" style = "text-align: center;">Már bejelentkezett!</td>
+														<td height = "33px" id = "styleofwords7a">Már bejelentkezett!</td>
 													</tr>
 													<tr>
 														<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "index.php" id = "styleofword2"
@@ -176,10 +177,6 @@
 													<tr>
 														<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "adatok_modositasa.php" id = "styleofword2"
 														style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">Adatok módosítása</a></font></td>
-													</tr>
-													<tr>
-																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "felhasznalo_torlese.php" id = "styleofword2"
-																style = "text-decoration: none; text-color: white; text-align: center;  padding: 2% 0 0 9%"><font size = "3" color = "#ffffff" align = "center">Fiók törlése</a></font></td>
 													</tr>
 													<tr>
 														<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"></font></td>
@@ -220,10 +217,6 @@
 																style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">Adatok módosítása</a></font></td>
 															</tr>
 															<tr>
-																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "felhasznalo_torlese.php" id = "styleofword2"
-																style = "text-decoration: none; text-color: white; text-align: center;  padding: 2% 0 0 9%"><font size = "3" color = "#ffffff" align = "center">Fiók törlése</a></font></td>
-															</tr>
-															<tr>
 																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"></font></td>
 															</tr>';																
 													}
@@ -242,14 +235,9 @@
 																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "jelszo_modosit.php" id = "styleofword2"
 																style = "text-decoration: none; text-color: white; text-align: center;  padding: 2% 0 0 9%"><font size = "3" color = "#ffffff" align = "center">Új jelszó!</a></font></td>
 															</tr>
-
 															<tr>
 																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "jelszo_modosit.php" id = "styleofword2"
 																style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">Adatok módosítása</a></font></td>
-															</tr>
-															<tr>
-																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "felhasznalo_torlese.php" id = "styleofword2"
-																style = "text-decoration: none; text-color: white; text-align: center;  padding: 2% 0 0 9%"><font size = "3" color = "#ffffff" align = "center">Fiók törlése</a></font></td>
 															</tr>
 															<tr>
 																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"></font></td>
@@ -270,26 +258,28 @@
 									</div>
 						</form>
 					</li>
+						
+					</li>
 				</ul>
 				<div style = "clear:both"></div>
 			</div>
 			
-			</br>
-			</br>
-			</br>
-			</br>
-			</br>
-			</br>
-			</br>
-			</br>
 			
+			</br>
+			</br>
+			</br>
+			</br>
+			</br>
+			</br>
+			</br>
+			</br>
 			
 			
 			<div align = "center">
-			<form method = "POST" action = "regisztracio.php" enctype = "multipart/form-data" name = "register">
+			<form method = "POST" action = "adatok_modositasa.php" enctype = "multipart/form-data" name = "update_user">
 			<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
 				<tr>
-					<td height = "33px" id = "styleofwords2a" style = "width: 100%;"><font id = "styleofwords2a">Regisztráljon oldalunkra!</font></td>
+					<td height = "33px" id = "styleofwords2a" style = "width: 100%;"><font id = "styleofwords2a">Felhasználói fiók adatainak a módosítása</font></td>
 				</tr>
 				<tr>
 					<td height = "33px" id = "styleofwords5"><font id = "styleofwords6">
@@ -338,20 +328,12 @@
 						<td height = "33px" id = "styleofwords11"><input type = "text" style="height:26px;" name = "keresztnev" size = "45" height = "20" required /></td>
 					</tr>
 					<tr>
-						<td height = "33px" id = "styleofwords7" >Személyi igazolvány száma<font id = "styleofwords8">*</font></td>
-						<td height = "33px" id = "styleofwords9"><input type = "text" style="height:26px;" name = "szig" size = "45" required /></td>
-					</tr>
-					<tr>
 						<td height = "33px" id = "styleofwords10" >Anyja vezetékneve<font id = "styleofwords12">*</font></td>
 						<td height = "33px" id = "styleofwords11"><input type = "text" style="height:26px;" name = "anyjavezetek" size = "45" required /></td>
 					</tr>
 					<tr>
 						<td height = "33px" id = "styleofwords7" >Anyja keresztneve<font id = "styleofwords8">*</font></td>
 						<td height = "33px" id = "styleofwords9"><input type = "text" style="height:26px;" name = "anyjakereszt" size = "45" required /></td>
-					</tr>
-					<tr>
-						<td height = "33px" id = "styleofwords10" >Email<font id = "styleofwords8"/>*</td>
-						<td height = "33px" id = "styleofwords11"><input type = "email" style="height:26px;" name = "emailcim" size = "45"required /></td>
 					</tr>
 					<tr>
 						<td height = "33px" id = "styleofwords7" >Telefonszám<font id = "styleofwords8a"/></td>
@@ -402,31 +384,23 @@
 				</table>
 				<div align = "center">
 					<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
-						<tr>
-							<td height = "33px" width = "90%" id = "styleofwords7" ><input id ="field_terms" type="checkbox" required name = "terms">
-								<label for="field_terms">Elolvastam és elfogadom a felhasználói feltételeket.</label></td>
-							<td height = "33px" width = "10%" id = "styleofwords7"></td>
-						</tr>
-						<tr>
+						
 						
 						
 						<!-- Regisztráció helyességének az ellenőrzése -->
 						
 						<?php
-							if(isset($_POST['regisztracio'])){
+							if(isset($_POST['felh_modosit'])){
 		
 								//session_start();
 								
 								$felhasznalo = $_POST['felh_nev'];
 								$jelszo1 = $_POST['jelszo_egy'];
 								$jelszo2 = $_POST['jelszo_ketto'];
-								
 								$v_nev = $_POST['vezeteknev'];
 								$k_nev = $_POST['keresztnev'];
-								$szig = $_POST['szig'];
 								$anyja_v = $_POST['anyjavezetek'];
 								$anyja_k = $_POST['anyjakereszt'];
-								$email = $_POST['emailcim'];
 								$telszam = $_POST['tel'];
 								
 								$ir = $_POST['iranyitoszam'];
@@ -435,127 +409,47 @@
 								$hazszam = $_POST['hazszam'];
 								
 								$email_ures = "";
-								
 								$szulhely = $_POST['szuletesi_hely'];
 								$szulido = $_POST['szuletesi_ido'];
 								
-								$query_user = mysqli_query($conn, "SELECT felhasznalo_nev FROM Felhasznalo WHERE felhasznalo_nev = '".$felhasznalo."'");
+								$query_user = mysqli_query($conn, "SELECT felhasznalo_nev FROM Felhasznalo WHERE felhasznalo_nev = '".$felhasznalo."'
+								AND jelszo = '".$jelszo1."'");
 								$count_user = mysqli_num_rows($query_user);
-								$query_idnumber = mysqli_query($conn, "SELECT * FROM Felhasznalo WHERE szemelyig_szam = '".$szig."'");
-								$count_idnumber = mysqli_num_rows($query_idnumber);
-								$query_email = mysqli_query($conn, "SELECT * FROM Felhasznalo WHERE email = '".$email."'");
-								$count_email = mysqli_num_rows($query_email);
-								
-								//helyes regisztrációhoz szükséges adatok ellenőrzése
-								
-								if($jelszo1 == $jelszo2 && (!$count_email > 0) && (!$count_idnumber > 0) && (!$count_user > 0) && (!$email == $email_ures)){
+	
+								if($count_user == 1){
 									
-									//$jelszo1 = md5($jelszo1);
+									if($jelszo1 == $jelszo2){
+										
+										$updateuser_sql = "UPDATE felhasznalo SET jelszo ='".$jelszo1."', vezetek_nev ='".$v_nev."', kereszt_nev ='".$k_nev."',
+										anyja_vnev ='".$anyja_v."', anyja_knev ='".$anyja_k."', telszam ='".$telszam."', ir_szam ='".$ir."', varos ='".$varos."',
+										utca ='".$utca."', hazszam ='".$hazszam."', szuletesi_hely ='".$szulhely."', szuletesi_ido ='".$szulido."'
+										WHERE felhasznalo_nev = '".$felhasznalo."'";
+										
+										$updateUser = mysqli_query($conn, $updateuser_sql);
+										
+										echo '<div align = "center">
+												<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
+													<tr>
+														<td height = "33px" id = "styleofwords7a2" style = "padding: 0; text-align: center;">Az adatok módosítása sikeresen megtörtént, '.$felhasznalo.'!</td>
+														<td height = "33px" id = "styleofwords7a2"></td>
+													</tr>
+													<tr>
+														<td height = "33px" id = "styleofwords7"></td>
+														<td height = "33px" id = "styleofwords7"></td>
+													</tr>
+													<tr>
+														<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "jelszo_modosit.php" id = "styleofword2"
+														style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">Új jelszó</a></font></td>
+														<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "jelszo_modosit.php" id = "styleofword2"
+														style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center"></a></font></td>
+													</tr>
+												</table>
+											</div>';
+									}
 									
-									$sql = "INSERT INTO felhasznalo
-											(felhasznalo_nev, jelszo, vezetek_nev, kereszt_nev,
-											szemelyig_szam, anyja_vnev, anyja_knev, email, telszam, ir_szam,
-											varos, utca, hazszam, szuletesi_hely, szuletesi_ido) 
-											VALUES('$felhasznalo','$jelszo1','$v_nev'
-											,'$k_nev','$szig','$anyja_v','$anyja_k','$email','$telszam','$ir',
-											'$varos','$utca','$hazszam','$szulhely','$szulido');";
-									
-									mysqli_query($conn, $sql);
-									echo '<div align = "center">
-											<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
-												<tr>
-													<td height = "33px" id = "styleofwords7a2" style = "padding: 0; text-align: center;">Sikeres regisztráció! Üdvözöljük, '.$felhasznalo.'!</td>
-													<td height = "33px" id = "styleofwords7a2"></td>
-												</tr>
-											</table>
-										</div>';
-									//header("refresh:6; url = index.php");
-								}
-								
-								//felhasználónév ellenőrzése
-								
-								
-								if($count_user > 0){
-									die('<div align = "center">
-											<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
-												<tr>
-													<td height = "33px" id = "styleofwords7a" style = "padding: 0; text-align: center;">A megadott felhasználónév már használatban van!</td>
-													<td height = "33px" id = "styleofwords7a"></td>
-												</tr>
-											</table>
-										</div>
-										<div align = "center">
-										<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
-											<tr>
-												<td height = "33px" id = "styleofwords7"></td>
-												<td height = "33px" id = "styleofwords7"></td>
-											</tr>
-											<tr>
-												<td width = "50%"><input type = "submit" class = "input" value = "Regisztráció" name = "regisztracio" /></td>
-												<td width = "50%"><button class = "button" href = "index.php" align = "center" onclick = "location.href="index.php";">Mégsem</td></button>
-											</tr>
-										</table>
-									</div>
-								</form>');
-								}
-								
-								
-								//szig.szám ellenőrzése
-								
-								if($count_idnumber > 0){
-									die('<div align = "center">
-											<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
-												<tr>
-													<td height = "33px" id = "styleofwords7b" style = "padding: 0; text-align: center;">A megadott személyi igazolvány szám már használatban van!</td>
-													<td height = "33px" id = "styleofwords7b"></td>
-												</tr>
-											</table>
-										</div>
-										<div align = "center">
-										<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
-											<tr>
-												<td height = "33px" id = "styleofwords7"></td>
-												<td height = "33px" id = "styleofwords7"></td>
-											</tr>
-											<tr>
-												<td width = "50%"><input type = "submit" class = "input" value = "Regisztráció" name = "regisztracio" /></td>
-												<td width = "50%"><button class = "button" href = "index.php" align = "center" onclick = "location.href="index.php";">Mégsem</td></button>
-											</tr>
-										</table>
-									</div>
-								</form>');
-								}
-		
-								//email ellenőrzése
-								
-								if($count_email > 0){
-									die('<div align = "center">
-											<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
-												<tr>
-													<td height = "33px" id = "styleofwords7c" style = "padding: 0; text-align: center;">A megadott email már használatban van!</td>
-													<td height = "33px" id = "styleofwords7c"></td>
-												</tr>
-											</table>
-										</div>
-										<div align = "center">
-										<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
-											<tr>
-												<td height = "33px" id = "styleofwords7"></td>
-												<td height = "33px" id = "styleofwords7"></td>
-											</tr>
-											<tr>
-												<td width = "50%"><input type = "submit" class = "input" value = "Regisztráció" name = "regisztracio" /></td>
-												<td width = "50%"><button class = "button" href = "index.php" align = "center" onclick = "location.href="index.php";">Mégsem</td></button>
-											</tr>
-										</table>
-									</div>
-								</form>');
-								}
-								
-								//jelszavak ellenőrzése
-								
-								if($jelszo1 != $jelszo2){
-									die('<div align = "center">
+									else{
+										
+										die('<div align = "center">
 											<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
 												<tr>
 													<td height = "33px" id = "styleofwords7d" style = "padding: 0; text-align: center;">A két jelszó nem egyezik meg!</td>
@@ -570,14 +464,41 @@
 												<td height = "33px" id = "styleofwords7"></td>
 											</tr>
 											<tr>
-												<td width = "50%"><input type = "submit" class = "input" value = "Regisztráció" name = "regisztracio" /></td>
+												<td width = "50%"><input type = "submit" class = "input" value = "Adatok módosítása" name = "felh_modosit" /></td>
 												<td width = "50%"><button class = "button" href = "index.php" align = "center" onclick = "location.href="index.php";">Mégsem</td></button>
 											</tr>
 										</table>
 									</div>
 								</form>');
 								}
+							}
 								
+					
+								
+								
+							else if($count_user == 0){
+									die('<div align = "center">
+											<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
+												<tr>
+													<td height = "33px" id = "styleofwords7a" style = "padding: 0; text-align: center;">Hibás felhasznalónév - jelszó páros!</td>
+													<td height = "33px" id = "styleofwords7a"></td>
+												</tr>
+											</table>
+										</div>
+										<div align = "center">
+										<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
+											<tr>
+												<td height = "33px" id = "styleofwords7"></td>
+												<td height = "33px" id = "styleofwords7"></td>
+											</tr>
+											<tr>
+												<td width = "50%"><input type = "submit" class = "input" value = "Adatok módosítása" name = "felh_modosit" /></td>
+												<td width = "50%"><button class = "button" href = "index.php" align = "center" onclick = "location.href="index.php";">Mégsem</td></button>
+											</tr>
+										</table>
+									</div>
+								</form>');
+								}
 							}
 						?>
 						
@@ -591,7 +512,7 @@
 							<td height = "33px" id = "styleofwords7"></td>
 						</tr>
 						<tr>
-							<td width = "50%"><input type = "submit" class = "input" value = "Regisztráció" name = "regisztracio" /></td>
+							<td width = "50%"><input type = "submit" class = "input" value = "Adatok módosítása" name = "felh_modosit" /></td>
 							<td width = "50%"><button class = "button" href = "index.php" align = "center" onclick = "location.href='index.php';">Mégsem</td></button>
 						</tr>
 					</table>
@@ -605,6 +526,7 @@
 			</br>
 			</br>
 			</div>
+			</form>
 		</div>
 	</body>
 </html>

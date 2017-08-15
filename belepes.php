@@ -260,5 +260,5 @@
 					</table>
 				</form>
 			</div>		
-		</body>
+	</body>
 </html>
