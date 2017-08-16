@@ -50,7 +50,9 @@
 								
 								while($getCars = mysqli_fetch_assoc($listCars)){
 						
-										echo '<a href = "">'. $getCars['id']. '</a>';
+										echo '<form method = "POST" action = "autok.php" enctype = "multipart/form-data" name = "login_index">
+											<input type = "submit" value = "'.$getCars['id'].'" name = "click_on_car" />
+										</form>';
 								}
 								mysqli_free_result($listCars);
 							?>
@@ -66,8 +68,10 @@
 								$AllMotors->ListMotors();
 								$listMotors = $AllCars->ListMotors();
 								
-								while($getCars = mysqli_fetch_assoc($listMotors)){
-									echo '<a href = "">'. $getCars['id']. '</a>';
+								while($getMotors = mysqli_fetch_assoc($listMotors)){
+									echo '<form method = "POST" action = "motorok.php" enctype = "multipart/form-data" name = "login_index">
+											<input type = "submit" value = "'.$getMotors['id'].'" name = "click_on_motor" />
+										</form>';
 								}
 								mysqli_free_result($listMotors);
 							?>
@@ -87,7 +91,7 @@
 							?>
 						</div>
 					</li>
-					<li><a href="index.php">Kezdőlap</a></li>
+					<li><a href="index.php">Nyitólap</a></li>
 					<li><a href="kereses.php">Keresés</a></li>
 					<li><a href="regisztracio.php">Regisztráció</a></li>
 					<li><a href="belepes.php">Belépés</a></li>
@@ -181,6 +185,10 @@
 												style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">Új jelszó</a></font></td>
 											</tr>
 											<tr>
+												<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "felhasznalo_torlese.php" id = "styleofword2"
+												style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">Felhasználói fiók törlése</a></font></td>
+											</tr>
+											<tr>
 												<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"></font></td>
 											</tr>';
 											
@@ -218,6 +226,10 @@
 											<tr>
 												<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "jelszo_modosit.php" id = "styleofword2"
 												style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">Új jelszó</a></font></td>
+											</tr>
+											<tr>
+												<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "felhasznalo_torlese.php" id = "styleofword2"
+												style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">Felhasználói fiók törlése</a></font></td>
 											</tr>
 											<tr>
 												<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"></font></td>

@@ -53,7 +53,9 @@
 								
 								while($getCars = mysqli_fetch_assoc($listCars)){
 						
-										echo '<a href = "">'. $getCars['id']. '</a>';
+										echo '<form method = "POST" action = "autok.php" enctype = "multipart/form-data" name = "login_index">
+											<input type = "submit" value = "'.$getCars['id'].'" name = "click_on_car" />
+										</form>';
 								}
 								mysqli_free_result($listCars);
 							?>
@@ -69,8 +71,10 @@
 								$AllMotors->ListMotors();
 								$listMotors = $AllCars->ListMotors();
 								
-								while($getCars = mysqli_fetch_assoc($listMotors)){
-									echo '<a href = "">'. $getCars['id']. '</a>';
+								while($getMotors = mysqli_fetch_assoc($listMotors)){
+									echo '<form method = "POST" action = "motorok.php" enctype = "multipart/form-data" name = "login_index">
+											<input type = "submit" value = "'.$getMotors['id'].'" name = "click_on_motor" />
+										</form>';
 								}
 								mysqli_free_result($listMotors);
 							?>
@@ -91,7 +95,7 @@
 						</div>
 					</li>
 					<li>
-						<a href="adminpage.php">Kezdőlap</a>
+						<a href="adminpage.php">Nyitólap</a>
 						<div align = "center">
 							<table align = "center" width = "100%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
 								<tr>

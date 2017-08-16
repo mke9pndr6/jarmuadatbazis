@@ -35,16 +35,6 @@
 			  input[type="checkbox"]:required:valid + label { color: white; }
 		</style>
 		
-		<style>
-		  input{
-			  border-radius:8px;
-			  -moz-border-radius:8px;
-			  -webkit-border-radius:8px;
-			  margin: 0px;
-		   }
-		   
-		</style>
-		
 	</head>
 		<body id = "bgStyle">
 			
@@ -64,7 +54,9 @@
 								
 								while($getCars = mysqli_fetch_assoc($listCars)){
 						
-										echo '<a href = "">'. $getCars['id']. '</a>';
+										echo '<form method = "POST" action = "autok.php" enctype = "multipart/form-data" name = "login_index">
+											<input type = "submit" value = "'.$getCars['id'].'" name = "click_on_car" />
+										</form>';
 								}
 								mysqli_free_result($listCars);
 							?>
@@ -80,8 +72,10 @@
 								$AllMotors->ListMotors();
 								$listMotors = $AllCars->ListMotors();
 								
-								while($getCars = mysqli_fetch_assoc($listMotors)){
-									echo '<a href = "">'. $getCars['id']. '</a>';
+								while($getMotors = mysqli_fetch_assoc($listMotors)){
+									echo '<form method = "POST" action = "motorok.php" enctype = "multipart/form-data" name = "login_index">
+											<input type = "submit" value = "'.$getMotors['id'].'" name = "click_on_motor" />
+										</form>';
 								}
 								mysqli_free_result($listMotors);
 							?>
@@ -101,7 +95,7 @@
 							?>
 						</div>
 					</li>
-					<li><a href="index.php">Kezdőlap</a></li>
+					<li><a href="index.php">Nyitólap</a></li>
 					<li><a href="kereses.php">Keresés</a></li>
 					<li><a href="regisztracio.php">Regisztráció</a></li>
 					<li>
