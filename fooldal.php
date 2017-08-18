@@ -23,7 +23,7 @@
 		
 	<head>
 		<title>
-			Jelszó módosítása
+			Kezdőlap
 		</title>
 		
 		<script type = "text/javascript">
@@ -249,141 +249,178 @@
 			</br>
 			</br>
 			</br>
-			</br>
-			</br>
-			</br>
-			</br>
 			
-						<div align = "center">
-				<form method = "POST" action = "jelszo_modosit.php" enctype = "multipart/form-data" name = "motor_update">
-					<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
-						<tr>
-							<td height = "0px"  width = "90%" id = "styleofwords2a"><font id = "styleofwords2a">Jelszó módosítása</font></td>
-							<td height = "0px"  width = "10%" id = "styleofwords2a"><font id = "styleofwords2a"></font></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" ><font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords7" ><font id = "styleofwords8"></font></td>
-						<tr>
-							<td height = "33px" id = "styleofwords7" >Felhasználónév<font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords9"><input type = "text" 
-							style="height:26px;" name = "felhasznalo_nev" size = "45" placeholder = "" required /></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords10" >Régi jelszó<font id = "styleofwords12"></font></td>
-							<td height = "33px" id = "styleofwords11"><input  type = "password"  
-							style="height:26px;" name = "oldpassword" size = "45" placeholder = "Adja meg régi jelszavát..." required/>
+			<div align = "center">
 						
-							</td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" >Új jelszó<font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords9"><input type = "password" 
-							style="height:26px;" name = "newpassword" size = "45" placeholder = "Új jelszó megadása..." required /></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords10" >Új jelszó újra<font id = "styleofwords12"></font></td>
-							<td height = "33px" id = "styleofwords11"><input type = "password" 
-							style="height:26px;" name = "newpassword_again" size = "45" placeholder = "Adja meg újra jelszavát..." required /></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" ><font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords7" ><font id = "styleofwords8"></font></td>
-						<tr>
-						</table>
-						
-						<?php
-							
-							if(isset($_POST['jelszomodositasa'])){
-								
-								$felhasznalo_nev = $_POST['felhasznalo_nev'];
-								$oldpassword = $_POST['oldpassword'];
-								$newpassword = $_POST['newpassword'];
-								$newpassword_again = $_POST['newpassword_again'];
-							
-								
-								//ellenőrizzük a régi jelszó helyességét
-								
-								$query_pass = mysqli_query($conn, "SELECT * FROM Felhasznalo WHERE jelszo = '".$oldpassword."'
-								AND felhasznalo_nev = '".$felhasznalo_nev."'");
-								$count_pass = mysqli_num_rows($query_pass);
-								
-								
-								//ha helyes jelszót adunk meg
-								if($count_pass == 1){
-									//ha az új jelszavak megegyeznek
-									if($newpassword == $newpassword_again){
-										
-										//akkor a módosítás megtörténik
-										$sql = "UPDATE felhasznalo SET jelszo ='".$newpassword."' WHERE felhasznalo_nev = '".$felhasznalo_nev."'";
-										mysqli_query($conn, $sql);
-										
-										echo '<div align = "center">
-											<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
-												<tr>
-													<td height = "33px" id = "styleofwords7a2"></td>
-													<td height = "33px" id = "styleofwords7a2" style = "padding: 0; text-align: center;"> '.$felhasznalo_nev.' jelszavának módosítása sikeresen megtörtént.</td>
-												</tr>
-											</table>
-										</div>';
-										
-										$delete_loggedin_user = "DELETE FROM belepes WHERE felhasznalo_nev = '".$felhasznalo_nev."'";
-										mysqli_query($conn, $delete_loggedin_user);
-									}
-									
-									//ha az új jelszavak nem egyeznek meg, akkor hibaüzenet
-									if($newpassword != $newpassword_again){
-										die('<div align = "center">
-											<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
-												<tr>
-													<td height = "33px" id = "styleofwords7a" style = "padding: 0; text-align: center;">Az új jelszavak nem egyeznek meg!</td>
-													<td height = "33px" id = "styleofwords7a"></td>
-												</tr>
-												<tr>
-													<td height = "33px" id = "styleofwords7" ><font id = "styleofwords8"></font></td>
-												</tr>
-											</table>
-										</div>
-										<div align = "center">
-											<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
-												<tr>
-													<td width = "100%"><input type = "submit" class = "input" value = "Jelszó módosítása" name = "jelszomodositasa" /></td>
-												</tr>
-											</table>
-										</div>');
-									}
-								}
-								
-								//ha helytelen a régi jelszó, akkor hibaüzenet
-								if($count_pass == 0){
-									die('<div align = "center">
-											<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
-												<tr>
-													<td height = "33px" id = "styleofwords7a" style = "padding: 0; text-align: center;">Helytelenül adta meg régi jelszavát!</td>
-													<td height = "33px" id = "styleofwords7a"></td>
-												</tr>
-												<tr>
-													<td height = "33px" id = "styleofwords7" ><font id = "styleofwords8"></font></td>
-												</tr>
-											</table>
-										</div>
-										<div align = "center">
-											<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
-												<tr>
-													<td width = "100%"><input type = "submit" class = "input" value = "Jelszó módosítása" name = "jelszomodositasa" /></td>
-												</tr>
-											</table>
-										</div>');
-								}
-							}
-						?>		
-								
-						
-						<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
+						<table align = "center" width = "100%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = " border-color: #ff0000; font-family: Electrolize; color: #fff; font-size: 40px;">
 							<tr>
-								<td width = "100%"><input type = "submit" class = "input" value = "Jelszó módosítása" name = "jelszomodositasa" /></td>
+								<td width = "15%"></td>
+								<td width = "70%" align = "center">Tíz legújabb autónk</td>
+								<td width = "15%"></td>
+								
 							</tr>
-						</table>	
-				</form>
-			</div
+						</table>
+					</div>
+					
+					</br>
+			</br>
+			</br>
+			</br>
+		
+			<?php
 			
+			
+			/*$sql = "SELECT * FROM `auto` ORDER BY evjarat LIMIT 10";
+			$result = mysqli_query($conn, $sql);
+
+			if (mysqli_num_rows($result) > 0) {
+				// output data of each row
+				while($row = mysqli_fetch_assoc($result)) {*/
+				
+			$newestCarsIndex = "SELECT * FROM `auto` ORDER BY evjarat DESC LIMIT 10";
+			$cars = mysqli_query($conn, $newestCarsIndex);
+			
+			$rowindex = 1;
+			if (mysqli_num_rows($cars) > 0){
+				while($row = mysqli_fetch_assoc($cars)){
+					
+						echo '
+									<div align = "center" id = "cars">
+									<table align = "center" width = "71.42%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = "border-style: solid; border-width: 0.5px;
+									margin: 0 0.5px 0 0; border-color: #000;background: rgb(38 ,98, 133); font-family: Electrolize; color: #ffffff; font-size: 14.5px; border-radius: 22 22 19 19;" >
+									<tr>
+										<td width = "25%" height = "20px" style = "padding: 0% 0% 0% 6%;" align = "left"><u>'.$rowindex++.'</u></td>
+										<td width = "10%" height = "20px"> </td>
+										<td width = "65%" height = "300px" rowspan = "17" ><img id="myImg" src = "pictures/cla220.jpg" id = "effectscale" style = "width: 100%; height: 100%;"></td>
+									</tr>
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Márka </td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["automarka_id"].'</td>
+										
+									</tr>
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Márka típusa </td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["marka_tipus"].'</td>
+										
+									</tr>
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Ár naponta (1-6 nap) </td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["ar_1"].' HUF</td>
+										
+									</tr>
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Ár naponta (7-30 nap)</td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["ar_2"].' HUF</td>
+									</tr>
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Ár naponta (31-365 nap)</td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["ar_3"].' HUF</td>
+									</tr>
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Évjárat </td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["evjarat"].'</td>
+									</tr>
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Állapot </td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["allapot"].'</td>
+									</tr>
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Km/h állása </td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["km_ora_allasa"].' km</td>
+									</tr>
+
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Üzemanyag </td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["uzemanyag"].'</td>
+									</tr>
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Hengerűrtartalom</td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["hengerurtartalom"].' cm3</td>
+									</tr>
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Teljesítmény </td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["teljesitmeny"].' LE</td>
+									</tr>
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Saját tömeg </td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["sajat_tomeg"].' kg</td>
+									</tr>
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Maximális tömeg </td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["maximalis_tomeg"].' kg</td>
+									</tr>
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Tankméret </td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["tank_meret"].' L</td>
+									</tr>
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Átlagfogyasztás </td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["atlagfogyasztas"].' L/100km</td>
+									</tr>
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Végsebesség </td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["vegsebesseg"].' km/h</td>
+									</tr>
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Gyorsulás (1-100)</td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["gyorsulas"].' mp</td>
+									</tr>
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Oktánszám</td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["oktanszam"].'</td>
+									</tr>
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right"></td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;"></td>
+									</tr>
+									<tr>
+										<td width = "100%" colspan = "3"><input type = "submit" onclick = "loginMessage()" class = "input" value = "Kölcsönzés" name = "kolcsonzes" /></td>
+									</tr>
+								</table>
+							
+							
+							</br>
+							</br>
+							</br>
+							</br>
+							</br>
+							</br>';		
+												
+						}
+						
+			}
+			
+			?>
+				
+				
+			<div id="myModal" class="modal">
+			  <span class="close">&times;</span>
+				<img class="modal-content" id="img01">
+				<div id="caption"></div>
+			</div>
+
+			<script>
+			// Get the modal
+			var modal = document.getElementById('myModal');
+
+			// Get the image and insert it inside the modal - use its "alt" text as a caption
+			var img = document.getElementById('myImg');
+			var modalImg = document.getElementById("img01");
+			var captionText = document.getElementById("caption");
+			img.onclick = function(){
+				modal.style.display = "block";
+				modalImg.src = this.src;
+				captionText.innerHTML = this.alt;
+			}
+
+			// Get the <span> element that closes the modal
+			var span = document.getElementsByClassName("close")[0];
+
+			// When the user clicks on <span> (x), close the modal
+			span.onclick = function() { 
+				modal.style.display = "none";
+			}
+			</script>	
+			
+	</body>
+</html>

@@ -39,7 +39,7 @@
 				<div id = "container">
 				<ul id = "menu">
 					<li>
-						<a href="autok.php">Autók</a>
+						<a href="autok_osszes.php">Autók</a>
 						<div>
 							<?php
 								class Cars extends Controller{}
@@ -61,7 +61,7 @@
 						</div>
 					</li>	
 					<li>
-						<a href="motorok.php">Motorok</a>
+						<a href="motorok_osszes.php">Motorok</a>
 						<div>
 							<?php
 								class Motors extends Controller{}
@@ -80,89 +80,51 @@
 						</div>
 					</li>
 					<li>
-						<a href="hozzaszolasok.php">Hozzászólások</a>
+						<a href="hozzaszolasok.php">Összes jármű</a>
 						<div>
 							<?php
 								class Vehicles extends Controller{}
 								
 								
-								echo '<a href = "hozzaszol_autok.php">Autók</a>';
+								echo '<a href = "osszes_auto.php">Autók</a>';
 								
-								echo '<a href = "hozzaszol_motorok.php">Motorok</a>';
+								echo '<a href = "osszes_jarmu.php">Motorok</a>';
 							
 							?>
 						</div>
 					</li>
-					<li>
-						<a href="adminpage.php">Nyitólap</a>
-						<div align = "center">
-							<table align = "center" width = "100%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
-								<tr>
-									<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="autok_hozzaadasa.php";'>Autók hozzáadása</td></button>
-								</tr>
-								<tr>
-									<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="autok_modositasa.php";'>Autók módosítása</td></button>
-								</tr>
-								<tr>
-									<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="autok_torlese.php";'>Autók törlése</td></button>
-								</tr>
-								<tr>
-									<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="motorok_hozzaadasa.php";'>Motorok hozzáadása</td></button>
-								</tr>
-								<tr>
-									<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="motorok_modositasa.php";'>Motorok módosítása</td></button>
-								</tr>
-								<tr>
-									<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="motorok_torlese.php";'>Motorok törlése</td></button>
-								</tr>
-							</table>
-						</div>
-					</li>
-					
+					<li><a href="fooldal.php">Nyitólap</a><div align = "center"><a href = "hozzaszolasok.php">Hozzászólások</a></div></li>
 					<li><a href="kereses.php">Keresés</a></li>
-					<li><a href="regisztracio.php">Regisztráció</a></li>
 					<li>
-						<a href="belepes.php">Belépés</a>
-							<form method = "POST" action = "index.php" enctype = "multipart/form-data" name = "login_index">
+					
+						<a href="felhasznalo_profil.php">Profilom</a>
 								<div align = "center">
 									<table align = "center" width = "100%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
+										
 										<tr>
-											<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"></font></td>
+											<td width = "100%" align = "center"><button class = "buttonlog" align = "left" onclick = 'location.href="adatok_modositasa.php";'>Adatok módosítása</td></button>
 										</tr>
 										<tr>
-											<td height = "33px" id = "styleofwords2"><font id = "styleofwords2">Felhasználónév</font></td>
+											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="jelszo_modosit.php";'>Új jelszó</td></button>
 										</tr>
 										<tr>
-											<td height = "33px" id = "styleofwords9"><input type = "text" style="height:26px; width: 100%;" name = "login_felh" size = "45" required /></td>
+											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="kolcsonzeseim.php";'>Kölcsönzéseim</td></button>
 										</tr>
+					
 										<tr>
-											<td height = "33px" id = "styleofwords2"><font id = "styleofwords2">Jelszó</font></td>
+											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="felhasznalo_torlese.php";'>Fiók törlése</td></button>
 										</tr>
-										<tr>
-											<td height = "33px" id = "styleofwords9"><input type = "password" style="height:26px; width: 100%;" name = "login_jelszo" size = "45" required /></td>
-										</tr>
-										<tr>
-											<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"></font></td>
-										</tr>
-										<tr>
-											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="regisztracio.php";'>Még nem regisztrált?</td></button>
-										</tr>
-										<tr>
-											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="regisztracio.php";'>Elfelejtette jelszavát?</td></button>
-										</tr>
-										<tr>
-											<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"></font></td>
-										</tr>
+										
 										
 										<?php
 								
-											if(isset($_POST['bejelentkezes_dropdown'])){
+											if(isset($_POST['kijelentkezes_dropdown'])){
 										
 												$login_felh_nev = $_POST['login_felh'];
 												$login_jelszo = $_POST['login_jelszo'];
 												
 												$adminf = "admin";
-												$adminj = "admin";
+												$adminj = "adminho";
 												
 												$login_sql = "SELECT Felhasznalo.felhasznalo_nev, Felhasznalo.jelszo FROM Felhasznalo
 												WHERE Felhasznalo.felhasznalo_nev = '".$login_felh_nev."' AND Felhasznalo.jelszo = '".$login_jelszo."' LIMIT 1";
@@ -177,33 +139,8 @@
 												$query_user = mysqli_query($conn, $login_again);
 												$count_user = mysqli_num_rows($query_user);
 												
-												if($count_user == 1){
-													//akkor hibaüzenet jelenjen meg
-													echo '<tr>
-														<td height = "33px" id = "styleofwords7a" style = "text-align: center;">Már bejelentkezett!</td>
-													</tr>
-													<tr>
-														<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "index.php" id = "styleofword2"
-													style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">Tovább a kínálathoz...</a></font></td>
-													</tr
-													<tr>
-														<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "jelszo_modosit.php" id = "styleofword2"
-													style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">Új jelszó</a></font></td>
-													</tr>
-													<tr>
-														<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "adatok_modositasa.php" id = "styleofword2"
-														style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">Adatok módosítása</a></font></td>
-													</tr>
-													<tr>
-																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "felhasznalo_torlese.php" id = "styleofword2"
-																style = "text-decoration: none; text-color: white; text-align: center;  padding: 2% 0 0 9%"><font size = "3" color = "#ffffff" align = "center">Fiók törlése</a></font></td>
-													</tr>
-													<tr>
-														<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"></font></td>
-													</tr>';
-												}
 												
-												else if(mysqli_num_rows($login_user) == 0){
+												if(mysqli_num_rows($login_user) == 0){
 													
 													echo '<tr>
 														<td height = "33px" id = "styleofwords7a">Hibás felhasználónév/jelszó!</td>
@@ -224,8 +161,8 @@
 																<td height = "33px" id = "styleofwords7a3">Sikeres bejelentkezés! Üdvözöljük, '.$login_felh_nev.'!</td>
 															</tr>
 															<tr>
-																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "index.php" id = "styleofword2"
-																style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">tovább a kínálathoz!</a></font></td>
+																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "adminpage.php" id = "styleofword2"
+																style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">Tovább a kínálathoz!</a></font></td>
 															</tr>
 															
 															<tr>
@@ -242,7 +179,8 @@
 															</tr>
 															<tr>
 																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"></font></td>
-															</tr>';																
+															</tr>';	
+															//header("refresh 2; url = admin_main.php");
 													}
 													
 													else{
@@ -271,6 +209,7 @@
 															<tr>
 																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"></font></td>
 															</tr>';	
+															//header("refresh: 2;url = admin_main.php");
 													}
 												}
 												
@@ -280,17 +219,17 @@
 										
 										</table>
 										<table align = "center" width = "100%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
+										<form method = "POST" action = "fooldal.php" enctype = "multipart/form-data" name = "login_index">
 											<tr>
-												<td width = "100%"><input type = "submit" class = "inputlog" value = "Bejelentkezés" name = "bejelentkezes_dropdown" /></td>
+												<td width = "100%"><input style = "text-align: left; padding: 4;"type = "submit" class = "inputlog" value = "Kijelentkezés" name = "kijelentkezes_dropdown" /></td>
 											</tr>
+										</form>
 										</table>
 									</div>
-						</form>
-					</li>
-						
-					</li>
+	
 				</ul>
 				<div style = "clear:both"></div>
+			</div>
 				
 			</div>
 			</br>
