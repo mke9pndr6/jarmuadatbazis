@@ -10,6 +10,7 @@
 
 
 <?php 
+	ob_start();
 	include('connection.php');
 	include('controller.php');
 	//include('style.css');
@@ -106,8 +107,13 @@
 							?>
 						</div>
 					</li>
-					<li><a href="fooldal.php">Nyitólap</a></li>
-					<li><a href="kereses.php">Keresés</a></li>
+					<li><a href="fooldal.php">Nyitólap</a>
+						<div align = "center">
+							<a href = "hozzaszolasok.php">Hozzászólások</a>
+						</div>
+					</li>
+					<li><a href="kereses.php">Keresés</a>
+					</li>
 					<li>
 					
 						<a href="felhasznalo_profil.php">Profilom</a>
@@ -135,9 +141,6 @@
 										
 												$login_felh_nev = $_POST['login_felh'];
 												$login_jelszo = $_POST['login_jelszo'];
-												
-												$adminf = "admin";
-												$adminj = "adminho";
 												
 												$login_sql = "SELECT Felhasznalo.felhasznalo_nev, Felhasznalo.jelszo FROM Felhasznalo
 												WHERE Felhasznalo.felhasznalo_nev = '".$login_felh_nev."' AND Felhasznalo.jelszo = '".$login_jelszo."' LIMIT 1";
@@ -168,38 +171,9 @@
 													VALUES('".$login_felh_nev."','".$login_jelszo."');";
 													
 													mysqli_query($conn, $sql);
-													
-													if($login_felh_nev == $adminf && $login_jelszo == $adminj){
+												
 														echo '<tr>
-																<td height = "33px" id = "styleofwords7a3">Sikeres bejelentkezés! Üdvözöljük, '.$login_felh_nev.'!</td>
-															</tr>
-															<tr>
-																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "adminpage.php" id = "styleofword2"
-																style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">Tovább a kínálathoz!</a></font></td>
-															</tr>
-															
-															<tr>
-																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "jelszo_modosit.php" id = "styleofword2"
-																style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">Új jelszó</a></font></td>
-															</tr>
-															<tr>
-																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "adatok_modositasa.php" id = "styleofword2"
-																style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">Adatok módosítása</a></font></td>
-															</tr>
-															<tr>
-																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "felhasznalo_torlese.php" id = "styleofword2"
-																style = "text-decoration: none; text-color: white; text-align: center;  padding: 2% 0 0 9%"><font size = "3" color = "#ffffff" align = "center">Fiók törlése</a></font></td>
-															</tr>
-															<tr>
-																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"></font></td>
-															</tr>';	
-															//header("refresh 2; url = admin_main.php");
-													}
-													
-													else{
-														
-														echo '<tr>
-																<td height = "33px" id = "styleofwords7a3">Sikeres bejelentkezés! Üdvözöljük, '.$login_felh_nev.'!</td>
+																<td height = "33px" id = "styleofwords7a3">Sikeresen módosította adatait, '.$login_felh_nev.'!</td>
 															</tr>
 															<tr>
 																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "index.php" id = "styleofword2"
@@ -226,7 +200,7 @@
 													}
 												}
 												
-											}
+						
 									
 										?>
 										
@@ -392,66 +366,73 @@
 								$szulhely = $_POST['szuletesi_hely'];
 								$szulido = $_POST['szuletesi_ido'];
 								
-								$query_user = mysqli_query($conn, "SELECT felhasznalo_nev FROM Felhasznalo WHERE felhasznalo_nev = '".$felhasznalo."'
+								$real_logged_in = mysqli_query($conn,
+								"SELECT belepes.felhasznalo_nev, belepes.jelszo FROM belepes WHERE belepes.felhasznalo_nev = '".$felhasznalo."'
+								AND belepes.jelszo = '".$jelszo1."'");
+								$count_loggedin_user = mysqli_num_rows($real_logged_in);
+								
+								$query_user = mysqli_query($conn, "SELECT felhasznalo_nev, jelszo FROM Felhasznalo WHERE felhasznalo_nev = '".$felhasznalo."'
 								AND jelszo = '".$jelszo1."'");
 								$count_user = mysqli_num_rows($query_user);
-	
-								if($count_user == 1){
-									
-									if($jelszo1 == $jelszo2){
+								
+								if($count_loggedin_user == 1){
+							
+									if($count_user == 1){
 										
-										$updateuser_sql = "UPDATE felhasznalo SET jelszo ='".$jelszo1."', vezetek_nev ='".$v_nev."', kereszt_nev ='".$k_nev."',
-										anyja_vnev ='".$anyja_v."', anyja_knev ='".$anyja_k."', telszam ='".$telszam."', ir_szam ='".$ir."', varos ='".$varos."',
-										utca ='".$utca."', hazszam ='".$hazszam."', szuletesi_hely ='".$szulhely."', szuletesi_ido ='".$szulido."'
-										WHERE felhasznalo_nev = '".$felhasznalo."'";
+										if($jelszo1 == $jelszo2){
+											
+											$updateuser_sql = "UPDATE felhasznalo SET jelszo ='".$jelszo1."', vezetek_nev ='".$v_nev."', kereszt_nev ='".$k_nev."',
+											anyja_vnev ='".$anyja_v."', anyja_knev ='".$anyja_k."', telszam ='".$telszam."', ir_szam ='".$ir."', varos ='".$varos."',
+											utca ='".$utca."', hazszam ='".$hazszam."', szuletesi_hely ='".$szulhely."', szuletesi_ido ='".$szulido."'
+											WHERE felhasznalo_nev = '".$felhasznalo."'";
+											
+											$updateUser = mysqli_query($conn, $updateuser_sql);
+											
+											echo '<div align = "center">
+													<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
+														<tr>
+															<td height = "33px" id = "styleofwords7a2" style = "padding: 0; text-align: center;">Az adatok módosítása sikeresen megtörtént, '.$felhasznalo.'!</td>
+															<td height = "33px" id = "styleofwords7a2"></td>
+														</tr>
+														<tr>
+															<td height = "33px" id = "styleofwords7"></td>
+															<td height = "33px" id = "styleofwords7"></td>
+														</tr>
+														<tr>
+															<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "jelszo_modosit.php" id = "styleofword2"
+															style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">Új jelszó</a></font></td>
+															<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "jelszo_modosit.php" id = "styleofword2"
+															style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center"></a></font></td>
+														</tr>
+													</table>
+												</div>';
+										}
 										
-										$updateUser = mysqli_query($conn, $updateuser_sql);
-										
-										echo '<div align = "center">
+										else{
+											
+											die('<div align = "center">
 												<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
 													<tr>
-														<td height = "33px" id = "styleofwords7a2" style = "padding: 0; text-align: center;">Az adatok módosítása sikeresen megtörtént, '.$felhasznalo.'!</td>
-														<td height = "33px" id = "styleofwords7a2"></td>
-													</tr>
-													<tr>
-														<td height = "33px" id = "styleofwords7"></td>
-														<td height = "33px" id = "styleofwords7"></td>
-													</tr>
-													<tr>
-														<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "jelszo_modosit.php" id = "styleofword2"
-														style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">Új jelszó</a></font></td>
-														<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "jelszo_modosit.php" id = "styleofword2"
-														style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center"></a></font></td>
+														<td height = "33px" id = "styleofwords7d" style = "padding: 0; text-align: center;">A két jelszó nem egyezik meg!</td>
+														<td height = "33px" id = "styleofwords7d"></td>
 													</tr>
 												</table>
-											</div>';
-									}
-									
-									else{
-										
-										die('<div align = "center">
+											</div>
+											<div align = "center">
 											<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
 												<tr>
-													<td height = "33px" id = "styleofwords7d" style = "padding: 0; text-align: center;">A két jelszó nem egyezik meg!</td>
-													<td height = "33px" id = "styleofwords7d"></td>
+													<td height = "33px" id = "styleofwords7"></td>
+													<td height = "33px" id = "styleofwords7"></td>
+												</tr>
+												<tr>
+													<td width = "50%"><input type = "submit" class = "input" value = "Adatok módosítása" name = "felh_modosit" /></td>
+													<td width = "50%"><button class = "button" href = "index.php" align = "center" onclick = "location.href="index.php";">Mégsem</td></button>
 												</tr>
 											</table>
 										</div>
-										<div align = "center">
-										<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
-											<tr>
-												<td height = "33px" id = "styleofwords7"></td>
-												<td height = "33px" id = "styleofwords7"></td>
-											</tr>
-											<tr>
-												<td width = "50%"><input type = "submit" class = "input" value = "Adatok módosítása" name = "felh_modosit" /></td>
-												<td width = "50%"><button class = "button" href = "index.php" align = "center" onclick = "location.href="index.php";">Mégsem</td></button>
-											</tr>
-										</table>
-									</div>
-								</form>');
+									</form>');
+									}
 								}
-							}
 								
 					
 								
@@ -480,6 +461,31 @@
 								</form>');
 								}
 							}
+							
+							else {
+								die('<div align = "center">
+											<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
+												<tr>
+													<td height = "33px" id = "styleofwords7a" style = "padding: 0; text-align: center;">Az adott felhasználó nincs bejelentkezve!</td>
+													<td height = "33px" id = "styleofwords7a"></td>
+												</tr>
+											</table>
+										</div>
+										<div align = "center">
+										<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
+											<tr>
+												<td height = "33px" id = "styleofwords7"></td>
+												<td height = "33px" id = "styleofwords7"></td>
+											</tr>
+											<tr>
+												<td width = "50%"><input type = "submit" class = "input" value = "Adatok módosítása" name = "felh_modosit" /></td>
+												<td width = "50%"><button class = "button" href = "index.php" align = "center" onclick = "location.href="index.php";">Mégsem</td></button>
+											</tr>
+										</table>
+									</div>
+								</form>');
+								}
+						}
 						?>
 						
 						

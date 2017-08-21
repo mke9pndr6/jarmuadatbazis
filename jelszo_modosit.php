@@ -6,7 +6,9 @@
 	author: Hegedűs Viktor
 -->
 
-
+<?php
+	ob_start();
+?>
 
 
 <?php 
@@ -329,6 +331,9 @@
 										
 										$delete_loggedin_user = "DELETE FROM belepes WHERE felhasznalo_nev = '".$felhasznalo_nev."'";
 										mysqli_query($conn, $delete_loggedin_user);
+										
+										header('refresh: 2; url = index.php');
+										ob_end_flush();
 									}
 									
 									//ha az új jelszavak nem egyeznek meg, akkor hibaüzenet

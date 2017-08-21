@@ -94,7 +94,18 @@
 							?>
 						</div>
 					</li>
-					<li><a href="fooldal.php">Nyitólap</a><div align = "center"><a href = "hozzaszolasok.php">Hozzászólások</a></div></li>
+					<li><a href="fooldal.php">Nyitólap</a>
+						<div align = "center">
+							
+							<a href = "autok_hozzaadasa.php">Autók felvétele</a>
+							<a href = "autok_modositasa.php">Autók módosítása</a>
+							<a href = "autok_torlese.php">Autók törlése</a>
+							<a href = "motorok_hozzaadasa.php">Motorok felvétele</a>
+							<a href = "motorok_modositasa.php">Motorok módosítása</a>
+							<a href = "motorok_torlese.php">Motorok törlése</a>
+							<a href = "hozzaszolasok.php">Hozzászólások</a>
+						</div>
+					</li>
 					<li><a href="kereses.php">Keresés</a></li>
 					<li>
 					

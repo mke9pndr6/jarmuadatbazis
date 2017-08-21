@@ -255,16 +255,8 @@
 			</br>
 		
 			<?php
-			
-			
-			/*$sql = "SELECT * FROM `auto` ORDER BY evjarat LIMIT 10";
-			$result = mysqli_query($conn, $sql);
-
-			if (mysqli_num_rows($result) > 0) {
-				// output data of each row
-				while($row = mysqli_fetch_assoc($result)) {*/
 				
-			$newestCarsIndex = "SELECT * FROM `auto` ORDER BY evjarat DESC LIMIT 10";
+			$newestCarsIndex = "SELECT * FROM `auto` ORDER BY automarka_id;";
 			$cars = mysqli_query($conn, $newestCarsIndex);
 			
 			$rowindex = 1;

@@ -308,7 +308,7 @@
 									//ha az új jelszavak megegyeznek
 									if($password == $password_again){
 										
-										//akkor a módosítás megtörténik
+										//akkor a törlés megtörténik
 										$deleteuser_sql = "DELETE FROM felhasznalo WHERE felhasznalo_nev = '".$felhasznalo_nev."'";
 										mysqli_query($conn, $deleteuser_sql);
 										
@@ -316,13 +316,15 @@
 											<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
 												<tr>
 													<td height = "33px" id = "styleofwords7a2"></td>
-													<td height = "33px" id = "styleofwords7a2" style = "padding: 0; text-align: center;"> A következő felhasználót töröltük az adatabázisunkból: '.$felhasznalo_nev.'</td>
+													<td height = "33px" id = "styleofwords7a2" style = "padding: 0; text-align: center;"> A következő felhasználót töröltük az adatbázisunkból: '.$felhasznalo_nev.'</td>
 												</tr>
 											</table>
 										</div>';
 										
 										$delete_loggedin_user = "DELETE FROM belepes WHERE felhasznalo_nev = '".$felhasznalo_nev."'";
 										mysqli_query($conn, $delete_loggedin_user);
+										
+										header("location: index.php");
 									}
 									
 									//ha a megadott jelszavak nem egyeznek meg, akkor hibaüzenet
@@ -353,7 +355,7 @@
 									die('<div align = "center">
 											<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
 												<tr>
-													<td height = "33px" id = "styleofwords7a" style = "padding: 0; text-align: center;">Helytelenül adta meg régi jelszavát!</td>
+													<td height = "33px" id = "styleofwords7a" style = "padding: 0; text-align: center;">Helytelenül adta meg felhasználói adatait!</td>
 													<td height = "33px" id = "styleofwords7a"></td>
 												</tr>
 												<tr>

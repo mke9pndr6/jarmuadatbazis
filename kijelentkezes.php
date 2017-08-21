@@ -10,20 +10,21 @@
 
 
 <?php 
+	ob_start();
 	include('connection.php');
 	include('controller.php');
 	//include('style.css');
 ?>
 
 <html>
-	
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta HTTP-EQUIV="Content-Language" Content="hu">
 		<link rel = "stylesheet" href = "style.css"/>
 		<link href='https://fonts.googleapis.com/css?family=Electrolize' rel='stylesheet'/>
+		
 	<head>
 		<title>
-			Autók módosítása
+			Kilépés
 		</title>
 		
 		<script type = "text/javascript">
@@ -33,10 +34,22 @@
 				});
 			});
 		</script>
+		
+		<script>
+				function loginMessage() {
+					alert("Kérjük jelentkezzen be a kölcsönzéshez!");
+				}
+				
+				function loginComment() {
+					alert("Kérjük jelentkezzen be, hogy tudjon hozzászólást írni!");
+				}
+		</script>
+		
+		
 	</head>
 	
 		<body id = "bgStyle">
-			
+				
 				<div id = "container">
 				<ul id = "menu">
 					<li>
@@ -94,18 +107,7 @@
 							?>
 						</div>
 					</li>
-					<li><a href="fooldal.php">Nyitólap</a>
-						<div align = "center">
-							
-							<a href = "autok_hozzaadasa.php">Autók felvétele</a>
-							<a href = "autok_modositasa.php">Autók módosítása</a>
-							<a href = "autok_torlese.php">Autók törlése</a>
-							<a href = "motorok_hozzaadasa.php">Motorok felvétele</a>
-							<a href = "motorok_modositasa.php">Motorok módosítása</a>
-							<a href = "motorok_torlese.php">Motorok törlése</a>
-							<a href = "hozzaszolasok.php">Hozzászólások</a>
-						</div>
-					</li>
+					<li><a href="fooldal.php">Nyitólap</a><div align = "center"><a href = "hozzaszolasok.php">Hozzászólások</a></div></li>
 					<li><a href="kereses.php">Keresés</a></li>
 					<li>
 					
@@ -242,6 +244,8 @@
 				</ul>
 				<div style = "clear:both"></div>
 			</div>
+			
+			
 			</br>
 			</br>
 			</br>
@@ -251,117 +255,103 @@
 			</br>
 			</br>
 			
-			
-			
-			<div align = "center">
-				<form method = "POST" action = "autok_modositasa_action.php" enctype = "multipart/form-data" name = "car_update">
+						<div align = "center">
+				<form method = "POST" action = "kijelentkezes.php" enctype = "multipart/form-data" name = "delete_loggedin_user">
 					<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
 						<tr>
-							<td height = "0px"  width = "90%" id = "styleofwords2a"><font id = "styleofwords2a">Autók módosítása</font></td>
+							<td height = "0px"  width = "90%" id = "styleofwords2a"><font id = "styleofwords2a">Kijelentkezés</font></td>
 							<td height = "0px"  width = "10%" id = "styleofwords2a"><font id = "styleofwords2a"></font></td>
 						</tr>
 						<tr>
-							<td height = "33px" id = "styleofwords7" >Autó azonosítója (id)<font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords9"><input type = "number" 
-							style="height:26px;" name = "id" size = "45" placeholder = "Adja meg az autó azonosítóját..." required /></td>
+							<td height = "33px" id = "styleofwords7" ><font id = "styleofwords8"></font></td>
+							<td height = "33px" id = "styleofwords7" ><font id = "styleofwords8"></font></td>
+						<tr>
+							<td height = "33px" id = "styleofwords7" >Felhasználónév<font id = "styleofwords8"></font></td>
+							<td height = "33px" id = "styleofwords9"><input type = "text" 
+							style="height:26px;" name = "felhasznalo_nev" size = "45" placeholder = "" required /></td>
 						</tr>
 						<tr>
-							<td height = "33px" id = "styleofwords10" >Márka<font id = "styleofwords12"></font></td>
-							<td height = "33px" id = "styleofwords11"><input  type = "number"  
-							style="height:26px;" name = "marka_id" size = "45" placeholder = "pl.: 1 = Mercedes" required/>
+							<td height = "33px" id = "styleofwords10" >Jelszó<font id = "styleofwords12"></font></td>
+							<td height = "33px" id = "styleofwords11"><input  type = "password"  
+							style="height:26px;" name = "password" size = "45" placeholder = "Adja meg régi jelszavát..." required/>
 						
 							</td>
 						</tr>
 						<tr>
-							<td height = "33px" id = "styleofwords7" >Jármű típusa<font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords9"><input type = "text" 
-							style="height:26px;" name = "jarmutipus_id" size = "45" placeholder = "Autó/Motor" required /></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords10" >Ár (1-6 napig)<font id = "styleofwords12"></font></td>
-							<td height = "33px" id = "styleofwords11"><input type = "number" 
-							style="height:26px;" name = "ar_1" size = "45" placeholder = "" required /></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" >Ár (7-30 napig)<font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords9"><input type = "number" style="height:26px;" name = "ar_2" size = "45" required /></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords10" >Ár (31-365 napig)<font id = "styleofwords12"></font></td>
-							<td height = "33px" id = "styleofwords11"><input type = "number" style="height:26px;" name = "ar_3" size = "45" height = "20" required /></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" >Márka típusa<font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords9"><input type = "text" style="height:26px;" name = "marka_tipus" size = "45" required /></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords10" >Évjárat<font id = "styleofwords12"></font></td>
-							<td height = "33px" id = "styleofwords11"><input type = "number" style="height:26px;" name = "evjarat" size = "45" required /></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" >Autó állapota<font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords9"><input type = "text" style="height:26px;" name = "allapot" size = "45" required /></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" >Km/h állása<font id = "styleofwords8"/></td>
-							<td height = "33px" id = "styleofwords9"><input type = "number" style="height:26px;" name = "km_ora_allasa" size = "45" required/></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" >Szállítható személyek száma<font id = "styleofwords8"/></td>
-							<td height = "33px" id = "styleofwords9"><input type = "number" style="height:26px; width: 100%;" name = "szallithato_szemelyek" size = "45" placeholder = "" required/></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" >Üzemanyag fajtája<font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords9"><input type = "text" style="height:26px; width: 100%;" name = "uzemanyag" size = "45" placeholder = "Benzin/Dízel" required /></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" >Hengerűrtartalom<font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords9"><input type = "number" style="height:26px;" name = "hengerurtartalom" size = "45" placeholder = "" required /></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" >Teljesítmény<font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords9"><input type = "number" style="height:26px;" name = "teljesitmeny" size = "45" placeholder = "" required /></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" >Saját tömeg<font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords9"><input type = "number" style="height:25px; width: 100%;" name = "sajat_tomeg" size = "45" placeholder = "" required /></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" >Maximális tömeg<font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords9"><input type = "number" style="height:26px;" name = "maximalis_tomeg" size = "45" placeholder = "" required /></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" >Üzemanyagtank mérete<font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords9"><input type = "number" style="height:26px; width: 100%;" name = "tank_meret" size = "45" placeholder = "" required /></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" >Átlagfogyasztás<font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords9"><input type = "number" step = "0.01" style="height:26px; width: 100%;" name = "atlagfogyasztas" size = "45" placeholder = "" required /></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" >Végsebesség<font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords9"><input type = "number" style="height:26px; width: 100%;" name = "vegsebesseg" size = "45" placeholder = "" required /></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" >Gyorsulás (1-100)<font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords9"><input type = "number" step = "0.01" style="height:26px; width: 100%;" name = "gyorsulas" size = "45" placeholder = "" required /></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" >Oktánszám<font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords9"><input type = "number" style="height:26px; width: 100%;" name = "oktanszam" size = "45" placeholder = "" required /></td>
-						</tr>
-						<tr>
 							<td height = "33px" id = "styleofwords7" ><font id = "styleofwords8"></font></td>
 							<td height = "33px" id = "styleofwords7" ><font id = "styleofwords8"></font></td>
-						</tr>
+						<tr>
 						</table>
+						
+							<?php
+								include('connection.php');
+								if(isset($_POST['kijelentkezes'])){
+									
+									$felhasznalo_nev = $_POST['felhasznalo_nev'];
+									$password = $_POST['password'];
+									
+									
+									//ellenőrizzük a régi jelszó helyességét
+									
+									$query_pass = mysqli_query($conn, "SELECT * FROM belepes WHERE belepes.jelszo = '".$password."'
+									AND belepes.felhasznalo_nev = '".$felhasznalo_nev."'");
+									$count_pass = mysqli_num_rows($query_pass);
+									
+									
+									//ha helyes jelszót adunk meg
+									if($count_pass == 1){
+											
+											//akkor a törlés megtörténik
+											$deleteLoggedinUser = "DELETE FROM belepes WHERE belepes.felhasznalo_nev = '".$felhasznalo_nev."'";
+											
+											mysqli_query($conn, $deleteLoggedinUser);
+											
+											echo '<div align = "center">
+												<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
+													<tr>
+														<td height = "33px" id = "styleofwords7a2"></td>
+														<td height = "33px" id = "styleofwords7a2" style = "padding: 0; text-align: center;"> Sikeres kijelentkezés</td>
+													</tr>
+												</table>
+											</div>';
+											
+											header("refresh: 2; url = index.php");
+											ob_end_flush();
+										}
+										
+										
+									
+									//ha helytelen a régi jelszó, akkor hibaüzenet
+									if($count_pass == 0){
+										die('<div align = "center">
+												<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
+													<tr>
+														<td height = "33px" id = "styleofwords7a" style = "padding: 0; text-align: center;">Hibásan adta meg adatait!</td>
+														<td height = "33px" id = "styleofwords7a"></td>
+													</tr>
+													<tr>
+														<td height = "33px" id = "styleofwords7" ><font id = "styleofwords8"></font></td>
+													</tr>
+												</table>
+											</div>
+											<div align = "center">
+												<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
+													<tr>
+														<td width = "100%"><input type = "submit" class = "input" value = "Jelszó módosítása" name = "jelszomodositasa" /></td>
+													</tr>
+												</table>
+											</div>');
+									}
+									
+									
+								}
+							?>
+							
 						<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
 							<tr>
-								<td width = "100%"><input type = "submit" class = "input" value = "Autó módosítása" name = "automodositasa" /></td>
+								<td width = "100%"><input type = "submit" class = "input" value = "Kijelentkezés" name = "kijelentkezes" /></td>
 							</tr>
-					</table>	
+						</table>	
 				</form>
-			</div>
-		</body>
-	</table>
-</html>
+			</div
+			

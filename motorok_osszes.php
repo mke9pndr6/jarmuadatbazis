@@ -16,15 +16,14 @@
 ?>
 
 <html>
-	
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta HTTP-EQUIV="Content-Language" Content="hu">
 		<link rel = "stylesheet" href = "style.css"/>
 		<link href='https://fonts.googleapis.com/css?family=Electrolize' rel='stylesheet'/>
+		
 	<head>
 		<title>
-			Autók módosítása
-		</title>
+			Összes motor
 		
 		<script type = "text/javascript">
 			$(document).ready(function(){
@@ -33,10 +32,22 @@
 				});
 			});
 		</script>
+		
+		<script>
+				function loginMessage() {
+					alert("Kérjük jelentkezzen be a kölcsönzéshez!");
+				}
+				
+				function loginComment() {
+					alert("Kérjük jelentkezzen be, hogy tudjon hozzászólást írni!");
+				}
+		</script>
+		
+		
 	</head>
 	
 		<body id = "bgStyle">
-			
+				
 				<div id = "container">
 				<ul id = "menu">
 					<li>
@@ -94,18 +105,7 @@
 							?>
 						</div>
 					</li>
-					<li><a href="fooldal.php">Nyitólap</a>
-						<div align = "center">
-							
-							<a href = "autok_hozzaadasa.php">Autók felvétele</a>
-							<a href = "autok_modositasa.php">Autók módosítása</a>
-							<a href = "autok_torlese.php">Autók törlése</a>
-							<a href = "motorok_hozzaadasa.php">Motorok felvétele</a>
-							<a href = "motorok_modositasa.php">Motorok módosítása</a>
-							<a href = "motorok_torlese.php">Motorok törlése</a>
-							<a href = "hozzaszolasok.php">Hozzászólások</a>
-						</div>
-					</li>
+					<li><a href="fooldal.php">Nyitólap</a><div align = "center"><a href = "hozzaszolasok.php">Hozzászólások</a></div></li>
 					<li><a href="kereses.php">Keresés</a></li>
 					<li>
 					
@@ -242,126 +242,163 @@
 				</ul>
 				<div style = "clear:both"></div>
 			</div>
-			</br>
-			</br>
-			</br>
-			</br>
-			</br>
-			</br>
-			</br>
-			</br>
 			
 			
+			</br>
+			</br>
+			</br>
+			</br>
+			</br>
+			</br>
+			</br>
+			</br>
+		
+			<?php
+				
+			$newestCarsIndex = "SELECT * FROM `auto` ORDER BY automarka_id;";
+			$cars = mysqli_query($conn, $newestCarsIndex);
 			
-			<div align = "center">
-				<form method = "POST" action = "autok_modositasa_action.php" enctype = "multipart/form-data" name = "car_update">
-					<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
-						<tr>
-							<td height = "0px"  width = "90%" id = "styleofwords2a"><font id = "styleofwords2a">Autók módosítása</font></td>
-							<td height = "0px"  width = "10%" id = "styleofwords2a"><font id = "styleofwords2a"></font></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" >Autó azonosítója (id)<font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords9"><input type = "number" 
-							style="height:26px;" name = "id" size = "45" placeholder = "Adja meg az autó azonosítóját..." required /></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords10" >Márka<font id = "styleofwords12"></font></td>
-							<td height = "33px" id = "styleofwords11"><input  type = "number"  
-							style="height:26px;" name = "marka_id" size = "45" placeholder = "pl.: 1 = Mercedes" required/>
+			$rowindex = 1;
+			if (mysqli_num_rows($cars) > 0){
+				while($row = mysqli_fetch_assoc($cars)){
+					
+						echo '
+									<div align = "center" id = "cars">
+									<table align = "center" width = "71.42%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = "border-style: solid; border-width: 0.5px;
+									margin: 0 0.5px 0 0; border-color: #000;background: rgb(38 ,98, 133); font-family: Electrolize; color: #ffffff; font-size: 14.5px; border-radius: 22 22 19 19;" >
+									<tr>
+										<td width = "25%" height = "20px" style = "padding: 0% 0% 0% 6%;" align = "left"><u>'.$rowindex++.'</u></td>
+										<td width = "10%" height = "20px"> </td>
+										<td width = "65%" height = "300px" rowspan = "17" ><img id="myImg" src = "pictures/cla220.jpg" id = "effectscale" style = "width: 100%; height: 100%;"></td>
+									</tr>
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Márka </td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["automarka_id"].'</td>
+										
+									</tr>
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Márka típusa </td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["marka_tipus"].'</td>
+										
+									</tr>
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Ár naponta (1-6 nap) </td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["ar_1"].' HUF</td>
+										
+									</tr>
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Ár naponta (7-30 nap)</td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["ar_2"].' HUF</td>
+									</tr>
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Ár naponta (31-365 nap)</td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["ar_3"].' HUF</td>
+									</tr>
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Évjárat </td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["evjarat"].'</td>
+									</tr>
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Állapot </td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["allapot"].'</td>
+									</tr>
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Km/h állása </td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["km_ora_allasa"].' km</td>
+									</tr>
+
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Üzemanyag </td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["uzemanyag"].'</td>
+									</tr>
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Hengerűrtartalom</td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["hengerurtartalom"].' cm3</td>
+									</tr>
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Teljesítmény </td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["teljesitmeny"].' LE</td>
+									</tr>
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Saját tömeg </td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["sajat_tomeg"].' kg</td>
+									</tr>
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Maximális tömeg </td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["maximalis_tomeg"].' kg</td>
+									</tr>
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Tankméret </td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["tank_meret"].' L</td>
+									</tr>
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Átlagfogyasztás </td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["atlagfogyasztas"].' L/100km</td>
+									</tr>
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Végsebesség </td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["vegsebesseg"].' km/h</td>
+									</tr>
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Gyorsulás (1-100)</td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["gyorsulas"].' mp</td>
+									</tr>
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Oktánszám</td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["oktanszam"].'</td>
+									</tr>
+									<tr>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right"></td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;"></td>
+									</tr>
+									<tr>
+										<td width = "100%" colspan = "3"><input type = "submit" onclick = "loginMessage()" class = "input" value = "Kölcsönzés" name = "kolcsonzes" /></td>
+									</tr>
+								</table>
+							
+							
+							</br>
+							</br>
+							</br>
+							</br>
+							</br>
+							</br>';		
+												
+						}
 						
-							</td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" >Jármű típusa<font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords9"><input type = "text" 
-							style="height:26px;" name = "jarmutipus_id" size = "45" placeholder = "Autó/Motor" required /></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords10" >Ár (1-6 napig)<font id = "styleofwords12"></font></td>
-							<td height = "33px" id = "styleofwords11"><input type = "number" 
-							style="height:26px;" name = "ar_1" size = "45" placeholder = "" required /></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" >Ár (7-30 napig)<font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords9"><input type = "number" style="height:26px;" name = "ar_2" size = "45" required /></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords10" >Ár (31-365 napig)<font id = "styleofwords12"></font></td>
-							<td height = "33px" id = "styleofwords11"><input type = "number" style="height:26px;" name = "ar_3" size = "45" height = "20" required /></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" >Márka típusa<font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords9"><input type = "text" style="height:26px;" name = "marka_tipus" size = "45" required /></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords10" >Évjárat<font id = "styleofwords12"></font></td>
-							<td height = "33px" id = "styleofwords11"><input type = "number" style="height:26px;" name = "evjarat" size = "45" required /></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" >Autó állapota<font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords9"><input type = "text" style="height:26px;" name = "allapot" size = "45" required /></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" >Km/h állása<font id = "styleofwords8"/></td>
-							<td height = "33px" id = "styleofwords9"><input type = "number" style="height:26px;" name = "km_ora_allasa" size = "45" required/></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" >Szállítható személyek száma<font id = "styleofwords8"/></td>
-							<td height = "33px" id = "styleofwords9"><input type = "number" style="height:26px; width: 100%;" name = "szallithato_szemelyek" size = "45" placeholder = "" required/></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" >Üzemanyag fajtája<font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords9"><input type = "text" style="height:26px; width: 100%;" name = "uzemanyag" size = "45" placeholder = "Benzin/Dízel" required /></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" >Hengerűrtartalom<font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords9"><input type = "number" style="height:26px;" name = "hengerurtartalom" size = "45" placeholder = "" required /></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" >Teljesítmény<font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords9"><input type = "number" style="height:26px;" name = "teljesitmeny" size = "45" placeholder = "" required /></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" >Saját tömeg<font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords9"><input type = "number" style="height:25px; width: 100%;" name = "sajat_tomeg" size = "45" placeholder = "" required /></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" >Maximális tömeg<font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords9"><input type = "number" style="height:26px;" name = "maximalis_tomeg" size = "45" placeholder = "" required /></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" >Üzemanyagtank mérete<font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords9"><input type = "number" style="height:26px; width: 100%;" name = "tank_meret" size = "45" placeholder = "" required /></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" >Átlagfogyasztás<font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords9"><input type = "number" step = "0.01" style="height:26px; width: 100%;" name = "atlagfogyasztas" size = "45" placeholder = "" required /></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" >Végsebesség<font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords9"><input type = "number" style="height:26px; width: 100%;" name = "vegsebesseg" size = "45" placeholder = "" required /></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" >Gyorsulás (1-100)<font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords9"><input type = "number" step = "0.01" style="height:26px; width: 100%;" name = "gyorsulas" size = "45" placeholder = "" required /></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" >Oktánszám<font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords9"><input type = "number" style="height:26px; width: 100%;" name = "oktanszam" size = "45" placeholder = "" required /></td>
-						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" ><font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords7" ><font id = "styleofwords8"></font></td>
-						</tr>
-						</table>
-						<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
-							<tr>
-								<td width = "100%"><input type = "submit" class = "input" value = "Autó módosítása" name = "automodositasa" /></td>
-							</tr>
-					</table>	
-				</form>
+			}
+			
+			?>
+				
+				
+			<div id="myModal" class="modal">
+			  <span class="close">&times;</span>
+				<img class="modal-content" id="img01">
+				<div id="caption"></div>
 			</div>
-		</body>
-	</table>
+
+			<script>
+			// Get the modal
+			var modal = document.getElementById('myModal');
+
+			// Get the image and insert it inside the modal - use its "alt" text as a caption
+			var img = document.getElementById('myImg');
+			var modalImg = document.getElementById("img01");
+			var captionText = document.getElementById("caption");
+			img.onclick = function(){
+				modal.style.display = "block";
+				modalImg.src = this.src;
+				captionText.innerHTML = this.alt;
+			}
+
+			// Get the <span> element that closes the modal
+			var span = document.getElementsByClassName("close")[0];
+
+			// When the user clicks on <span> (x), close the modal
+			span.onclick = function() { 
+				modal.style.display = "none";
+			}
+			</script>	
+			
+	</body>
 </html>

@@ -106,7 +106,7 @@
 							?>
 						</div>
 					</li>
-					<li><a href="fooldal.php">Nyitólap</a></li>
+					<li><a href="fooldal.php">Nyitólap</a><div align = "center"><a href = "hozzaszolasok.php">Hozzászólások</a></div></li>
 					<li><a href="kereses.php">Keresés</a></li>
 					<li>
 					
