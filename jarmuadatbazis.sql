@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2017. Aug 03. 17:43
+-- Létrehozás ideje: 2017. Aug 21. 14:07
 -- Kiszolgáló verziója: 10.1.21-MariaDB
 -- PHP verzió: 5.6.30
 
@@ -55,7 +55,35 @@ CREATE TABLE `auto` (
 --
 
 INSERT INTO `auto` (`id`, `automarka_id`, `jarmutipus_id`, `ar_1`, `ar_2`, `ar_3`, `marka_tipus`, `evjarat`, `allapot`, `km_ora_allasa`, `szallithato_szemelyek`, `uzemanyag`, `hengerurtartalom`, `teljesitmeny`, `sajat_tomeg`, `maximalis_tomeg`, `tank_meret`, `atlagfogyasztas`, `vegsebesseg`, `gyorsulas`, `oktanszam`) VALUES
-(1, 'Mercedes', 'Autó', 12190, 10390, 8290, 'CLA 220', 2014, 'Újszerű', 13204, 5, 'Benzin', 2189, 173, 1491, 1970, 60, 8.2, 235, 7.8, 95);
+(1, 'Alfa Romeo', 'Autó', 10990, 10390, 8090, '156d', 2011, 'Újszerű', 13204, 5, 'Dízel', 1589, 131, 1390, 1801, 65, 8.2, 209, 7.8, 95),
+(2, 'BMW', 'Autó', 19990, 15990, 11990, '335i', 2012, 'Újszerű', 33901, 4, 'Benzin', 3500, 280, 1202, 1670, 70, 10.2, 278, 5.5, 95),
+(3, 'Alfa Romeo', 'Autó', 14990, 12990, 9990, '166', 2010, 'Újszerű', 19920, 5, 'Benzin', 1980, 188, 1560, 1987, 60, 8.1, 220, 7.9, 98);
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `automarka`
+--
+
+CREATE TABLE `automarka` (
+  `id` varchar(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- A tábla adatainak kiíratása `automarka`
+--
+
+INSERT INTO `automarka` (`id`) VALUES
+('Alfa Romeo'),
+('Audi'),
+('BMW'),
+('Chevrolet'),
+('Ferrari'),
+('Ford'),
+('Infiniti'),
+('Mercedes'),
+('Skoda'),
+('Suzuki');
 
 -- --------------------------------------------------------
 
@@ -73,12 +101,7 @@ CREATE TABLE `belepes` (
 --
 
 INSERT INTO `belepes` (`felhasznalo_nev`, `jelszo`) VALUES
-('admin', 'admin'),
-('FérgesMéh', 'férgesméh'),
-('juliska', '24a5a37e074d43f54d3d6e033d86886e'),
-('macskacsa', 'MacskaCsa'),
-('main_profile', 'alma'),
-('MézesLény', 'pillangó');
+('admin ', 'adminka');
 
 -- --------------------------------------------------------
 
@@ -110,12 +133,12 @@ CREATE TABLE `felhasznalo` (
 --
 
 INSERT INTO `felhasznalo` (`felhasznalo_nev`, `jelszo`, `vezetek_nev`, `kereszt_nev`, `szemelyig_szam`, `anyja_vnev`, `anyja_knev`, `email`, `telszam`, `ir_szam`, `varos`, `utca`, `hazszam`, `szuletesi_hely`, `szuletesi_ido`, `hozzaszolas`) VALUES
-('admin', 'admin', '-', '-', '-', '-', '-', '', 0, 0, '-', '-', 0, '-', '2017-08-01', NULL),
-('FérgesMéh', 'férgesméh', 'Férges', 'Méh', 'zümzümzü', 'Nemférges', 'Nemméh', 'fergesmehecske@gmail.com', 702342345, 0, 'Zümi falva', 'Zümm utca', 0, 'Kaptár', '2017-08-01', NULL),
-('juliska', '24a5a37e074d43f54d3d6e033d86886e', 'Julis', 'Ka', 'juka1234', 'Jul', 'Iska', 'julcsi@julesz.juci', 302415788, 0, 'Julcsa City', 'Juller utca', 11, 'kórház', '2020-04-06', NULL),
-('macskacsa', 'MacskaCsa', 'Macska', 'Kacsa', '- no dat', 'Mézes', 'Lény', 'macska.csa@macska.csa', 308899820, 0, '-', '-', 0, '-', '2018-08-02', NULL),
-('main_profile', 'alma', 'alma', 'alma', '124490CN', '-', '-', '', 0, 6710, 'Szeged', 'Alma', 89, 'Szeged', '1996-05-16', NULL),
-('MézesLény', 'pillango', 'Mézes', 'Lény', 'nincs ad', 'nincs adat', 'nincs adat', 'mezes@mez.mez', 308899120, 0, '-', '-', 0, '-', '2013-04-30', NULL);
+('admin', 'adminka', '-', '-', '-', '-', '-', '', 0, 0, '-', '-', 0, '-', '2017-08-01', NULL),
+('juliska', 'juliska', 'Nagy', 'Júlia', 'juka1234', 'Kádár', 'Andrea', 'julcsi@julesz.juci', 0, 0, '-', '-', 0, 'Szeged', '2018-08-21', NULL),
+('macskacsa1212', 'macskacsa', 'Próba', 'Kacsa', '----', '-', '-', 'dfsd@dfsdfsdf.dsf', 0, 0, '-', '-', 0, 'Szeged', '2019-08-21', NULL),
+('main_profile', 'alma', 'Nagy', 'Tivadar', '124490CN', 'Görög', 'Annamária', '', 0, 0, '-', '-', 0, 'Szeged', '2018-08-21', NULL),
+('MézesLény', 'pillango', 'Mézes', 'Lény', 'nincs ad', 'nincs adat', 'nincs adat', 'mezes@mez.mez', 308899120, 0, '-', '-', 0, '-', '2013-04-30', NULL),
+('PókVagyok', 'pókvagyok', 'Pók', 'Vagyok', 'PókSzig', 'Pók', 'Ocska', 'Pok@ocs.ka', 0, 0, '-', '-', 0, '-', '2017-08-10', NULL);
 
 -- --------------------------------------------------------
 
@@ -128,7 +151,9 @@ CREATE TABLE `jarmukolcsonzes` (
   `felhasznalo_nev` varchar(30) NOT NULL,
   `jarmutipus_id` varchar(60) NOT NULL,
   `mettol` date NOT NULL,
-  `meddig` date NOT NULL
+  `meddig` date NOT NULL,
+  `ar_naponta` int(10) NOT NULL,
+  `ar_osszesen` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -148,64 +173,6 @@ CREATE TABLE `jarmutipus` (
 INSERT INTO `jarmutipus` (`id`) VALUES
 ('Autó'),
 ('Motor');
-
--- --------------------------------------------------------
-
---
--- Tábla szerkezet ehhez a táblához `marka`
---
-
-CREATE TABLE `automarka` (
-  `id` varchar(60) NOT NULL
-  
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- A tábla adatainak kiíratása `marka`
---
-
-INSERT INTO `automarka` (`id`) VALUES
-('Mercedes'),
-('BMW'),
-('Toyota'),
-('Audi'),
-('Opel'),
-('Suzuki'),
-('Ferrari'),
-('Ford'),
-('Infiniti'),
-('Nissan'),
-('Yamaha'),
-('Chevrolet'),
-('Alfa Romeo'),
-('Skoda');
-
-
-
-
-
-CREATE TABLE `motormarka` (
-  `id` varchar(60) NOT NULL
-  
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- A tábla adatainak kiíratása `marka`
---
-
-INSERT INTO `motormarka` (`id`) VALUES
-
-('BMW'),
-('Audi'),
-('Aprilia'),
-
-('Ferrari'),
-('Gilera'),
-('Keeway'),
-('Nissan'),
-('Yamaha'),
-('Chevrolet');
-
 
 -- --------------------------------------------------------
 
@@ -236,6 +203,28 @@ CREATE TABLE `motor` (
   `munkautem` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `motormarka`
+--
+
+CREATE TABLE `motormarka` (
+  `id` varchar(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- A tábla adatainak kiíratása `motormarka`
+--
+
+INSERT INTO `motormarka` (`id`) VALUES
+('Aprilia'),
+('Audi'),
+('BMW'),
+('Gilera'),
+('Keeway'),
+('Yamaha');
+
 --
 -- Indexek a kiírt táblákhoz
 --
@@ -247,6 +236,12 @@ ALTER TABLE `auto`
   ADD PRIMARY KEY (`id`),
   ADD KEY `automarka_id` (`automarka_id`),
   ADD KEY `jarmutipus_id` (`jarmutipus_id`);
+
+--
+-- A tábla indexei `automarka`
+--
+ALTER TABLE `automarka`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- A tábla indexei `belepes`
@@ -275,22 +270,18 @@ ALTER TABLE `jarmutipus`
   ADD PRIMARY KEY (`id`);
 
 --
--- A tábla indexei `marka`
---
-ALTER TABLE `automarka`
-  ADD PRIMARY KEY (`id`);
-
-  
-  
-ALTER TABLE `motormarka`
-  ADD PRIMARY KEY (`id`);
---
 -- A tábla indexei `motor`
 --
 ALTER TABLE `motor`
   ADD PRIMARY KEY (`id`),
   ADD KEY `motormarka_id` (`motormarka_id`),
   ADD KEY `jarmutipus_id` (`jarmutipus_id`);
+
+--
+-- A tábla indexei `motormarka`
+--
+ALTER TABLE `motormarka`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- A kiírt táblák AUTO_INCREMENT értéke
@@ -300,15 +291,12 @@ ALTER TABLE `motor`
 -- AUTO_INCREMENT a táblához `auto`
 --
 ALTER TABLE `auto`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT a táblához `jarmukolcsonzes`
 --
 ALTER TABLE `jarmukolcsonzes`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT a táblához `marka`
---
 --
 -- AUTO_INCREMENT a táblához `motor`
 --
@@ -331,10 +319,6 @@ ALTER TABLE `auto`
 ALTER TABLE `jarmukolcsonzes`
   ADD CONSTRAINT `jarmukolcsonzes_ibfk_1` FOREIGN KEY (`felhasznalo_nev`) REFERENCES `felhasznalo` (`felhasznalo_nev`),
   ADD CONSTRAINT `jarmukolcsonzes_ibfk_2` FOREIGN KEY (`jarmutipus_id`) REFERENCES `jarmutipus` (`id`);
-
---
--- Megkötések a táblához `marka`
---
 
 --
 -- Megkötések a táblához `motor`

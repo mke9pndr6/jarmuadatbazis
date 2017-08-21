@@ -23,7 +23,8 @@
 		
 	<head>
 		<title>
-			Összes motor
+			Összes autó
+		</title>
 		
 		<script type = "text/javascript">
 			$(document).ready(function(){
@@ -98,9 +99,9 @@
 								class Vehicles extends Controller{}
 								
 								
-								echo '<a href = "osszes_auto.php">Autók</a>';
+								echo '<a href = "autok_osszes.php">Autók</a>';
 								
-								echo '<a href = "osszes_jarmu.php">Motorok</a>';
+								echo '<a href = "motorok_osszes.php">Motorok</a>';
 							
 							?>
 						</div>
@@ -255,7 +256,7 @@
 		
 			<?php
 				
-			$newestCarsIndex = "SELECT * FROM `auto` ORDER BY automarka_id;";
+			$newestCarsIndex = "SELECT * FROM `motor` ORDER BY motormarka_id;";
 			$cars = mysqli_query($conn, $newestCarsIndex);
 			
 			$rowindex = 1;
@@ -264,16 +265,16 @@
 					
 						echo '
 									<div align = "center" id = "cars">
-									<table align = "center" width = "71.42%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = "border-style: solid; border-width: 0.5px;
+									<table align = "center" width = "70%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = "border-style: solid; border-width: 0.5px;
 									margin: 0 0.5px 0 0; border-color: #000;background: rgb(38 ,98, 133); font-family: Electrolize; color: #ffffff; font-size: 14.5px; border-radius: 22 22 19 19;" >
 									<tr>
 										<td width = "25%" height = "20px" style = "padding: 0% 0% 0% 6%;" align = "left"><u>'.$rowindex++.'</u></td>
 										<td width = "10%" height = "20px"> </td>
-										<td width = "65%" height = "300px" rowspan = "17" ><img id="myImg" src = "pictures/cla220.jpg" id = "effectscale" style = "width: 100%; height: 100%;"></td>
+										<td width = "65%" height = "300px" rowspan = "17" ><img id = "myImg" src = "pictures/cla220.jpg" style = "width: 100%; height: 100%;"></td>
 									</tr>
 									<tr>
 										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Márka </td>
-										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["automarka_id"].'</td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["motormarka_id"].'</td>
 										
 									</tr>
 									<tr>
@@ -344,8 +345,8 @@
 										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["gyorsulas"].' mp</td>
 									</tr>
 									<tr>
-										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Oktánszám</td>
-										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["oktanszam"].'</td>
+										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Munkaütem</td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["munkautem"].' ütemű</td>
 									</tr>
 									<tr>
 										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right"></td>
@@ -363,9 +364,8 @@
 							</br>
 							</br>
 							</br>';		
-												
-						}
 						
+				}
 			}
 			
 			?>

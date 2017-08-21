@@ -87,9 +87,9 @@
 								class Vehicles extends Controller{}
 								
 								
-								echo '<a href = "osszes_auto.php">Autók</a>';
+								echo '<a href = "autok_osszes.php">Autók</a>';
 								
-								echo '<a href = "osszes_jarmu.php">Motorok</a>';
+								echo '<a href = "motorok_osszes.php">Motorok</a>';
 							
 							?>
 						</div>
@@ -127,115 +127,9 @@
 											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="felhasznalo_torlese.php";'>Fiók törlése</td></button>
 										</tr>
 										
-										
-										<?php
-								
-											if(isset($_POST['kijelentkezes_dropdown'])){
-										
-												$login_felh_nev = $_POST['login_felh'];
-												$login_jelszo = $_POST['login_jelszo'];
-												
-												$adminf = "admin";
-												$adminj = "adminho";
-												
-												$login_sql = "SELECT Felhasznalo.felhasznalo_nev, Felhasznalo.jelszo FROM Felhasznalo
-												WHERE Felhasznalo.felhasznalo_nev = '".$login_felh_nev."' AND Felhasznalo.jelszo = '".$login_jelszo."' LIMIT 1";
-												
-												$login_user = mysqli_query($conn, $login_sql);
-												$count_loggedinuser = mysqli_num_rows($login_user);
-												
-												
-												//ha újra megpróbálnánk bejelentkezni
-												
-												$login_again = "SELECT * from belepes WHERE felhasznalo_nev = '".$login_felh_nev."' AND jelszo = '".$login_jelszo."'";
-												$query_user = mysqli_query($conn, $login_again);
-												$count_user = mysqli_num_rows($query_user);
-												
-												
-												if(mysqli_num_rows($login_user) == 0){
-													
-													echo '<tr>
-														<td height = "33px" id = "styleofwords7a">Hibás felhasználónév/jelszó!</td>
-													</tr>';
-												}
-													
-												
-												else if(mysqli_num_rows($login_user) == 1){
-													
-													$sql = "INSERT INTO belepes
-													(felhasznalo_nev, jelszo) 
-													VALUES('".$login_felh_nev."','".$login_jelszo."');";
-													
-													mysqli_query($conn, $sql);
-													
-													if($login_felh_nev == $adminf && $login_jelszo == $adminj){
-														echo '<tr>
-																<td height = "33px" id = "styleofwords7a3">Sikeres bejelentkezés! Üdvözöljük, '.$login_felh_nev.'!</td>
-															</tr>
-															<tr>
-																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "adminpage.php" id = "styleofword2"
-																style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">Tovább a kínálathoz!</a></font></td>
-															</tr>
-															
-															<tr>
-																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "jelszo_modosit.php" id = "styleofword2"
-																style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">Új jelszó</a></font></td>
-															</tr>
-															<tr>
-																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "adatok_modositasa.php" id = "styleofword2"
-																style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">Adatok módosítása</a></font></td>
-															</tr>
-															<tr>
-																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "felhasznalo_torlese.php" id = "styleofword2"
-																style = "text-decoration: none; text-color: white; text-align: center;  padding: 2% 0 0 9%"><font size = "3" color = "#ffffff" align = "center">Fiók törlése</a></font></td>
-															</tr>
-															<tr>
-																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"></font></td>
-															</tr>';	
-															//header("refresh 2; url = admin_main.php");
-													}
-													
-													else{
-														
-														echo '<tr>
-																<td height = "33px" id = "styleofwords7a3">Sikeres bejelentkezés! Üdvözöljük, '.$login_felh_nev.'!</td>
-															</tr>
-															<tr>
-																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "index.php" id = "styleofword2"
-																style = "text-decoration: none; text-color: white; text-align: center; padding: 2% 0 0 9%"><font size = "3" color = "#ffffff" align = "center">Tovább a kínálathoz!</a></font></td>
-															</tr>
-															
-															<tr>
-																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "jelszo_modosit.php" id = "styleofword2"
-																style = "text-decoration: none; text-color: white; text-align: center;  padding: 2% 0 0 9%"><font size = "3" color = "#ffffff" align = "center">Új jelszó!</a></font></td>
-															</tr>
-
-															<tr>
-																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "jelszo_modosit.php" id = "styleofword2"
-																style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">Adatok módosítása</a></font></td>
-															</tr>
-															<tr>
-																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "felhasznalo_torlese.php" id = "styleofword2"
-																style = "text-decoration: none; text-color: white; text-align: center;  padding: 2% 0 0 9%"><font size = "3" color = "#ffffff" align = "center">Fiók törlése</a></font></td>
-															</tr>
-															<tr>
-																<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"></font></td>
-															</tr>';	
-															//header("refresh: 2;url = admin_main.php");
-													}
-												}
-												
-											}
-									
-										?>
-										
-										</table>
-										<table align = "center" width = "100%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
-										<form method = "POST" action = "fooldal.php" enctype = "multipart/form-data" name = "login_index">
-											<tr>
-												<td width = "100%"><input style = "text-align: left; padding: 4;"type = "submit" class = "inputlog" value = "Kijelentkezés" name = "kijelentkezes_dropdown" /></td>
-											</tr>
-										</form>
+										<tr>
+											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="kijelentkezes.php";'>Kijelentkezés</td></button>
+										</tr>
 										</table>
 									</div>
 	
@@ -262,16 +156,17 @@
 					
 						<tr>
 							<td height = "33px" id = "styleofwords10" >Márka<font id = "styleofwords12"></font></td>
-							<td height = "33px" id = "styleofwords11"><input  type = "number"  
-							style="height:26px;" name = "marka_id" size = "45" placeholder = "pl.: Mercedes" required/>
+							<td height = "33px" id = "styleofwords11"><input  type = "text"  
+							style="height:26px;" name = "automarka_id" size = "45" placeholder = "pl.: Mercedes" required/>
 						
 							</td>
 						</tr>
+						
 						<tr>
-							<td height = "33px" id = "styleofwords7" >Jármű típusa<font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords9"><input type = "text" 
-							style="height:26px;" name = "jarmutipus_id" size = "45" placeholder = "Autó/Motor" required /></td>
+							<td height = "33px" id = "styleofwords7" >Márka típusa<font id = "styleofwords8"></font></td>
+							<td height = "33px" id = "styleofwords9"><input type = "text" style="height:26px;" name = "marka_tipus" size = "45" required /></td>
 						</tr>
+						
 						<tr>
 							<td height = "33px" id = "styleofwords10" >Ár (1-6 napig)<font id = "styleofwords12"></font></td>
 							<td height = "33px" id = "styleofwords11"><input type = "number" 
@@ -285,10 +180,7 @@
 							<td height = "33px" id = "styleofwords10" >Ár (31-365 napig)<font id = "styleofwords12"></font></td>
 							<td height = "33px" id = "styleofwords11"><input type = "number" style="height:26px;" name = "ar_3" size = "45" height = "20" required /></td>
 						</tr>
-						<tr>
-							<td height = "33px" id = "styleofwords7" >Márka típusa<font id = "styleofwords8"></font></td>
-							<td height = "33px" id = "styleofwords9"><input type = "text" style="height:26px;" name = "marka_tipus" size = "45" required /></td>
-						</tr>
+						
 						<tr>
 							<td height = "33px" id = "styleofwords10" >Évjárat<font id = "styleofwords12"></font></td>
 							<td height = "33px" id = "styleofwords11"><input type = "number" style="height:26px;" name = "evjarat" size = "45" required /></td>
@@ -356,8 +248,8 @@
 						
 							if(isset($_POST['autofelvetel'])){
 								
-								$marka_id = $_POST['marka_id'];
-								$jarmutipus_id = $_POST['jarmutipus_id'];
+								$automarka_id = $_POST['automarka_id'];
+								
 								$ar_1 = $_POST['ar_1'];
 								$ar_2 = $_POST['ar_2'];
 								$ar_3 = $_POST['ar_3'];
@@ -382,11 +274,11 @@
 		
 								
 								$sql = "INSERT INTO auto
-											(marka_id, jarmutipus_id, ar_1, ar_2, ar_3, marka_tipus,
+											(automarka_id, jarmutipus_id, ar_1, ar_2, ar_3, marka_tipus,
 											evjarat, allapot, km_ora_allasa, szallithato_szemelyek, uzemanyag,
 											hengerurtartalom, teljesitmeny, sajat_tomeg, maximalis_tomeg,
 											tank_meret, atlagfogyasztas, vegsebesseg, gyorsulas, oktanszam) 
-											VALUES('".$marka_id."','".$jarmutipus_id."','".$ar_1."','".$ar_2."',
+											VALUES('".$automarka_id."','Autó','".$ar_1."','".$ar_2."',
 											'".$ar_3."','".$marka_tipus."','".$evjarat."','".$allapot."','".$km_ora_allasa."',
 											'".$szallithato_szemelyek."','".$uzemanyag."','".$hengerurtartalom."',
 											'".$teljesitmeny."','".$sajat_tomeg."','".$maximalis_tomeg."','".$tank_meret."',
@@ -396,20 +288,15 @@
 								mysqli_query($conn, $sql);
 								$last_id = mysqli_insert_id($conn);
 								
-								$carNameSql = "SELECT marka.megnevezes, auto.marka_tipus FROM marka, auto
-												WHERE marka.id = auto.marka_id AND auto.id = '".$last_id."'";
-								//echo $carNameSql;
-								$carName = mysqli_query($conn, $carNameSql);
-								while($row = mysqli_fetch_assoc($carName)) {
-									echo '<div align = "center">
+							
+								echo '<div align = "center">
 											<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
 												<tr>
-													<td height = "33px" id = "styleofwords7a2">Hozzáadtuk az adatbázishoz a következő autót: '.$row["megnevezes"].' '.$marka_tipus.'</td>
+													<td height = "33px" id = "styleofwords7a2">Hozzáadtuk az adatbázishoz a következő autót: '.$automarka_id.' '.$marka_tipus.'</td>
 													<td height = "33px" id = "styleofwords7a2"></td>
 												</tr>
 											</table>
 										</div>';
-								}
 								
 							}
 

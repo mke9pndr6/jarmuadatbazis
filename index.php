@@ -78,10 +78,11 @@
 								$login_jelszo = $_POST['login_jelszo'];
 								
 								$adminf = "admin";
-								$adminj = "adminho";							
+								$adminj = "admin";							
 								
 								$login_sql = "SELECT Felhasznalo.felhasznalo_nev, Felhasznalo.jelszo FROM Felhasznalo
 								WHERE Felhasznalo.felhasznalo_nev = '".$login_felh_nev."' AND Felhasznalo.jelszo = '".$login_jelszo."' LIMIT 1";
+								
 								
 								$login_user = mysqli_query($conn, $login_sql);
 								$count_loggedinuser = mysqli_num_rows($login_user);
