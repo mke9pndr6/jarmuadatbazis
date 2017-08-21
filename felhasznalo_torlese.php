@@ -10,6 +10,7 @@
 
 
 <?php 
+	ob_start();
 	include('connection.php');
 	include('controller.php');
 	//include('style.css');
@@ -217,7 +218,8 @@
 										$delete_loggedin_user = "DELETE FROM belepes WHERE felhasznalo_nev = '".$felhasznalo_nev."'";
 										mysqli_query($conn, $delete_loggedin_user);
 										
-										header("location: index.php");
+										header("refresh: 2; url = index.php");
+										ob_end_flush();
 									}
 									
 									//ha a megadott jelszavak nem egyeznek meg, akkor hibaüzenet
