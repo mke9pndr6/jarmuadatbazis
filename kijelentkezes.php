@@ -162,12 +162,12 @@
 						<tr>
 							<td height = "33px" id = "styleofwords7" >Felhasználónév<font id = "styleofwords8"></font></td>
 							<td height = "33px" id = "styleofwords9"><input type = "text" 
-							style="height:26px;" name = "felhasznalo_nev" size = "45" placeholder = "" required /></td>
+							style="height:26px;" name = "felhasznalo_nev" size = "45" placeholder = "Adja meg felhasználónevét..." required /></td>
 						</tr>
 						<tr>
 							<td height = "33px" id = "styleofwords10" >Jelszó<font id = "styleofwords12"></font></td>
 							<td height = "33px" id = "styleofwords11"><input  type = "password"  
-							style="height:26px;" name = "password" size = "45" placeholder = "Adja meg régi jelszavát..." required/>
+							style="height:26px;" name = "password" size = "45" placeholder = "Adja meg jelszavát..." required/>
 						
 							</td>
 						</tr>
@@ -231,7 +231,7 @@
 											<div align = "center">
 												<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
 													<tr>
-														<td width = "100%"><input type = "submit" class = "input" value = "Jelszó módosítása" name = "jelszomodositasa" /></td>
+														<td width = "100%"><input type = "submit" class = "input" value = "Kijelentkezés" name = "kijelentkezes" /></td>
 													</tr>
 												</table>
 											</div>');

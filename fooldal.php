@@ -181,13 +181,19 @@
 				while($row = mysqli_fetch_assoc($cars)){
 					
 						echo '
+						
 							<div align = "center" id = "cars">
-								<table align = "center" width = "70%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = "border-style: solid; border-width: 0.5px;
-								margin: 0 0.5px 0 0; border-color: #000;background: rgb(38 ,98, 133); font-family: Electrolize; color: #ffffff; font-size: 14.5px; border-radius: 22 22 19 19" >
+								<table align = "center" width = "60%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = "border-style: solid; border-width: 0px;
+								margin: 0 0px 0 0; border-color: #000;background: rgb(0, 81, 119); display: inline-block; font-family: Electrolize; color: #ffffff; font-size: 14.5px; border-radius: 0 0 19 19" >
 								<tr>
 									<td width = "25%" height = "20px" style = "padding: 0% 0% 0% 6%;" align = "left"><u>'.$rowindex++.'</u></td>
 									<td width = "10%" height = "20px"> </td>
 									<td width = "65%" height = "300px" rowspan = "17" ><img alt = "Mercedes-Benz CLA 220" id = "myImg" src = "pictures/cla220.jpg" style = "width: 100%; height: 100%;"></td>
+								</tr>
+								<tr>
+									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Kategória</td>
+									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["kategoria"].'</td>
+									
 								</tr>
 								
 								<tr>
@@ -273,22 +279,17 @@
 								<tr>
 									<td width = "50%" colspan = "3"><input type = "submit" onclick = "loginMessage()" class = "input" value = "Kölcsönzés" name = "kolcsonzes" /></td>
 								</tr>
-							</table>
-						</div>
-						
-						
-						</br>
-						</br>
-						</br>
-						</br>
-						</br>
-						</br>';	
-												
-						}
-						
+							</table> 
+							</div>
+							<div align = "center">
+								<div style="text-align: center;height: 15px; background-color: #E6E6E6; width:60%;"></div>
+							</div>
+							';
+				}
 			}
-			
-			?>
+					
+		?>
+				
 				
 				
 			<div id="myModal" class="modal">

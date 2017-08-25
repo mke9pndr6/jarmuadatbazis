@@ -153,6 +153,13 @@
 							<td height = "0px"  width = "90%" id = "styleofwords2a"><font id = "styleofwords2a">Autók hozzáadása az adatbázishoz</font></td>
 							<td height = "0px"  width = "10%" id = "styleofwords2a"><font id = "styleofwords2a"></font></td>
 						</tr>
+						<tr>
+							<td height = "33px" id = "styleofwords10" >Kategória<font id = "styleofwords12"></font></td>
+							<td height = "33px" id = "styleofwords11"><input  type = "text"  
+							style="height:26px;" name = "kategoria" size = "45" placeholder = "pl.: SpOrtkocsi/SUV" required/>
+						
+							</td>
+						</tr>
 					
 						<tr>
 							<td height = "33px" id = "styleofwords10" >Márka<font id = "styleofwords12"></font></td>
@@ -249,7 +256,7 @@
 							if(isset($_POST['autofelvetel'])){
 								
 								$automarka_id = $_POST['automarka_id'];
-								
+								$kategoria = $_POST['kategoria'];
 								$ar_1 = $_POST['ar_1'];
 								$ar_2 = $_POST['ar_2'];
 								$ar_3 = $_POST['ar_3'];
@@ -274,11 +281,11 @@
 		
 								
 								$sql = "INSERT INTO auto
-											(automarka_id, jarmutipus_id, ar_1, ar_2, ar_3, marka_tipus,
+											(kategoria, automarka_id, jarmutipus_id, ar_1, ar_2, ar_3, marka_tipus,
 											evjarat, allapot, km_ora_allasa, szallithato_szemelyek, uzemanyag,
 											hengerurtartalom, teljesitmeny, sajat_tomeg, maximalis_tomeg,
 											tank_meret, atlagfogyasztas, vegsebesseg, gyorsulas, oktanszam) 
-											VALUES('".$automarka_id."','Autó','".$ar_1."','".$ar_2."',
+											VALUES('".$kategoria."','".$automarka_id."','Autó','".$ar_1."','".$ar_2."',
 											'".$ar_3."','".$marka_tipus."','".$evjarat."','".$allapot."','".$km_ora_allasa."',
 											'".$szallithato_szemelyek."','".$uzemanyag."','".$hengerurtartalom."',
 											'".$teljesitmeny."','".$sajat_tomeg."','".$maximalis_tomeg."','".$tank_meret."',
