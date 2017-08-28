@@ -53,7 +53,7 @@
 								
 								while($getCars = mysqli_fetch_assoc($listCars)){
 						
-										echo '<form method = "POST" action = "autok.php" enctype = "multipart/form-data" name = "login_index">
+										echo '<form method = "GET" action = "autok.php" enctype = "multipart/form-data" name = "click_on_car">
 											<input type = "submit" value = "'.$getCars['id'].'" name = "click_on_car" />
 										</form>';
 								}
@@ -72,7 +72,7 @@
 								$listMotors = $AllCars->ListMotors();
 								
 								while($getMotors = mysqli_fetch_assoc($listMotors)){
-									echo '<form method = "POST" action = "motorok.php" enctype = "multipart/form-data" name = "login_index">
+									echo '<form method = "GET" action = "motorok.php" enctype = "multipart/form-data" name = "login_index">
 											<input type = "submit" value = "'.$getMotors['id'].'" name = "click_on_motor" />
 										</form>';
 								}

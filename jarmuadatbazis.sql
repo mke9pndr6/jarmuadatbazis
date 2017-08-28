@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2017. Aug 25. 18:02
+-- Létrehozás ideje: 2017. Aug 28. 16:10
 -- Kiszolgáló verziója: 10.1.21-MariaDB
 -- PHP verzió: 5.6.30
 
@@ -28,6 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `auto` (
   `id` int(10) NOT NULL,
+  `fenykep` varchar(100000),
   `kategoria` varchar(100) NOT NULL,
   `automarka_id` varchar(60) NOT NULL,
   `jarmutipus_id` varchar(60) NOT NULL,
@@ -50,6 +51,12 @@ CREATE TABLE `auto` (
   `gyorsulas` float NOT NULL,
   `oktanszam` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- A tábla adatainak kiíratása `auto`
+--
+
+
 
 -- --------------------------------------------------------
 
@@ -93,7 +100,8 @@ CREATE TABLE `belepes` (
 --
 
 INSERT INTO `belepes` (`felhasznalo_nev`, `jelszo`) VALUES
-('admin', 'admin');
+('admin', 'admin'),
+('Anonymous', 'nopassword');
 
 -- --------------------------------------------------------
 
@@ -126,6 +134,7 @@ CREATE TABLE `felhasznalo` (
 
 INSERT INTO `felhasznalo` (`felhasznalo_nev`, `jelszo`, `vezetek_nev`, `kereszt_nev`, `szemelyig_szam`, `anyja_vnev`, `anyja_knev`, `email`, `telszam`, `ir_szam`, `varos`, `utca`, `hazszam`, `szuletesi_hely`, `szuletesi_ido`, `hozzaszolas`) VALUES
 ('admin', 'admin', '-', '-', '-', '-', '-', '', 0, 0, '-', '-', 0, '-', '2017-08-01', NULL),
+('Anonymous', 'nopassword', '-', '-', '01', '-', '-', 'noemail@noemail.noemail', 0, 0, '-', '-', 0, '-', '2017-08-25', NULL),
 ('macskacsa1212', 'macskacsa', 'Próba', 'Kacsa', '----', '-', '-', 'dfsd@dfsdfsdf.dsf', 0, 0, '-', '-', 0, 'Szeged', '2019-08-21', NULL),
 ('main_profile', 'alma', 'Nagy', 'Tivadar', '124490CN', 'Görög', 'Annamária', '', 0, 0, '-', '-', 0, 'Szeged', '2018-08-21', NULL),
 ('PókVagyok', 'pókvagyok', 'Pók', 'Vagyok', 'PókSzig', 'Pók', 'Ocska', 'Pok@ocs.ka', 0, 0, '-', '-', 0, '-', '2017-08-10', NULL);
@@ -149,7 +158,16 @@ CREATE TABLE `hozzaszolasok` (
 --
 
 INSERT INTO `hozzaszolasok` (`id`, `felhasznalo_nev`, `hozzaszolas`, `kategoria`, `datum`) VALUES
-(51, 'admin', 'Kedves vásárlónk! </br>\nÍrja meg véleményét az autókról, motorokról, vagy fejtse ki gondolatait egyéb témában. </br>\nKészséggel válaszolunk minden felmerülő kérdésre! </br>\nNyitólapunkon a tíz legújabb autónk közül választhat! </br>\nÜdvözlettel, </br>\nAdmin\n\n\n\n', 'Autó', '2017-08-25');
+(59, 'admin', 'Kedves vásárlónk! </br>\r\nÍrja meg véleményét az autókról, motorokról, vagy fejtse ki gondolatait egyéb témában.  </br>\r\nKészséggel válaszolunk minden felmerülő kérdésre! </br>\r\nNyitólapunkon a tíz legújabb autónk közül választhat! </br>\r\nÜdvözlettel, </br>\r\nAdmin ', 'Egyéb', '2017-08-25 18:06:38'),
+(60, 'main_profile', 'Tisztelt admin! </br>\r\nÉrdeklődnék, hogy az Alfa Romeo 159 14 napos kölcsönzése mennyibe kerülne összesen, illetve naponta? </br>\r\nÜdvözlettel, </br>\r\nNagy Tivadar ', 'Autó', '2017-08-25 18:09:14'),
+(65, 'admin', 'Kedves Tivadar! </br>\nAz Alfa Romeo 159 típusú személygépkocsi tizennégy napos kölcsönzése a második árkategóriába </br>\nesik, így ennek ára naponta 12990 HUF, összesen pedig 181860 HUF. </br>\nÜdvözlettel, </br>\nAdmin', 'Autó', '2017-08-25 18:16:20'),
+(66, 'main_profile', 'Köszönöm válaszát! </br>\r\nÜdv, </br>\r\nNagy Tivadar', 'Autó', '2017-08-25 18:29:09'),
+(67, 'admin', 'Nincs mit öccse', 'Autó', '2017-08-25 18:31:14'),
+(87, 'Anonymous', 'No name found\r\n', 'Autó', '2017-08-25 18:54:26'),
+(107, 'Anonymous', 'Tisztelt xy! </br>\r\nMerre találom önöket helyileg? </br>\r\nÜdvözlettel,\r\nTóth Árpád', 'Autó', '2017-08-25 19:35:27'),
+(109, 'admin', 'mittomén árpi', 'Autó', '2017-08-25 19:37:30'),
+(114, 'Anonymous', 'Menyí a ferari dilomáló :D', 'Autó', '2017-08-26 16:29:46'),
+(151, 'Anonymous', '1st try\r\n', 'Autó', '2017-08-27 22:21:33');
 
 -- --------------------------------------------------------
 
@@ -193,6 +211,7 @@ INSERT INTO `jarmutipus` (`id`) VALUES
 
 CREATE TABLE `motor` (
   `id` int(10) NOT NULL,
+  `fenykep` varchar(100000),
   `kategoria` varchar(100) NOT NULL,
   `motormarka_id` varchar(60) NOT NULL,
   `jarmutipus_id` varchar(60) NOT NULL,
@@ -310,12 +329,12 @@ ALTER TABLE `motormarka`
 -- AUTO_INCREMENT a táblához `auto`
 --
 ALTER TABLE `auto`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT a táblához `hozzaszolasok`
 --
 ALTER TABLE `hozzaszolasok`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=152;
 --
 -- AUTO_INCREMENT a táblához `jarmukolcsonzes`
 --
@@ -325,7 +344,7 @@ ALTER TABLE `jarmukolcsonzes`
 -- AUTO_INCREMENT a táblához `motor`
 --
 ALTER TABLE `motor`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 --
 -- Megkötések a kiírt táblákhoz
 --

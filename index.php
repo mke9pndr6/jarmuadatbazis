@@ -36,12 +36,13 @@
 			<div align = "center">
 				<form method = "POST" action = "index.php" enctype = "multipart/form-data" name = "login">
 					<table align = "center" width = "38.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0"
-					style = "border-radius: 22 22 0 0;">
+					style = "border-radius: 22 22 0 0; background: linear-gradient(#0E0F15, #0B3861);">
 						<tr>
-							<td height = "33px" id = "styleofwords2a"><font id = "styleofwords2a">Jelentkezzen be a kölcsönzéshez!</font></td>
+							<td height = "33px" id = "styleofwords2a" style = "background: linear-gradient(#0E0F15, #0B3861);">
+							<font id = "styleofwords2a" style = "background: linear-gradient(#0E0F15, #0B3861);">Jelentkezzen be a kölcsönzéshez!</font></td>
 						</tr>
 						<tr>
-							<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"></font></td>
+							<td height = "33px" id = "styleofwords2" ><font id = "styleofwords2"></font></td>
 						</tr>
 						<tr>
 							<td height = "33px" id = "styleofwords2"><font id = "styleofwords2">Felhasználónév</font></td>

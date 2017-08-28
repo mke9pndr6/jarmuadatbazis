@@ -65,7 +65,7 @@
 								
 								while($getCars = mysqli_fetch_assoc($listCars)){
 						
-										echo '<form method = "POST" action = "autok.php" enctype = "multipart/form-data" name = "login_index">
+										echo '<form method = "GET" action = "autok.php" enctype = "multipart/form-data" name = "login_index">
 											<input type = "submit" value = "'.$getCars['id'].'" name = "click_on_car" />
 										</form>';
 								}
@@ -84,7 +84,7 @@
 								$listMotors = $AllCars->ListMotors();
 								
 								while($getMotors = mysqli_fetch_assoc($listMotors)){
-									echo '<form method = "POST" action = "motorok.php" enctype = "multipart/form-data" name = "login_index">
+									echo '<form method = "GET" action = "motorok.php" enctype = "multipart/form-data" name = "login_index">
 											<input type = "submit" value = "'.$getMotors['id'].'" name = "click_on_motor" />
 										</form>';
 								}
@@ -150,14 +150,14 @@
 		
 			<?php
 			
-			if(isset($_POST['click_on_motor'])){
+			if(isset($_GET['click_on_motor'])){
 			/*$sql = "SELECT * FROM `auto` ORDER BY evjarat LIMIT 10";
 			$result = mysqli_query($conn, $sql);
 
 			if (mysqli_num_rows($result) > 0) {
 				// output data of each row
 				while($row = mysqli_fetch_assoc($result)){}*/
-			$getMotorName = $_POST['click_on_motor'];
+			$getMotorName = $_GET['click_on_motor'];
 			$ChooseMotors = "SELECT * FROM `motor` WHERE motormarka_id = '".$getMotorName."'";
 			$cars = mysqli_query($conn, $ChooseMotors);
 			
@@ -174,7 +174,7 @@
 									<tr>
 										<td width = "25%" height = "20px" style = "padding: 0% 0% 0% 6%;" align = "left"><u>'.$rowindex++.'</u></td>
 										<td width = "10%" height = "20px"> </td>
-										<td width = "65%" height = "300px" rowspan = "17" ><img id="myImg" src = "pictures/cla220.jpg" id = "effectscale" style = "width: 100%; height: 100%;"></td>
+										<td width = "65%" height = "300px" rowspan = "17" >'.$row["fenykep"].'</td>
 									</tr>
 									<tr>
 										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Márka </td>
@@ -218,7 +218,7 @@
 									</tr>
 									<tr>
 										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Hengerűrtartalom</td>
-										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["hengerurtartalom"].' cm3</td>
+										<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["hengerurtartalom"].' cm<sup>3</sup></td>
 									</tr>
 									<tr>
 										<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Teljesítmény </td>

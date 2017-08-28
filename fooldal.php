@@ -65,7 +65,7 @@
 								
 								while($getCars = mysqli_fetch_assoc($listCars)){
 						
-										echo '<form method = "POST" action = "autok.php" enctype = "multipart/form-data" name = "login_index">
+										echo '<form method = "GET" action = "autok.php" enctype = "multipart/form-data" name = "click_on_car">
 											<input type = "submit" value = "'.$getCars['id'].'" name = "click_on_car" />
 										</form>';
 								}
@@ -84,7 +84,7 @@
 								$listMotors = $AllCars->ListMotors();
 								
 								while($getMotors = mysqli_fetch_assoc($listMotors)){
-									echo '<form method = "POST" action = "motorok.php" enctype = "multipart/form-data" name = "login_index">
+									echo '<form method = "GET" action = "motorok.php" enctype = "multipart/form-data" name = "login_index">
 											<input type = "submit" value = "'.$getMotors['id'].'" name = "click_on_motor" />
 										</form>';
 								}
@@ -145,24 +145,25 @@
 			</br>
 			</br>
 			</br>
+			</br>
+			</br>
 			
 			<div align = "center">
 						
-						<table align = "center" width = "100%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = " border-color: #ff0000; font-family: Electrolize; color: #fff; font-size: 40px;">
-							<tr>
+						<div align = "center" id = "cars">
+								<table align = "center" width = "65%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = "border-style: solid; border-width: 0px;
+								margin: 0 0px 0 0; border-color: #000;background: linear-gradient(#0E0F15, #0B3861); display: inline-block; font-family: Electrolize; color: #ffffff; font-size: 32px; border-radius: 19 19 0 0" >
+								<tr>
 								<td width = "15%"></td>
-								<td width = "70%" align = "center">Tíz legújabb autónk</td>
+								<td width = "70%" align = "center" style = "padding: 10px;">Válasszon legújabb autóink közül!</td>
 								<td width = "15%"></td>
 								
 							</tr>
 						</table>
 					</div>
 					
-					</br>
-			</br>
-			</br>
-			</br>
-		
+					
+			
 			<?php
 			
 			
@@ -178,17 +179,23 @@
 			
 			$rowindex = 1;
 			if (mysqli_num_rows($cars) > 0){
+				
+					echo'
+						<div align = "center">
+								<div style="text-align: center;height: 15px; background-color: #E6E6E6; width:65%;"></div>
+						</div>';
 				while($row = mysqli_fetch_assoc($cars)){
 					
 						echo '
 						
 							<div align = "center" id = "cars">
-								<table align = "center" width = "60%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = "border-style: solid; border-width: 0px;
-								margin: 0 0px 0 0; border-color: #000;background: rgb(0, 81, 119); display: inline-block; font-family: Electrolize; color: #ffffff; font-size: 14.5px; border-radius: 0 0 19 19" >
+								<table align = "center" width = "65%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = "border-style: solid; border-width: 0px;
+								margin: 0 0px 0 0; border-color: #000;background: linear-gradient(#0E0F15, #0B3861); display: inline-block; font-family: Electrolize; color: #ffffff; font-size: 14.5px; border-radius: 0 0 19 19" >
 								<tr>
 									<td width = "25%" height = "20px" style = "padding: 0% 0% 0% 6%;" align = "left"><u>'.$rowindex++.'</u></td>
 									<td width = "10%" height = "20px"> </td>
-									<td width = "65%" height = "300px" rowspan = "17" ><img alt = "Mercedes-Benz CLA 220" id = "myImg" src = "pictures/cla220.jpg" style = "width: 100%; height: 100%;"></td>
+									<td width = "65%" height = "300px" rowspan = "17" >
+									<img class = "pop-out" src = "'.$row["fenykep"].'" style = "width: 100%; height: 100%;"></td>
 								</tr>
 								<tr>
 									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Kategória</td>
@@ -242,7 +249,7 @@
 								</tr>
 								<tr>
 									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Hengerűrtartalom</td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["hengerurtartalom"].' cm3</td>
+									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["hengerurtartalom"].' cm<sup>3</sup></td>
 								</tr>
 								<tr>
 									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Teljesítmény </td>
@@ -277,49 +284,20 @@
 									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;"></td>
 								</tr>
 								<tr>
-									<td width = "50%" colspan = "3"><input type = "submit" onclick = "loginMessage()" class = "input" value = "Kölcsönzés" name = "kolcsonzes" /></td>
+									<td width = "50%" colspan = "3">
+									<input type = "submit" onclick = "loginMessage()" class = "input" style = "border-radius: 0 0 0 0;" value = "Kölcsönzés" name = "kolcsonzes" /></td>
 								</tr>
 							</table> 
 							</div>
 							<div align = "center">
-								<div style="text-align: center;height: 15px; background-color: #E6E6E6; width:60%;"></div>
+								<div style="text-align: center;height: 15px; background-color: #E6E6E6; width:65%;"></div>
 							</div>
 							';
 				}
 			}
 					
 		?>
-				
-				
-				
-			<div id="myModal" class="modal">
-			  <span class="close">&times;</span>
-				<img class="modal-content" id="img01">
-				<div id="caption"></div>
-			</div>
-
-			<script>
-			// Get the modal
-			var modal = document.getElementById('myModal');
-
-			// Get the image and insert it inside the modal - use its "alt" text as a caption
-			var img = document.getElementById('myImg');
-			var modalImg = document.getElementById("img01");
-			var captionText = document.getElementById("caption");
-			img.onclick = function(){
-				modal.style.display = "block";
-				modalImg.src = this.src;
-				captionText.innerHTML = this.alt;
-			}
-
-			// Get the <span> element that closes the modal
-			var span = document.getElementsByClassName("close")[0];
-
-			// When the user clicks on <span> (x), close the modal
-			span.onclick = function() { 
-				modal.style.display = "none";
-			}
-			</script>	
 			
+		</br></br>
 	</body>
 </html>
