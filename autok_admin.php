@@ -52,7 +52,7 @@
 				<div id = "container">
 				<ul id = "menu">
 					<li>
-						<a href="autok_osszes.php">Autók</a>
+						<a href="autok_osszes_admin.php">Autók</a>
 						<div>
 							<?php
 								class Cars extends Controller{}
@@ -65,7 +65,7 @@
 								
 								while($getCars = mysqli_fetch_assoc($listCars)){
 						
-										echo '<form method = "GET" action = "autok.php" enctype = "multipart/form-data" name = "click_on_car">
+										echo '<form method = "GET" action = "autok_admin.php" enctype = "multipart/form-data" name = "click_on_car">
 											<input type = "submit" value = "'.$getCars['id'].'" name = "click_on_car" />
 										</form>';
 								}
@@ -74,7 +74,7 @@
 						</div>
 					</li>	
 					<li>
-						<a href="motorok_osszes.php">Motorok</a>
+						<a href="motorok_osszes_admin.php">Motorok</a>
 						<div>
 							<?php
 								class Motors extends Controller{}
@@ -84,7 +84,7 @@
 								$listMotors = $AllCars->ListMotors();
 								
 								while($getMotors = mysqli_fetch_assoc($listMotors)){
-									echo '<form method = "GET" action = "motorok.php" enctype = "multipart/form-data" name = "login_index">
+									echo '<form method = "GET" action = "motorok_admin.php" enctype = "multipart/form-data" name = "login_index">
 											<input type = "submit" value = "'.$getMotors['id'].'" name = "click_on_motor" />
 										</form>';
 								}
@@ -93,19 +93,30 @@
 						</div>
 					</li>
 					<li>
-						<a href="hozzaszolasok.php">Összes jármű</a>
+						<a href="hozzaszolasok_admin.php">Összes jármű</a>
 						<div>
 							<?php
 								class Vehicles extends Controller{}
 								
-								echo '<a href = "autok_osszes.php">Autók</a>';
-								echo '<a href = "motorok_osszes.php">Motorok</a>';
+								echo '<a href = "autok_osszes_admin.php">Autók</a>';
+								echo '<a href = "motorok_osszes_admin.php">Motorok</a>';
 							
 							?>
 						</div>
 					</li>
-					<li><a href="fooldal.php">Nyitólap</a><div align = "center"><a href = "hozzaszolasok.php">Hozzászólások</a></div></li>
-					<li><a href="kereses.php">Keresés</a></li>
+					<li><a href="adminpage.php">Nyitólap</a>
+						<div align = "center">
+							
+							<a href = "autok_hozzaadasa.php">Autók felvétele</a>
+							<a href = "autok_modositasa.php">Autók módosítása</a>
+							<a href = "autok_torlese.php">Autók törlése</a>
+							<a href = "motorok_hozzaadasa.php">Motorok felvétele</a>
+							<a href = "motorok_modositasa.php">Motorok módosítása</a>
+							<a href = "motorok_torlese.php">Motorok törlése</a>
+							<a href = "hozzaszolasok.php">Hozzászólások</a>
+						</div>
+					</li>
+					<li><a href="kereses_admin.php">Keresés</a></li>
 					<li>
 					
 						<a href="felhasznalo_profil.php">Profilom</a>
@@ -260,7 +271,7 @@
 											';
 											?>
 											
-											<input type = "button" onclick = "location.href='hozzaszolasok.php';" class = "comment" value = "Vélemény írása"/></td>
+											<input type = "button" onclick = "location.href='hozzaszolasok_admin.php';" class = "comment" value = "Vélemény írása"/></td>
 											<?php
 											echo '
 										</tr>

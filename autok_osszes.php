@@ -32,7 +32,23 @@
 					$(this).parent().find("ul").slideDown("slow");
 				});
 			});
+			  
+			  
+			//click on the "tetszik" button increments the value of the number 
+			function incrementValue(){
+				var value = parseInt(document.getElementById('number').value, 10);
+				value = isNaN(value) ? 0 : value;
+				value++;
+				document.getElementById('number').value = value;
+			}
+		
 		</script>
+		
+		<style type="text/css">
+			  
+			  input[type="checkbox"]:required:invalid + label { color: red;}
+			  input[type="checkbox"]:required:valid + label { color: white; }
+		</style>
 		
 		<script>
 				function loginMessage() {
@@ -171,7 +187,7 @@
 					color: #ffffff; font-size: 14.5px; border-radius: 19 19 0 0;" >
 					<form method = "GET" action = "autok_osszes.php" enctype = "multipart/form-data" name = "car_list_on_click">
 					<tr style = "padding: 0 0 10 20">
-						<td colspan = "1"style = "padding: 10 10 10 20; font-size: 15px; text-align: left; width: 20%;">Részletes keresés</td>
+						<td colspan = "1"style = "padding: 10 10 10 20; font-size: 17px; text-align: left; width: 20%;">Részletes keresés</td>
 						<td colspan = "3" style = "padding: 10 10 10 0; width: 80%">
 						<input type = "submit" class = "input"  style = "padding: 0 20 0 20; border-radius: 0 19 0 0;"value = "Listázás" name = "autok_listazasa" /></td>
 					</tr>
@@ -241,6 +257,7 @@
 							</select>
 						</td>
 					</tr>
+			
 			
 			<?php
 				if(isset($_GET['autok_listazasa'])){
@@ -380,10 +397,22 @@
 										<tr>
 											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Végsebesség </td>
 											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["vegsebesseg"].' km/h</td>
+											<td>
+											';
+											?>
+											
+											<input type = "button" onclick = "location.href='hozzaszolasok.php';" class = "comment" value = "Vélemény írása"/></td>
+											<?php
+											echo '
 										</tr>
 										<tr>
 											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Gyorsulás (1-100)</td>
 											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["gyorsulas"].' mp</td>
+										
+										</tr>
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Oktánszám</td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["oktanszam"].' </td>
 										</tr>
 										<tr>
 											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right"></td>
@@ -504,12 +533,24 @@
 										<tr>
 											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Végsebesség </td>
 											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["vegsebesseg"].' km/h</td>
+											<td>
+											';
+											?>
+											
+											<input type = "button" onclick = "location.href='hozzaszolasok.php';" class = "comment" value = "Vélemény írása"/></td>
+											<?php
+											echo '
 										</tr>
 										<tr>
 											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Gyorsulás (1-100)</td>
 											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["gyorsulas"].' mp</td>
+										</tr
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Oktánszám</td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["oktanszam"].' </td>
 										</tr>
 										<tr>
+									
 											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right"></td>
 											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;"></td>
 										</tr>
@@ -528,7 +569,8 @@
 					}
 					
 			?>
-					
+			
+			
 		</br></br>
 	</body>
 </html>

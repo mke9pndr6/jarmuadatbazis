@@ -190,7 +190,7 @@
 						
 							<div align = "center" id = "cars">
 								<table align = "center" width = "65%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = "border-style: solid; border-width: 0px;
-								margin: 0 0px 0 0; border-color: #000;background: linear-gradient(#0E0F15, #0B3861); display: inline-block; font-family: Electrolize; color: #ffffff; font-size: 14.5px; border-radius: 0 0 19 19" >
+								margin: 0 0px 0 0; border-color: #000;background: linear-gradient(#0E0F15, #084B8A); display: inline-block; font-family: Electrolize; color: #ffffff; font-size: 14.5px; border-radius: 0 0 19 19" >
 								<tr>
 									<td width = "25%" height = "20px" style = "padding: 0% 0% 0% 6%;" align = "left"><u>'.$rowindex++.'</u></td>
 									<td width = "10%" height = "20px"> </td>
@@ -274,10 +274,21 @@
 								<tr>
 									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Végsebesség </td>
 									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["vegsebesseg"].' km/h</td>
+									<td>
+											';
+											?>
+											
+											<input type = "button" onclick = "location.href='hozzaszolasok.php';" class = "comment" value = "Vélemény írása"/></td>
+											<?php
+											echo '
 								</tr>
 								<tr>
 									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Gyorsulás (1-100)</td>
 									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["gyorsulas"].' mp</td>
+								</tr>
+								<tr>
+									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Oktánszám</td>
+									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["oktanszam"].' </td>
 								</tr>
 								<tr>
 									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right"></td>
@@ -285,7 +296,7 @@
 								</tr>
 								<tr>
 									<td width = "50%" colspan = "3">
-									<input type = "submit" onclick = "loginMessage()" class = "input" style = "border-radius: 0 0 0 0;" value = "Kölcsönzés" name = "kolcsonzes" /></td>
+									<input type = "submit" onclick = "loginMessage()" class = "input" style = "border-radius: 0 0 0 0; " value = "Kölcsönzés" name = "kolcsonzes" /></td>
 								</tr>
 							</table> 
 							</div>
@@ -298,6 +309,6 @@
 					
 		?>
 			
-		</br></br>
+		</br></br></br></br>
 	</body>
 </html>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2017. Aug 28. 16:10
+-- Létrehozás ideje: 2017. Aug 29. 17:10
 -- Kiszolgáló verziója: 10.1.21-MariaDB
 -- PHP verzió: 5.6.30
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `auto` (
   `id` int(10) NOT NULL,
-  `fenykep` varchar(100000),
+  `fenykep` mediumtext,
   `kategoria` varchar(100) NOT NULL,
   `automarka_id` varchar(60) NOT NULL,
   `jarmutipus_id` varchar(60) NOT NULL,
@@ -50,13 +50,24 @@ CREATE TABLE `auto` (
   `vegsebesseg` int(10) NOT NULL,
   `gyorsulas` float NOT NULL,
   `oktanszam` int(5) NOT NULL
+ 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- A tábla adatainak kiíratása `auto`
 --
 
-
+INSERT INTO `auto` (`id`, `fenykep`, `kategoria`, `automarka_id`, `jarmutipus_id`, `ar_1`, `ar_2`, `ar_3`, `marka_tipus`, `evjarat`, `allapot`, `km_ora_allasa`, `szallithato_szemelyek`, `uzemanyag`, `hengerurtartalom`, `teljesitmeny`, `sajat_tomeg`, `maximalis_tomeg`, `tank_meret`, `atlagfogyasztas`, `vegsebesseg`, `gyorsulas`, `oktanszam`) VALUES
+(12, 'pictures/jarmuadatbazis_kepek/bmw_i8.jpg', 'Sportautó', 'BMW', 'Autó', 59990, 55990, 46990, 'i8', 2016, 'Újszerű', 1920, 2, 'Elektromos/Benzin', 6229, 721, 1201, 1690, 50, 8.9, 341, 3.2, 95),
+(13, 'pictures/jarmuadatbazis_kepek/mercedes_cla220.jpg', 'Személyautó', 'Mercedes', 'Autó', 14990, 12990, 9990, 'CLA 220', 2013, 'Újszerű', 19920, 5, 'Benzin', 2189, 178, 1560, 1987, 60, 8.1, 220, 7.9, 95),
+(14, 'pictures/jarmuadatbazis_kepek/skoda_superb.jpg', 'Személyautó', 'Skoda', 'Autó', 11990, 9990, 7690, 'Superb', 2011, 'Újszerű', 23870, 5, 'Benzin', 1980, 160, 1790, 2390, 60, 8.8, 198, 8.8, 95),
+(15, 'pictures/jarmuadatbazis_kepek/infiniti_g37cabrio.jpg', 'Cabrio', 'Infiniti', 'Autó', 29990, 26990, 21990, 'G37 Cabrio', 2010, 'Újszerű', 15678, 4, 'Benzin', 3700, 320, 1800, 2400, 80, 9.8, 250, 5.2, 95),
+(16, 'pictures/jarmuadatbazis_kepek/ford_focus.jpg', 'Személyautó', 'Ford', 'Autó', 9890, 7890, 5890, 'Focus', 2015, 'Újszerű', 2980, 5, 'Benzin', 1600, 120, 1490, 1990, 50, 6.8, 180, 10.1, 95),
+(17, 'pictures/jarmuadatbazis_kepek/ferrari_california.jpg', 'Sportautó', 'Ferrari', 'Autó', 43990, 40990, 36990, 'California T', 2013, 'Újszerű', 1270, 2, 'Benzin', 4300, 450, 1340, 1790, 80, 12.9, 290, 4.4, 95),
+(18, 'pictures/jarmuadatbazis_kepek/suzuki_vitara.jpg', 'SUV', 'Suzuki', 'Autó', 9490, 8290, 5790, 'Vitara', 2014, 'Újszerű', 10089, 5, 'Dízel', 1400, 109, 1591, 2178, 50, 6.9, 172, 11.9, 95),
+(19, 'pictures/jarmuadatbazis_kepek/chevrolet_aveo.jpg', 'Személyautó', 'Chevrolet', 'Autó', 7890, 6490, 4390, 'Aveo', 2015, 'Újszerű', 12880, 4, 'Dízel', 1200, 89, 1190, 1680, 50, 6.2, 162, 12.2, 98),
+(20, 'pictures/jarmuadatbazis_kepek/audi_a1.jpg', 'Személyautó', 'Audi', 'Autó', 9990, 7590, 6190, 'A1', 2014, 'Újszerű', 2899, 5, 'Benzin', 1400, 120, 1101, 1588, 50, 7.2, 181, 10.8, 95),
+(21, 'pictures/jarmuadatbazis_kepek/audi_a7.jpg', 'Személyautó', 'Audi', 'Autó', 22990, 18990, 14990, 'A7', 2012, 'Újszerű', 13089, 5, 'Benzin', 3000, 250, 1700, 2391, 70, 10.8, 240, 6.5, 95);
 
 -- --------------------------------------------------------
 
@@ -167,7 +178,9 @@ INSERT INTO `hozzaszolasok` (`id`, `felhasznalo_nev`, `hozzaszolas`, `kategoria`
 (107, 'Anonymous', 'Tisztelt xy! </br>\r\nMerre találom önöket helyileg? </br>\r\nÜdvözlettel,\r\nTóth Árpád', 'Autó', '2017-08-25 19:35:27'),
 (109, 'admin', 'mittomén árpi', 'Autó', '2017-08-25 19:37:30'),
 (114, 'Anonymous', 'Menyí a ferari dilomáló :D', 'Autó', '2017-08-26 16:29:46'),
-(151, 'Anonymous', '1st try\r\n', 'Autó', '2017-08-27 22:21:33');
+(151, 'Anonymous', '1st try\r\n', 'Autó', '2017-08-27 22:21:33'),
+(152, 'macskacsa1212', 'macskacsa', 'Autó', '2017-08-29 16:24:28'),
+(153, 'Anonymous', 'adrika', 'Autó', '2017-08-29 16:24:36');
 
 -- --------------------------------------------------------
 
@@ -211,7 +224,7 @@ INSERT INTO `jarmutipus` (`id`) VALUES
 
 CREATE TABLE `motor` (
   `id` int(10) NOT NULL,
-  `fenykep` varchar(100000),
+  `fenykep` mediumtext,
   `kategoria` varchar(100) NOT NULL,
   `motormarka_id` varchar(60) NOT NULL,
   `jarmutipus_id` varchar(60) NOT NULL,
@@ -232,6 +245,8 @@ CREATE TABLE `motor` (
   `vegsebesseg` int(10) NOT NULL,
   `gyorsulas` float DEFAULT NULL,
   `munkautem` int(10) NOT NULL
+  
+  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -329,12 +344,12 @@ ALTER TABLE `motormarka`
 -- AUTO_INCREMENT a táblához `auto`
 --
 ALTER TABLE `auto`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT a táblához `hozzaszolasok`
 --
 ALTER TABLE `hozzaszolasok`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=152;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
 --
 -- AUTO_INCREMENT a táblához `jarmukolcsonzes`
 --

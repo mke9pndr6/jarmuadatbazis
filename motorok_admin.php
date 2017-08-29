@@ -23,7 +23,7 @@
 		
 	<head>
 		<title>
-			Kezdőlap
+			Motorok - admin
 		</title>
 		
 		<script type = "text/javascript">
@@ -52,7 +52,7 @@
 				<div id = "container">
 				<ul id = "menu">
 					<li>
-						<a href="autok_osszes.php">Autók</a>
+						<a href="autok_osszes_admin.php">Autók</a>
 						<div>
 							<?php
 								class Cars extends Controller{}
@@ -65,7 +65,7 @@
 								
 								while($getCars = mysqli_fetch_assoc($listCars)){
 						
-										echo '<form method = "GET" action = "autok.php" enctype = "multipart/form-data" name = "click_on_car">
+										echo '<form method = "GET" action = "autok_admin.php" enctype = "multipart/form-data" name = "login_index">
 											<input type = "submit" value = "'.$getCars['id'].'" name = "click_on_car" />
 										</form>';
 								}
@@ -74,7 +74,7 @@
 						</div>
 					</li>	
 					<li>
-						<a href="motorok_osszes.php">Motorok</a>
+						<a href="motorok_osszes_admin.php">Motorok</a>
 						<div>
 							<?php
 								class Motors extends Controller{}
@@ -84,7 +84,7 @@
 								$listMotors = $AllCars->ListMotors();
 								
 								while($getMotors = mysqli_fetch_assoc($listMotors)){
-									echo '<form method = "GET" action = "motorok.php" enctype = "multipart/form-data" name = "login_index">
+									echo '<form method = "GET" action = "motorok_admin.php" enctype = "multipart/form-data" name = "login_index">
 											<input type = "submit" value = "'.$getMotors['id'].'" name = "click_on_motor" />
 										</form>';
 								}
@@ -93,19 +93,32 @@
 						</div>
 					</li>
 					<li>
-						<a href="hozzaszolasok.php">Összes jármű</a>
+						<a href="hozzaszolasok_admin.php">Összes jármű</a>
 						<div>
 							<?php
 								class Vehicles extends Controller{}
 								
-								echo '<a href = "autok_osszes.php">Autók</a>';
-								echo '<a href = "motorok_osszes.php">Motorok</a>';
+								
+								echo '<a href = "autok_osszes_admin.php">Autók</a>';
+								
+								echo '<a href = "motorok_osszes_admin.php">Motorok</a>';
 							
 							?>
 						</div>
 					</li>
-					<li><a href="fooldal.php">Nyitólap</a><div align = "center"><a href = "hozzaszolasok.php">Hozzászólások</a></div></li>
-					<li><a href="kereses.php">Keresés</a></li>
+					<li><a href="adminpage.php">Nyitólap</a>
+						<div align = "center">
+							
+							<a href = "autok_hozzaadasa.php">Autók felvétele</a>
+							<a href = "autok_modositasa.php">Autók módosítása</a>
+							<a href = "autok_torlese.php">Autók törlése</a>
+							<a href = "motorok_hozzaadasa.php">Motorok felvétele</a>
+							<a href = "motorok_modositasa.php">Motorok módosítása</a>
+							<a href = "motorok_torlese.php">Motorok törlése</a>
+							<a href = "hozzaszolasok_admin.php">Hozzászólások</a>
+						</div>
+					</li>
+					<li><a href="kereses_admin.php">Keresés</a></li>
 					<li>
 					
 						<a href="felhasznalo_profil.php">Profilom</a>
@@ -125,10 +138,10 @@
 										<tr>
 											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="felhasznalo_torlese.php";'>Fiók törlése</td></button>
 										</tr>
-										
 										<tr>
 											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="kijelentkezes.php";'>Kijelentkezés</td></button>
 										</tr>
+										
 										</table>
 									</div>
 	
@@ -143,29 +156,25 @@
 			</br>
 			</br>
 			</br>
+			
 		
 			<?php
 			
-			if(isset($_GET['click_on_car'])){
+			if(isset($_GET['click_on_motor'])){
 			/*$sql = "SELECT * FROM `auto` ORDER BY evjarat LIMIT 10";
 			$result = mysqli_query($conn, $sql);
 
 			if (mysqli_num_rows($result) > 0) {
 				// output data of each row
 				while($row = mysqli_fetch_assoc($result)){}*/
-			$getCarName = $_GET['click_on_car'];
-			$ChooseCars = "SELECT * FROM `auto` WHERE automarka_id = '".$getCarName."'";
-			$cars = mysqli_query($conn, $ChooseCars);
+			$getMotorName = $_GET['click_on_motor'];
+			$ChooseMotors = "SELECT * FROM `motor` WHERE motormarka_id = '".$getMotorName."'";
+			$cars = mysqli_query($conn, $ChooseMotors);
 			
 			//echo $newestCarsIndex;
 			
 			$rowindex = 1;
 			if (mysqli_num_rows($cars) > 0){
-				
-				echo '<div align = "center">
-						<div style="text-align: center;height: 15px; background-color: #E6E6E6; width:65%;"></div>
-					</div>';
-					
 				while($row = mysqli_fetch_assoc($cars)){
 					
 						echo '
@@ -176,8 +185,9 @@
 										<tr>
 											<td width = "25%" height = "20px" style = "padding: 0% 0% 0% 6%;" align = "left"><u>'.$rowindex++.'</u></td>
 											<td width = "10%" height = "20px"> </td>
-											<td width = "65%" height = "300px" rowspan = "17" >
-									<img class = "pop-out" src = "'.$row["fenykep"].'" style = "width: 100%; height: 100%;"></td>
+											<td width = "65%" height = "300px" rowspan = "16" >
+											<img class = "pop-out" src = "'.$row["fenykep"].'" style = "width: 100%; height: 100%;"></td>
+											
 										</tr>
 										<tr>
 											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Kategória</td>
@@ -187,7 +197,7 @@
 										
 										<tr>
 											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Márka</td>
-											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["automarka_id"].'</td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["motormarka_id"].'</td>
 											
 										</tr>
 										
@@ -221,10 +231,7 @@
 											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Km/h állása </td>
 											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["km_ora_allasa"].' km</td>
 										</tr>
-										<tr>
-											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Szállítható személyek</td>
-											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["szallithato_szemelyek"].' fő</td>
-										</tr>
+										
 										<tr>
 											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Üzemanyag </td>
 											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["uzemanyag"].'</td>
@@ -253,9 +260,11 @@
 											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Átlagfogyasztás </td>
 											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["atlagfogyasztas"].' L/100km</td>
 										</tr>
+										
 										<tr>
-											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Végsebesség </td>
-											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["vegsebesseg"].' km/h</td>
+											<td width = "20%" height = "26px" style = "padding: 0% 2% 0% 0%;" align = "right">Végsebesség </td>
+											<td width = "20%" height = "26px" style = "padding: 0% 0% 0% 3%;">'.$row["vegsebesseg"].' km/h</td>
+
 											<td>
 											';
 											?>
@@ -265,17 +274,14 @@
 											echo '
 										</tr>
 										<tr>
-											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Gyorsulás (1-100)</td>
-											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["gyorsulas"].' mp</td>
-										
-										</tr>
-										<tr>
-											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Oktánszám</td>
-											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["oktanszam"].' </td>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Munkaütem</td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["munkautem"].' mp</td>
+											
 										</tr>
 										<tr>
 											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right"></td>
 											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;"></td>
+											
 										</tr>
 										<tr>
 											<td width = "50%" colspan = "3">
@@ -286,14 +292,13 @@
 									<div align = "center">
 										<div style="text-align: center;height: 15px; background-color: #E6E6E6; width:65%;"></div>
 									</div>
-									';		
+									';	
 												
 						}
 					}
 				}
 			?>
 				
-			</br></br>
 			
 	</body>
 </html>
