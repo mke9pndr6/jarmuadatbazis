@@ -186,6 +186,7 @@
 						</div>';
 				while($row = mysqli_fetch_assoc($cars)){
 					
+					
 						echo '
 						
 							<div align = "center" id = "cars">
@@ -294,9 +295,11 @@
 									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right"></td>
 									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;"></td>
 								</tr>
+								
 								<tr>
+									<form method = "get" action = "auto_kolcsonzes.php" enctype = "multipart/form-data" name = "comment">
 									<td width = "50%" colspan = "3">
-									<input type = "submit" onclick = "loginMessage()" class = "input" style = "border-radius: 0 0 0 0; " value = "Kölcsönzés" name = "kolcsonzes" /></td>
+									<input type = "submit" class = "input" style = "border-radius: 0 0 0 0; " value = "'.$row["kolcsonzes"].'" name = "'.$row["id"].'" /></td>
 								</tr>
 							</table> 
 							</div>
@@ -304,8 +307,15 @@
 								<div style="text-align: center;height: 15px; background-color: #E6E6E6; width:65%;"></div>
 							</div>
 							';
+						}
 				}
-			}
+							?>
+							<?php
+								
+							echo '</form>';
+							
+				
+					
 					
 		?>
 			

@@ -207,142 +207,160 @@
 						
 						if (mysqli_num_rows($carResult) > 0) {
 		
-						
+							echo '
+							<div align = "center">
+								<div style="text-align: center;height: 15px; background-color: #E6E6E6; width:65%;"></div>
+							</div>';
+							
 						while($row = mysqli_fetch_assoc($carResult)) {
 								
 								echo '
-						
-							<div align = "center" id = "cars">
-								<table align = "center" width = "65%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = "border-style: solid; border-width: 0px;
-								margin: 0 0px 0 0; border-color: #000;background: linear-gradient(#0E0F15, #0B3861); display: inline-block; font-family: Electrolize; color: #ffffff; font-size: 14.5px; border-radius: 0 0 19 19" >
-								<tr>
-									<td width = "25%" height = "20px" style = "padding: 0% 0% 0% 6%;" align = "left"><u>'.$rowindex++.'</u></td>
-									<td width = "10%" height = "20px"> </td>
-									<td width = "65%" height = "300px" rowspan = "17" >
+									
+									<div align = "center" id = "cars">
+										<table align = "center" width = "65%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = "border-style: solid; border-width: 0px;
+										margin: 0 0px 0 0; border-color: #000; background: linear-gradient(#0E0F15, #0B3861); display: inline-block; font-family: Electrolize; color: #ffffff; font-size: 14.5px; border-radius: 0 0 19 19" >
+										<tr>
+											<td width = "25%" height = "20px" style = "padding: 0% 0% 0% 6%;" align = "left"><u>'.$rowindex++.'</u></td>
+											<td width = "10%" height = "20px"> </td>
+											<td width = "65%" height = "300px" rowspan = "17" >
 									<img class = "pop-out" src = "'.$row["fenykep"].'" style = "width: 100%; height: 100%;"></td>
-								</tr>
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Kategória</td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["kategoria"].'</td>
-									
-								</tr>
-								
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Márka</td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["automarka_id"].'</td>
-									
-								</tr>
-								
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Márka típusa </td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["marka_tipus"].'</td>
-									
-								</tr>
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Ár naponta (1-6 nap) </td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["ar_1"].' HUF</td>
-									
-								</tr>
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Ár naponta (7-30 nap)</td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["ar_2"].' HUF</td>
-								</tr>
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Ár naponta (31-365 nap)</td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["ar_3"].' HUF</td>
-								</tr>
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Évjárat </td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["evjarat"].'</td>
-								</tr>
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Állapot </td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["allapot"].'</td>
-								</tr>
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Km/h állása </td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["km_ora_allasa"].' km</td>
-								</tr>
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Szállítható személyek</td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["szallithato_szemelyek"].' fő</td>
-								</tr>
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Üzemanyag </td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["uzemanyag"].'</td>
-								</tr>
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Hengerűrtartalom</td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["hengerurtartalom"].' cm<sup>3</sup></td>
-								</tr>
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Teljesítmény </td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["teljesitmeny"].' LE</td>
-								</tr>
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Saját tömeg </td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["sajat_tomeg"].' kg</td>
-								</tr>
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Maximális tömeg </td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["maximalis_tomeg"].' kg</td>
-								</tr>
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Tankméret </td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["tank_meret"].' L</td>
-								</tr>
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Átlagfogyasztás </td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["atlagfogyasztas"].' L/100km</td>
-								</tr>
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Végsebesség </td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["vegsebesseg"].' km/h</td>
-								</tr>
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Gyorsulás (1-100)</td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["gyorsulas"].' mp</td>
-								</tr>
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right"></td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;"></td>
-								</tr>
-								<tr>
-									<td width = "50%" colspan = "3">
-									<input type = "submit" onclick = "loginMessage()" class = "input" style="border-radius: 0;" value = "Kölcsönzés" name = "kolcsonzes" /></td>
-								</tr>
-							</table> 
-							</div>
-							<div align = "center">
-								<div style="text-align: center;height: 15px; background-color: #E6E6E6; width:65%;"></div>
-							</div>
-							';	
+										</tr>
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Kategória</td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["kategoria"].'</td>
+											
+										</tr>
+										
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Márka</td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["automarka_id"].'</td>
+											
+										</tr>
+										
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Márka típusa </td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["marka_tipus"].'</td>
+											
+										</tr>
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Ár naponta (1-6 nap) </td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["ar_1"].' HUF</td>
+											
+										</tr>
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Ár naponta (7-30 nap)</td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["ar_2"].' HUF</td>
+										</tr>
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Ár naponta (31-365 nap)</td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["ar_3"].' HUF</td>
+										</tr>
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Évjárat </td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["evjarat"].'</td>
+										</tr>
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Állapot </td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["allapot"].'</td>
+										</tr>
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Km/h állása </td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["km_ora_allasa"].' km</td>
+										</tr>
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Szállítható személyek</td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["szallithato_szemelyek"].' fő</td>
+										</tr>
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Üzemanyag </td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["uzemanyag"].'</td>
+										</tr>
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Hengerűrtartalom</td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["hengerurtartalom"].' cm<sup>3</sup></td>
+										</tr>
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Teljesítmény </td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["teljesitmeny"].' LE</td>
+										</tr>
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Saját tömeg </td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["sajat_tomeg"].' kg</td>
+										</tr>
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Maximális tömeg </td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["maximalis_tomeg"].' kg</td>
+										</tr>
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Tankméret </td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["tank_meret"].' L</td>
+										</tr>
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Átlagfogyasztás </td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["atlagfogyasztas"].' L/100km</td>
+										</tr>
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Végsebesség </td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["vegsebesseg"].' km/h</td>
+											<td>
+											';
+											?>
+											
+											<input type = "button" onclick = "location.href='hozzaszolasok.php';" class = "comment" value = "Vélemény írása"/></td>
+											<?php
+											echo '
+										</tr>
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Gyorsulás (1-100)</td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["gyorsulas"].' mp</td>
+										
+										</tr>
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Oktánszám</td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["oktanszam"].' </td>
+										</tr>
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right"></td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;"></td>
+										</tr>
+										<tr>
+											<td width = "50%" colspan = "3">
+											<input type = "submit" onclick = "loginMessage()" class = "input" style = "border-radius: 0 0 0 0;" value = "Kölcsönzés" name = "kolcsonzes" /></td>
+										</tr>
+									</table> 
+									</div>
+									<div align = "center">
+										<div style="text-align: center;height: 15px; background-color: #E6E6E6; width:65%;"></div>
+									</div>
+									';	
 						}
 						}
 					}
+					?>
+					
+					<?php
 					
 					
-					if(isset($_POST['motorkeres'])){
-							
-						$motorkeres = $_POST['motorsearch'];
-						$motorSearchSql = "SELECT * FROM motor WHERE motor.motormarka_id LIKE '%".$motorkeres."%'
-						or motor.marka_tipus LIKE '%".$motorkeres."%' or motor.uzemanyag LIKE '%".$motorkeres."%' or motor.allapot LIKE '%".$motorkeres."%';";
-						$motorResult = mysqli_query($conn, $motorSearchSql);
+					
+					if(isset($_GET['motorkeres'])){
 						
-						
-						/*$carSearchSql = "SELECT * FROM auto WHERE auto.automarka_id LIKE '%".$autokeres."%' or auto.marka_tipus LIKE '%".$autokeres."%';";
+						$autokeres = $_GET['motorsearch'];
+						$carSearchSql = "SELECT * FROM motor WHERE motor.motormarka_id LIKE '%".$autokeres."%'
+						or motor.marka_tipus LIKE '%".$autokeres."%' or motor.uzemanyag LIKE '%".$autokeres."%' or motor.allapot LIKE '%".$autokeres."%';";
 						$carResult = mysqli_query($conn, $carSearchSql);
-						$count_cars = mysqli_num_rows($carResult);*/
+						$count_cars = mysqli_num_rows($carResult);
+						//echo $carResult;
+						//echo $carSearchSql;
+						
 						$rowindex = 1;
 						
-						$count_motors = mysqli_num_rows($motorResult);
-						
-						if($count_motors >= 1){
+						if($count_cars >= 1){
 						echo '<div align = "center">
-								<table align = "center" width = "43.2%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = " border-color: #ff0000; font-family: Electrolize; color: #fff; font-size: 40px; background: linear-gradient(#0E0F15, #0B3861);">
+								<table align = "center" width = "43.2%" id = "cars" id = "styleofwords9"cellpadding = "0" cellspacing = "0" style = " border-color: #ff0000; font-family: Electrolize; color: #fff; font-size: 40px; background: linear-gradient(#0E0F15, #0B3861);
+								;">
 									<tr>
 										
-										<td width = "100%" align = "center">Találatok száma: '.$count_motors.' db </td>
+										<td width = "100%" align = "center">Találatok száma: '.$count_cars.' db </td>
 	
 									</tr>
 								</table>
@@ -352,9 +370,10 @@
 							</br>';
 						}
 						
-						if($count_motors == 0){
-						echo '<div align = "center">
-								<table align = "center" width = "43.2%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = " border-color: #ff0000; font-family: Electrolize; color: #fff; font-size: 40px; background: linear-gradient(#0E0F15, #0B3861);">
+						if($count_cars == 0){
+							echo '<div align = "center">
+								<table align = "center" width = "43.2%" id = "cars" id = "styleofwords9"cellpadding = "0" cellspacing = "0" style = " border-color: #ff0000; font-family: Electrolize; color: #fff; font-size: 40px; background: linear-gradient(#0E0F15, #0B3861);
+								;">
 									<tr>
 										
 										<td width = "100%" align = "center">Nincs találat </td>
@@ -367,127 +386,131 @@
 							</br>';
 						}
 						
-						while($row = mysqli_fetch_assoc($motorResult)) {
-							
-								echo '
-						
-							<div align = "center" id = "cars">
-								<table align = "center" width = "65%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = "border-style: solid; border-width: 0px;
-								margin: 0 0px 0 0; border-color: #000;background: linear-gradient(#0E0F15, #0B3861); display: inline-block; font-family: Electrolize; color: #ffffff; font-size: 14.5px; border-radius: 0 0 19 19" >
-								<tr>
-									<td width = "25%" height = "20px" style = "padding: 0% 0% 0% 6%;" align = "left"><u>'.$rowindex++.'</u></td>
-									<td width = "10%" height = "20px"> </td>
-									<td width = "65%" height = "300px" rowspan = "17" >
-									<img class = "pop-out" src = "'.$row["fenykep"].'" style = "width: 100%; height: 100%;"></td>
-								</tr>
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Kategória</td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["kategoria"].'</td>
-									
-								</tr>
-								
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Márka</td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["motormarka_id"].'</td>
-									
-								</tr>
-								
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Márka típusa </td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["marka_tipus"].'</td>
-									
-								</tr>
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Ár naponta (1-6 nap) </td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["ar_1"].' HUF</td>
-									
-								</tr>
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Ár naponta (7-30 nap)</td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["ar_2"].' HUF</td>
-								</tr>
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Ár naponta (31-365 nap)</td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["ar_3"].' HUF</td>
-								</tr>
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Évjárat </td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["evjarat"].'</td>
-								</tr>
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Állapot </td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["allapot"].'</td>
-								</tr>
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Km/h állása </td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["km_ora_allasa"].' km</td>
-								</tr>
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Szállítható személyek</td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["szallithato_szemelyek"].' fő</td>
-								</tr>
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Üzemanyag </td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["uzemanyag"].'</td>
-								</tr>
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Hengerűrtartalom</td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["hengerurtartalom"].' cm<sup>3</sup></td>
-								</tr>
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Teljesítmény </td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["teljesitmeny"].' LE</td>
-								</tr>
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Saját tömeg </td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["sajat_tomeg"].' kg</td>
-								</tr>
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Maximális tömeg </td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["maximalis_tomeg"].' kg</td>
-								</tr>
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Tankméret </td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["tank_meret"].' L</td>
-								</tr>
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Átlagfogyasztás </td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["atlagfogyasztas"].' L/100km</td>
-								</tr>
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Végsebesség </td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["vegsebesseg"].' km/h</td>
-								</tr>
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Gyorsulás (1-100)</td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["gyorsulas"].' mp</td>
-								</tr>
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Oktánszám </td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["oktanszam"].' mp</td>
-								</tr>
-								<tr>
-									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right"></td>
-									<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;"></td>
-								</tr>
-								<tr>
-									<td width = "50%" colspan = "3">
-									<input type = "submit" onclick = "loginMessage()" class = "input" style="border-radius: 0;" value = "Kölcsönzés" name = "kolcsonzes" /></td>
-								</tr>
-							</table> 
-							</div>
+						if (mysqli_num_rows($carResult) > 0) {
+		
+							echo '
 							<div align = "center">
 								<div style="text-align: center;height: 15px; background-color: #E6E6E6; width:65%;"></div>
-							</div>
-							';	
-												
+							</div>';
+							
+						while($row = mysqli_fetch_assoc($carResult)) {
+								
+								echo '
+									
+									<div align = "center" id = "cars">
+										<table align = "center" width = "65%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = "border-style: solid; border-width: 0px;
+										margin: 0 0px 0 0; border-color: #000; background: linear-gradient(#0E0F15, #0B3861); display: inline-block; font-family: Electrolize; color: #ffffff; font-size: 14.5px; border-radius: 0 0 19 19" >
+										<tr>
+											<td width = "25%" height = "20px" style = "padding: 0% 0% 0% 6%;" align = "left"><u>'.$rowindex++.'</u></td>
+											<td width = "10%" height = "20px"> </td>
+											<td width = "65%" height = "300px" rowspan = "17" >
+									<img class = "pop-out" src = "'.$row["fenykep"].'" style = "width: 100%; height: 100%;"></td>
+										</tr>
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Kategória</td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["kategoria"].'</td>
+											
+										</tr>
+										
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Márka</td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["motormarka_id"].'</td>
+											
+										</tr>
+										
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Márka típusa </td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["marka_tipus"].'</td>
+											
+										</tr>
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Ár naponta (1-6 nap) </td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["ar_1"].' HUF</td>
+											
+										</tr>
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Ár naponta (7-30 nap)</td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["ar_2"].' HUF</td>
+										</tr>
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Ár naponta (31-365 nap)</td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["ar_3"].' HUF</td>
+										</tr>
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Évjárat </td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["evjarat"].'</td>
+										</tr>
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Állapot </td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["allapot"].'</td>
+										</tr>
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Km/h állása </td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["km_ora_allasa"].' km</td>
+										</tr>
+										
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Üzemanyag </td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["uzemanyag"].'</td>
+										</tr>
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Hengerűrtartalom</td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["hengerurtartalom"].' cm<sup>3</sup></td>
+										</tr>
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Teljesítmény </td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["teljesitmeny"].' LE</td>
+										</tr>
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Saját tömeg </td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["sajat_tomeg"].' kg</td>
+										</tr>
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Maximális tömeg </td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["maximalis_tomeg"].' kg</td>
+										</tr>
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Tankméret </td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["tank_meret"].' L</td>
+										</tr>
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Átlagfogyasztás </td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["atlagfogyasztas"].' L/100km</td>
+										</tr>
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Végsebesség </td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["vegsebesseg"].' km/h</td>
+											<td>
+											';
+											?>
+											
+											<input type = "button" onclick = "location.href='hozzaszolasok.php';" class = "comment" value = "Vélemény írása"/></td>
+											<?php
+											echo '
+										</tr>
+										
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Munkautem</td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;">'.$row["munkautem"].' </td>
+										</tr>
+										<tr>
+											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right"></td>
+											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;"></td>
+										</tr>
+										<tr>
+											<td width = "50%" colspan = "3">
+											<input type = "submit" onclick = "loginMessage()" class = "input" style = "border-radius: 0 0 0 0;" value = "Kölcsönzés" name = "kolcsonzes" /></td>
+										</tr>
+									</table> 
+									</div>
+									<div align = "center">
+										<div style="text-align: center;height: 15px; background-color: #E6E6E6; width:65%;"></div>
+									</div>
+									';	
 						}
-						
+						}
 					}
-
-					
-				?>
-	
+					?>
 			</br></br>
 			
 		</body>

@@ -610,13 +610,13 @@
 		cursor: pointer;
 		outline: none;
 		color: #fff;
-		background-color: #088A29;
+		background: linear-gradient(#0B3B17, #088A29);
 		border: none;
 		border-radius: 0 0 0 0;
 		}
 		
 		
-		.comment:hover {background-color: #000000}
+		.comment:hover {background: linear-gradient(#000, #000);
 
 		.comment:active {
 		background-color: #000000;
