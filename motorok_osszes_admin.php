@@ -23,7 +23,7 @@
 		
 	<head>
 		<title>
-			Összes autó - admin
+			Összes motor - admin
 		</title>
 		
 		<script type = "text/javascript">
@@ -513,15 +513,18 @@
 											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;"></td>
 											
 										</tr>
+										</form>
 										<tr>
-											<td width = "50%" colspan = "3">
-											<input type = "submit" onclick = "loginMessage()" class = "input" style = "border-radius: 0 0 0 0;" value = "Kölcsönzés" name = "kolcsonzes" /></td>
-										</tr>
+									<form method = "get" action = "motorok_kolcsonzes.php" enctype = "multipart/form-data" name = "comment">
+									<td width = "50%" colspan = "3">
+									<input type = "submit" class = "input" style = "border-radius: 0 0 0 0; " value = "Kölcsönzés" name = "'.$row["id"].'" /></td>
+								</tr>
 									</table> 
 									</div>
 									<div align = "center">
 										<div style="text-align: center;height: 15px; background-color: #E6E6E6; width:65%;"></div>
 									</div>
+									</form>
 									';			
 														
 						}
@@ -641,15 +644,18 @@
 											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right"></td>
 											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;"></td>
 										</tr>
+										</form>
 										<tr>
-											<td width = "50%" colspan = "3">
-											<input type = "submit" onclick = "loginMessage()" class = "input" style = "border-radius: 0 0 0 0;" value = "Kölcsönzés" name = "kolcsonzes" /></td>
-										</tr>
+									<form method = "get" action = "motorok_kolcsonzese.php" enctype = "multipart/form-data" name = "comment">
+									<td width = "50%" colspan = "3">
+									<input type = "submit" class = "input" style = "border-radius: 0 0 0 0; " value = "Kölcsönzés" name = "'.$row["id"].'" /></td>
+								</tr>
 									</table> 
 									</div>
 									<div align = "center">
 										<div style="text-align: center;height: 15px; background-color: #E6E6E6; width:65%;"></div>
-									</div>';			
+									</div>
+									</form>';			
 														
 							}
 						}

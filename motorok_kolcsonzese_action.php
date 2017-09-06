@@ -16,17 +16,18 @@
 		
 			include('connection.php');
 			
-			$newestCarsIndex = "SELECT * FROM `auto` ORDER BY evjarat DESC";
-			$cars = mysqli_query($conn, $newestCarsIndex);
+			$newestMotorsIndex = "SELECT * FROM `motor` ORDER BY evjarat DESC";
+			$motors = mysqli_query($conn, $newestMotorsIndex);
 					
 			$rowindex = 1;
-			if (mysqli_num_rows($cars) > 0){
-				while($row = mysqli_fetch_assoc($cars)){
+			if (mysqli_num_rows($motors) > 0){
+				while($row = mysqli_fetch_assoc($motors)){
 					if(isset($_POST[$row["id"]])){
 									
 									$felhasznalo_nev = $_POST['felhasznalo_nev'];
 									$rent_start = $_POST['kolcsonzes_kezdet'];
 									$rent_end = $_POST['kolcsonzes_veg'];
+									$rent_takeback = $rent_end;
 									
 									$ar_1 = $row["ar_1"];
 									$ar_2 = $row["ar_2"];
@@ -34,22 +35,26 @@
 									
 									$date1=date_create($rent_start);
 									$date2=date_create($rent_end);
+									
+									
 									$diff=date_diff($date1,$date2);
 									
 									$date1 = new DateTime($rent_start);
 									$date2 = new DateTime($rent_end);
+									
+									
 									$interval = $date1->diff($date2);
 									$interval->d = $interval->d + 1;
 									
 									if($interval->d <= 6){
 										$whole_price = $ar_1 * $interval->d;
-										$sql = "INSERT INTO `autokolcsonzes` ( `felhasznalo_nev`, `auto_id`, `mettol`, `meddig`, `ar_naponta`, `ar_osszesen`) 
+										$sql = "INSERT INTO `motorkolcsonzes` ( `felhasznalo_nev`, `motor_id`, `mettol`, `meddig`, `ar_naponta`, `ar_osszesen`) 
 										VALUES ( '".$felhasznalo_nev."', '".$row['id']."', '".$rent_start."', '".$rent_end."', '".$ar_1."', '".$whole_price."');";
 										mysqli_query($conn, $sql);
 											
 										$last_id = mysqli_insert_id($conn);
-										$getName = "SELECT * FROM felhasznalo, autokolcsonzes
-										WHERE felhasznalo.felhasznalo_nev = autokolcsonzes.felhasznalo_nev AND autokolcsonzes.id  = '".$last_id."'" ;
+										$getName = "SELECT * FROM felhasznalo, motorkolcsonzes
+										WHERE felhasznalo.felhasznalo_nev = motorkolcsonzes.felhasznalo_nev AND motorkolcsonzes.id  = '".$last_id."'" ;
 										$getID = mysqli_query($conn, $getName);
 										while($name_of_person = mysqli_fetch_assoc($getID)){
 										
@@ -70,9 +75,9 @@
 												</tr>
 												<tr>
 													<td width = "20%" height = "33px" style = "padding: 0% 4% 0% 0%; font-size: 20px; " align = "right">
-													Autó márkája</td>
+													Motor márkája</td>
 													<td width = "20%" height = "33px" style = "padding: 0% 0% 0% 2%; font-size: 20px; " align = "left">
-													'.$row["automarka_id"].' </td>
+													'.$row["motormarka_id"].' </td>
 												</tr>
 												<tr>
 													<td width = "20%" height = "33px" style = "padding: 0% 4% 0% 0%; font-size: 20px; " align = "right">
@@ -129,7 +134,12 @@
 													<td width = "20%" height = "33px" style = "padding: 0% 0% 0% 2%; font-size: 20px; " align = "left">
 													'.$interval->d.' nap</td>
 												</tr>
-												
+												<tr>
+													<td width = "20%" height = "33px" style = "padding: 0% 4% 0% 0%; font-size: 20px; " align = "right">
+													Motor visszahozatalának a dátuma </td>
+													<td width = "20%" height = "33px" style = "padding: 0% 0% 0% 2%; font-size: 20px; " align = "left">
+													'.$rent_takeback.' 12:00-ig</td>
+												</tr>
 												<tr>
 													<td width = "20%" height = "33px" style = "padding: 0% 4% 0% 0%; font-size: 20px; " align = "right">
 													Kölcsönzés ára naponta</td>
@@ -158,12 +168,12 @@
 									
 									else if($interval->d > 6 && $interval->d <= 30){
 										$whole_price = $ar_2 * $interval->d;
-										$sql = "INSERT INTO `autokolcsonzes` ( `felhasznalo_nev`, `auto_id`, `mettol`, `meddig`, `ar_naponta`, `ar_osszesen`) 
+										$sql = "INSERT INTO `motorkolcsonzes` ( `felhasznalo_nev`, `motor_id`, `mettol`, `meddig`, `ar_naponta`, `ar_osszesen`) 
 										VALUES ( '".$felhasznalo_nev."', '".$row['id']."', '".$rent_start."', '".$rent_end."', '".$ar_2."', '".$whole_price."');";
 										mysqli_query($conn, $sql);
 										$last_id = mysqli_insert_id($conn);
-										$getName = "SELECT * FROM felhasznalo, autokolcsonzes
-										WHERE felhasznalo.felhasznalo_nev = autokolcsonzes.felhasznalo_nev AND autokolcsonzes.id  = '".$last_id."'" ;
+										$getName = "SELECT * FROM felhasznalo, motorkolcsonzes
+										WHERE felhasznalo.felhasznalo_nev = motorkolcsonzes.felhasznalo_nev AND motorkolcsonzes.id  = '".$last_id."'" ;
 										$getID = mysqli_query($conn, $getName);
 										while($name_of_person = mysqli_fetch_assoc($getID)){
 										
@@ -184,9 +194,9 @@
 												</tr>
 												<tr>
 													<td width = "20%" height = "33px" style = "padding: 0% 4% 0% 0%; font-size: 20px; " align = "right">
-													Autó márkája</td>
+													Motor márkája</td>
 													<td width = "20%" height = "33px" style = "padding: 0% 0% 0% 2%; font-size: 20px; " align = "left">
-													'.$row["automarka_id"].' </td>
+													'.$row["motormarka_id"].' </td>
 												</tr>
 												<tr>
 													<td width = "20%" height = "33px" style = "padding: 0% 4% 0% 0%; font-size: 20px; " align = "right">
@@ -239,9 +249,9 @@
 												</tr>
 												<tr>
 													<td width = "20%" height = "33px" style = "padding: 0% 4% 0% 0%; font-size: 20px; " align = "right">
-													Kölcsönzés időtartama </td>
+													Motor visszahozatalának a dátuma </td>
 													<td width = "20%" height = "33px" style = "padding: 0% 0% 0% 2%; font-size: 20px; " align = "left">
-													'.$interval->d.' nap</td>
+													'.$rent_takeback.' nap</td>
 												</tr>
 												<tr>
 													<td width = "20%" height = "33px" style = "padding: 0% 4% 0% 0%; font-size: 20px; " align = "right">
@@ -272,12 +282,12 @@
 									
 									else if($interval->d > 30 && $interval->d <= 366){
 										$whole_price = $ar_3 * $interval->d;
-										$sql = "INSERT INTO `autokolcsonzes` ( `felhasznalo_nev`, `auto_id`, `mettol`, `meddig`, `ar_naponta`, `ar_osszesen`) 
+										$sql = "INSERT INTO `motorkolcsonzes` ( `felhasznalo_nev`, `motor_id`, `mettol`, `meddig`, `ar_naponta`, `ar_osszesen`) 
 										VALUES ( '".$felhasznalo_nev."', '".$row['id']."', '".$rent_start."', '".$rent_end."', '".$ar_3."', '".$whole_price."');";
 										mysqli_query($conn, $sql);
 										$last_id = mysqli_insert_id($conn);
-										$getName = "SELECT * FROM felhasznalo, autokolcsonzes
-										WHERE felhasznalo.felhasznalo_nev = autokolcsonzes.felhasznalo_nev AND autokolcsonzes.id  = '".$last_id."'" ;
+										$getName = "SELECT * FROM felhasznalo, motorkolcsonzes
+										WHERE felhasznalo.felhasznalo_nev = motorkolcsonzes.felhasznalo_nev AND motorkolcsonzes.id  = '".$last_id."'" ;
 										$getID = mysqli_query($conn, $getName);
 										while($name_of_person = mysqli_fetch_assoc($getID)){
 										
@@ -298,9 +308,9 @@
 												</tr>
 												<tr>
 													<td width = "20%" height = "33px" style = "padding: 0% 4% 0% 0%; font-size: 20px; " align = "right">
-													Autó márkája</td>
+													Motor márkája</td>
 													<td width = "20%" height = "33px" style = "padding: 0% 0% 0% 2%; font-size: 20px; " align = "left">
-													'.$row["automarka_id"].' </td>
+													'.$row["motormarka_id"].' </td>
 												</tr>
 												<tr>
 													<td width = "20%" height = "33px" style = "padding: 0% 4% 0% 0%; font-size: 20px; " align = "right">

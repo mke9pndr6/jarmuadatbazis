@@ -274,14 +274,16 @@
 											
 										</tr>
 										<tr>
-											<td width = "50%" colspan = "3">
-											<input type = "submit" onclick = "loginMessage()" class = "input" style = "border-radius: 0 0 0 0;" value = "Kölcsönzés" name = "kolcsonzes" /></td>
-										</tr>
+									<form method = "get" action = "motorok_kolcsonzese.php" enctype = "multipart/form-data" name = "comment">
+									<td width = "50%" colspan = "3">
+									<input type = "submit" class = "input" style = "border-radius: 0 0 0 0; " value = "Kölcsönzés" name = "'.$row["id"].'" /></td>
+								</tr>
 									</table> 
 									</div>
 									<div align = "center">
 										<div style="text-align: center;height: 15px; background-color: #E6E6E6; width:65%;"></div>
 									</div>
+									</form>
 									';	
 												
 						}

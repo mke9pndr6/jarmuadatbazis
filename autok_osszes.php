@@ -418,10 +418,12 @@
 											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right"></td>
 											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;"></td>
 										</tr>
+									</form>
 										<tr>
-											<td width = "50%" colspan = "3">
-											<input type = "submit" onclick = "loginMessage()" class = "input" style = "border-radius: 0 0 0 0;" value = "Kölcsönzés" name = "kolcsonzes" /></td>
-										</tr>
+									<form method = "get" action = "auto_kolcsonzes.php" enctype = "multipart/form-data" name = "comment">
+									<td width = "50%" colspan = "3">
+									<input type = "submit" class = "input" style = "border-radius: 0 0 0 0; " value = "'.$row["kolcsonzes"].'" name = "'.$row["id"].'" /></td>
+								</tr>
 									</table> 
 									</div>
 									<div align = "center">
@@ -554,10 +556,12 @@
 											<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right"></td>
 											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;"></td>
 										</tr>
+									</form>
 										<tr>
-											<td width = "50%" colspan = "3">
-											<input type = "submit" onclick = "loginMessage()" class = "input" style = "border-radius: 0 0 0 0;" value = "Kölcsönzés" name = "kolcsonzes" /></td>
-										</tr>
+									<form method = "get" action = "auto_kolcsonzes.php" enctype = "multipart/form-data" name = "comment">
+									<td width = "50%" colspan = "3">
+									<input type = "submit" class = "input" style = "border-radius: 0 0 0 0; " value = "'.$row["kolcsonzes"].'" name = "'.$row["id"].'" /></td>
+								</tr>
 									</table> 
 									</div>
 									<div align = "center">
