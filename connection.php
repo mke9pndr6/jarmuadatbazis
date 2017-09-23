@@ -27,13 +27,13 @@
 		// Storing Session
 		$user_check = $_SESSION['user_check'];
 		// SQL Query To Fetch Complete Information Of User
-		//$ses_sql = mysqli_query("select felhasznalo_nev from belepes where felhasznalo_nev = '$felhasznalo_nev'", $conn);
-		//$row = mysqli_fetch_assoc($ses_sql);
-		//$login_session = $row['username'];
-		//if(!isset($login_session)){
-		//mysqli_close($conn); // Closing Connection
-		//header('Location: index.php'); // Redirecting To Home Page
-		//}	
+		$ses_sql = mysqli_query($conn, "select felhasznalo_nev from belepes where felhasznalo_nev = '$user_check'");
+		$row = mysqli_fetch_assoc($ses_sql);
+		$login_session = $row['felhasznalo_nev'];
+		if(!isset($login_session)){
+			mysqli_close($conn); // Closing Connection
+			header('url = index.php'); // Redirecting To Home Page
+		}	
 	}
 
 ?>
