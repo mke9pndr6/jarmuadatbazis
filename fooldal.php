@@ -7,8 +7,6 @@
 -->
 
 
-
-
 <?php 
 	include('connection.php');
 	include('controller.php');
@@ -115,10 +113,10 @@
 									<table align = "center" width = "100%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
 										
 										<tr>
-											<td width = "100%" align = "center"><button class = "commn" align = "left" onclick = 'location.href="adatok_modositasa.php";'>Adatok módosítása</td></button>
+											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="adatok_modositasa.php";'>Adatok módosítása</td></button>
 										</tr>
 										<tr>
-											<td width = "100%"><button class = "inputlog" align = "left" onclick = 'location.href="jelszo_modosit.php";'>Új jelszó</td></button>
+											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="jelszo_modosit.php";'>Jelszó megváltoztatása</td></button>
 										</tr>
 										<tr>
 											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="kolcsonzeseim.php";'>Kölcsönzéseim</td></button>

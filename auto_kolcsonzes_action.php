@@ -28,6 +28,7 @@
 									$rent_start = $_POST['kolcsonzes_kezdet'];
 									$rent_end = $_POST['kolcsonzes_veg'];
 									
+									
 									$ar_1 = $row["ar_1"];
 									$ar_2 = $row["ar_2"];
 									$ar_3 = $row["ar_3"];
