@@ -64,7 +64,11 @@
 		$conn = mysqli_connect("localhost", "root", "");
 		// Selecting Database
 		$db = mysqli_select_db($conn,"jarmuadatbazis");
-		session_start();// Starting Session
+		
+		if(!isset($_SESSION)) 
+		{ 
+			session_start(); 
+		} 
 		mysqli_query($conn, 'SET NAMES UTF-8');
 		mysqli_query($conn, 'SET character_set_results=utf8');
 		mysqli_set_charset($conn, 'utf8');

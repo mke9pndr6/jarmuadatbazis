@@ -6,7 +6,7 @@
 -->
 
 <?php 
-	
+	include('reg_conn.php');
 	//include('style.php');
 ?>
 

@@ -52,6 +52,7 @@
 						<a href="autok_osszes.php">Autók</a>
 						<div>
 							<?php
+					
 								class Cars extends Controller{}
 								
 								$AllCars = new Cars();
@@ -74,6 +75,7 @@
 						<a href="motorok_osszes.php">Motorok</a>
 						<div>
 							<?php
+								
 								class Motors extends Controller{}
 								
 								$AllMotors = new Motors();
@@ -93,6 +95,8 @@
 						<a href="hozzaszolasok.php">Összes jármű</a>
 						<div>
 							<?php
+							
+							
 								class Vehicles extends Controller{}
 								
 								
