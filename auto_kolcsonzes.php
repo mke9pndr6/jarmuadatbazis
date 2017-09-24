@@ -64,7 +64,7 @@
 									</tr>
 									<tr>
 										<td height = "33px" ><font color = "white" size = "4" style = "padding: 1% 1% 1% 3%;">Felhasználónév</td>
-										<td height = "33px" style = "padding: 1% 1% 1% 1%;" ><input type = "text" style="height:22x; width: 100%;" name = "felhasznalo_nev" size = "45" placeholder = "" required /></td>
+										<td height = "33px" ><font color = "white" style = "padding: 1%;" size = "4"><?php echo $login_session ?> </td>
 									</tr>
 									
 									<tr>

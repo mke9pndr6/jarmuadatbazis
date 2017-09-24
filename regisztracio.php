@@ -6,8 +6,7 @@
 -->
 
 <?php 
-	include('connection.php');
-	include('controller.php');
+	
 	//include('style.php');
 ?>
 

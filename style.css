@@ -16,6 +16,30 @@
 		
 		
 		
+		#style_login{
+			font-size: 21px;
+			font-family: "Electrolize";
+			text-align: left;
+			color: #ffffff;
+			padding: 0 0 0 1%;
+			/*display: block;*/
+			margin: 0 0 0 0;
+			width: 100%;
+		}
+		
+		#style_login_header{
+			font-size: 27px;
+			font-family: "Electrolize";
+			text-align: center;
+			color: #ffffff;
+			padding: 0% 0% 0% 10%;
+			/*display: block;*/
+			margin: 0 0 0 0;
+			width: 100%;
+		}
+		
+		
+		
 		#styleofwords0{
 			font-size: 23px;
 			
@@ -33,7 +57,6 @@
 		
 		#styleofwords2a{
 			font-size: 23px;
-			
 			font-family: "Electrolize";
 			text-align: left;
 			background: rgb(0, 81, 119);
@@ -126,13 +149,13 @@
 	
 		
 		#styleofwords7a{
-			font-size: 18px;
+			font-size: 20px;
 			
 			font-family: "Electrolize";
-			text-align: right;
-			background: red;
+			text-align: center;
+			background: #A20306;
 			color: #ffffff;
-			padding: 0 17% 0 0%;
+			padding: 0 0% 0 0%;
 			/*display: block;*/
 			margin: 0 0 0 0;
 		}

@@ -24,7 +24,6 @@
 				while($row = mysqli_fetch_assoc($cars)){
 					if(isset($_POST[$row["id"]])){
 									
-									$felhasznalo_nev = $_POST['felhasznalo_nev'];
 									$rent_start = $_POST['kolcsonzes_kezdet'];
 									$rent_end = $_POST['kolcsonzes_veg'];
 									
@@ -45,7 +44,7 @@
 									if($interval->d <= 6){
 										$whole_price = $ar_1 * $interval->d;
 										$sql = "INSERT INTO `autokolcsonzes` ( `felhasznalo_nev`, `auto_id`, `mettol`, `meddig`, `ar_naponta`, `ar_osszesen`) 
-										VALUES ( '".$felhasznalo_nev."', '".$row['id']."', '".$rent_start."', '".$rent_end."', '".$ar_1."', '".$whole_price."');";
+										VALUES ( '".$login_session."', '".$row['id']."', '".$rent_start."', '".$rent_end."', '".$ar_1."', '".$whole_price."');";
 										mysqli_query($conn, $sql);
 											
 										$last_id = mysqli_insert_id($conn);
@@ -85,7 +84,7 @@
 													<td width = "20%" height = "33px" style = "padding: 0% 4% 0% 0%; font-size: 20px; " align = "right">
 													Felhasználónév</td>
 													<td width = "20%" height = "33px" style = "padding: 0% 0% 0% 2%; font-size: 20px; " align = "left">
-													'.$felhasznalo_nev.' </td>
+													'.$login_session.' </td>
 												</tr>
 												<tr>
 													<td width = "20%" height = "33px" style = "padding: 0% 4% 0% 0%; font-size: 20px; " align = "right">

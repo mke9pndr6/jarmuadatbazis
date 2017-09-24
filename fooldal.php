@@ -46,7 +46,6 @@
 	</head>
 	
 		<body id = "bgStyle">
-				
 				<div id = "container">
 				<ul id = "menu">
 					<li>
@@ -108,7 +107,7 @@
 					<li><a href="kereses.php">Keresés</a></li>
 					<li>
 					
-						<a href="felhasznalo_profil.php">Profilom</a>
+						<a href="felhasznalo_profil.php"><?php echo $login_session; ?> profilja</a>
 								<div align = "center">
 									<table align = "center" width = "100%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
 										
