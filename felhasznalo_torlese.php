@@ -202,10 +202,6 @@
 									//ha az új jelszavak megegyeznek
 									if($password == $password_again){
 										
-										//akkor a törlés megtörténik
-										$deleteuser_sql = "DELETE FROM felhasznalo WHERE felhasznalo_nev = '".$felhasznalo_nev."'";
-										mysqli_query($conn, $deleteuser_sql);
-										
 										echo '<div align = "center">
 											<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
 												<tr>
@@ -217,6 +213,8 @@
 										
 										$delete_loggedin_user = "DELETE FROM belepes WHERE felhasznalo_nev = '".$felhasznalo_nev."'";
 										mysqli_query($conn, $delete_loggedin_user);
+										$deleteuser_sql = "DELETE FROM `felhasznalo` WHERE `felhasznalo`.`felhasznalo_nev` = '".$felhasznalo_nev."'";
+										mysqli_query($conn, $deleteuser_sql);
 										
 										header("refresh: 2; url = index.php");
 										ob_end_flush();

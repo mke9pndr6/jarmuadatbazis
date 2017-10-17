@@ -27,7 +27,7 @@
 		<link href='https://fonts.googleapis.com/css?family=Electrolize' rel='stylesheet'>
 	<head>
 		<title>
-			Kezdőlap
+			Bejelentkezés
 		</title>
 		
 	</head>
@@ -72,7 +72,9 @@
 							name = "login_jelszo" size = "45" required align = "center" placeholder = "*****************"/></td>
 						</tr>
 						<tr>
-							<td height = "33px"></td>
+							<td height = "33px"><label for="remember-me" style = "font-size: 18px; font-family: Electrolize; text-align: left; color:#fff; padding: 0 0 0 1%;" >
+							Adatok megjegyezése</label>
+							<input type="checkbox" name="remember" id="remember" <?php if(isset($_COOKIE["member_login"])) { ?> checked <?php } ?> /></td>
 						</tr>
 						<tr>
 							<td height = "33px" ><font id = "style_login"><a href = "regisztracio.php"
@@ -82,8 +84,9 @@
 							<td height = "33px" ><font id = "style_login"><a href = "regisztracio.php"
 							style = "text-decoration: none; text-color: white;"><font size = "4" color = "#ffffff">Elfelejtette jelszavát?</a></font></td>
 						</tr>
+						
 						<tr>
-							<td height = "25px" id = "styleofwords7a"><font id = "styleofwords7a" style = "width: 100%;"><?php echo $error; ?></font></td>
+							<td height = "33px" ><font id = "style_login"><?php echo $error; ?></font></td>
 						</tr>
 						
 						

@@ -96,7 +96,7 @@
 		}
 		
 		else{
-			$error = "Hibás a felhasználónév vagy a jelszó!";
+			$error = "<font color = '#FA5858'>Hibás a felhasználónév vagy a jelszó!</font>";
 		}
 		mysqli_close($conn); // Closing Connection
 	}

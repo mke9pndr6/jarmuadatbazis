@@ -175,7 +175,7 @@
 				// output data of each row
 				while($row = mysqli_fetch_assoc($result)) {*/
 				
-			$newestCarsIndex = "SELECT * FROM `auto` ORDER BY evjarat DESC LIMIT 10";
+			$newestCarsIndex = "SELECT * FROM `auto` ORDER BY evjarat DESC LIMIT 15";
 			$cars = mysqli_query($conn, $newestCarsIndex);
 			
 			$rowindex = 1;
@@ -280,7 +280,8 @@
 											';
 											?>
 											
-											<input type = "button" onclick = "location.href='hozzaszolasok.php';" class = "comment" value = "Vélemény írása"/></td>
+											<input type = "button" onclick = "location.href='hozzaszolasok.php';" class = "comment" 
+											value = "Vélemény írása erről az autóról<?php echo ": ".$row["automarka_id"]." ".$row["marka_tipus"]; ?>"/></td>
 											<?php
 											echo '
 								</tr>
@@ -300,7 +301,7 @@
 								<tr>
 									<form method = "get" action = "auto_kolcsonzes.php" enctype = "multipart/form-data" name = "comment">
 									<td width = "50%" colspan = "3">
-									<input type = "submit" class = "input" style = "border-radius: 0 0 0 0; " value = "'.$row["kolcsonzes"].'" name = "'.$row["id"].'" /></td>
+									<input type = "submit" class = "input" style = "border-radius: 0 0 0 0; " value = "Kölcsönzés" name = "'.$row["id"].'" /></td>
 								</tr>
 							</table> 
 							</div>

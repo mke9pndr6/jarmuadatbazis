@@ -12,6 +12,7 @@
 <?php 
 	include('connection.php');
 	include('controller.php');
+	//include('reg_conn.php');
 	//include('style.css');
 ?>
 
@@ -25,42 +26,6 @@
 		<title>
 			Összes autó
 		</title>
-		
-		<script type = "text/javascript">
-			$(document).ready(function(){
-				$("ul#menu div").click(function(){
-					$(this).parent().find("ul").slideDown("slow");
-				});
-			});
-			  
-			  
-			//click on the "tetszik" button increments the value of the number 
-			function incrementValue(){
-				var value = parseInt(document.getElementById('number').value, 10);
-				value = isNaN(value) ? 0 : value;
-				value++;
-				document.getElementById('number').value = value;
-			}
-		
-		</script>
-		
-		<style type="text/css">
-			  
-			  input[type="checkbox"]:required:invalid + label { color: red;}
-			  input[type="checkbox"]:required:valid + label { color: white; }
-		</style>
-		
-		<script>
-				function loginMessage() {
-					alert("Kérjük jelentkezzen be a kölcsönzéshez!");
-				}
-				
-				function loginComment() {
-					alert("Kérjük jelentkezzen be, hogy tudjon hozzászólást írni!");
-				}
-		</script>
-		
-		
 	</head>
 	
 		<body id = "bgStyle">
@@ -419,11 +384,11 @@
 											<td width = "20%" height = "20px" style = "padding: 0% 0% 0% 3%;"></td>
 										</tr>
 									</form>
-										<tr>
-									<form method = "get" action = "auto_kolcsonzes.php" enctype = "multipart/form-data" name = "comment">
-									<td width = "50%" colspan = "3">
-									<input type = "submit" class = "input" style = "border-radius: 0 0 0 0; " value = "'.$row["kolcsonzes"].'" name = "'.$row["id"].'" /></td>
-								</tr>
+									<tr>
+										<form method = "get" action = "auto_kolcsonzes.php" enctype = "multipart/form-data" name = "comment">
+										<td width = "50%" colspan = "3">
+										<input type = "submit" class = "input" style = "border-radius: 0 0 0 0; " value = "Kölcsönzés" name = "'.$row["id"].'" /></td>
+									</tr>
 									</table> 
 									</div>
 									<div align = "center">
