@@ -175,7 +175,7 @@
 				// output data of each row
 				while($row = mysqli_fetch_assoc($result)) {*/
 				
-			$newestCarsIndex = "SELECT * FROM `auto` ORDER BY evjarat DESC LIMIT 15";
+			$newestCarsIndex = "SELECT * FROM `auto` ORDER BY evjarat DESC LIMIT 5";
 			$cars = mysqli_query($conn, $newestCarsIndex);
 			
 			$rowindex = 1;
@@ -197,7 +197,9 @@
 									<td width = "25%" height = "20px" style = "padding: 0% 0% 0% 6%;" align = "left"><u>'.$rowindex++.'</u></td>
 									<td width = "10%" height = "20px"> </td>
 									<td width = "65%" height = "300px" rowspan = "17" >
-									<img class = "pop-out" src = "'.$row["fenykep"].'" style = "width: 100%; height: 100%;"></td>
+									
+									<img class = "pop-out" src = "'.$row["fenykep"].'" style = "width: 100%; height: 100%;" ></td>
+									
 								</tr>
 								<tr>
 									<td width = "20%" height = "20px" style = "padding: 0% 2% 0% 0%;" align = "right">Kategória</td>

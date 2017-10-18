@@ -141,10 +141,6 @@
 			</br>
 			</br>
 			</br>
-			</br>
-			</br>
-			</br>
-			
 			
 			<div align = "center">
 				<form method = "POST" action = "autok_hozzaadasa.php" enctype = "multipart/form-data" name = "car_upload">
@@ -156,7 +152,7 @@
 						<tr>
 							<td height = "33px" id = "styleofwords10" >Kategória<font id = "styleofwords12"></font></td>
 							<td height = "33px" id = "styleofwords11"><input  type = "text"  
-							style="height:26px;" name = "kategoria" size = "45" placeholder = "pl.: SpOrtkocsi/SUV" required/>
+							style="height:26px;" name = "kategoria" size = "45" placeholder = "pl.: Sportautó" required/>
 						
 							</td>
 						</tr>
@@ -172,6 +168,13 @@
 						<tr>
 							<td height = "33px" id = "styleofwords7" >Márka típusa<font id = "styleofwords8"></font></td>
 							<td height = "33px" id = "styleofwords9"><input type = "text" style="height:26px;" name = "marka_tipus" size = "45" required /></td>
+						</tr>
+						<tr>
+							<td height = "33px" id = "styleofwords7" >Kép feltöltése<font id = "styleofwords8"></font></td>
+							
+							<td height = "33px" id = "styleofwords9"><form action="insert_product.php" method="POST" enctype="multipart/form-data">
+							</label><input type="file" name="image" style="height:26px;" size = "29"/></td>
+							
 						</tr>
 						
 						<tr>
@@ -276,22 +279,24 @@
 								$gyorsulas = $_POST['gyorsulas'];
 								$oktanszam = $_POST['oktanszam'];
 								
+								$image = addslashes(file_get_contents($_FILES['image']['tmp_name'])); 
+								$image_name = addslashes($_FILES['image']['name']);
 								
 				
 		
 								
 								$sql = "INSERT INTO auto
-											(kategoria, automarka_id, jarmutipus_id, ar_1, ar_2, ar_3, marka_tipus,
+											(fenykep, kategoria, automarka_id, ar_1, ar_2, ar_3, marka_tipus,
 											evjarat, allapot, km_ora_allasa, szallithato_szemelyek, uzemanyag,
 											hengerurtartalom, teljesitmeny, sajat_tomeg, maximalis_tomeg,
 											tank_meret, atlagfogyasztas, vegsebesseg, gyorsulas, oktanszam) 
-											VALUES('".$kategoria."','".$automarka_id."','Autó','".$ar_1."','".$ar_2."',
+											VALUES('pictures/jarmuadatbazis_kepek/".$image_name."','".$kategoria."','".$automarka_id."','".$ar_1."','".$ar_2."',
 											'".$ar_3."','".$marka_tipus."','".$evjarat."','".$allapot."','".$km_ora_allasa."',
 											'".$szallithato_szemelyek."','".$uzemanyag."','".$hengerurtartalom."',
 											'".$teljesitmeny."','".$sajat_tomeg."','".$maximalis_tomeg."','".$tank_meret."',
 											'".$atlagfogyasztas."','".$vegsebesseg."','".$gyorsulas."','".$oktanszam."');";
 							
-											
+								echo $sql;
 								mysqli_query($conn, $sql);
 								$last_id = mysqli_insert_id($conn);
 								
@@ -299,7 +304,7 @@
 								echo '<div align = "center">
 											<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
 												<tr>
-													<td height = "33px" id = "styleofwords7a2">Hozzáadtuk az adatbázishoz a következő autót: '.$automarka_id.' '.$marka_tipus.'</td>
+													<td height = "33px" id = "styleofwords7a2">Hozzáadtuk az adatbázishoz a következő autót: '.$automarka_id.' '.$marka_tipus.' </td>
 													<td height = "33px" id = "styleofwords7a2"></td>
 												</tr>
 											</table>
@@ -314,7 +319,9 @@
 							</tr>
 					</table>
 				</form>
+				
 			</div>
+			</br></br>
 		</body>
 	</table>
 </html>

@@ -140,11 +140,6 @@
 			</br>
 			</br>
 			</br>
-			</br>
-			</br>
-			</br>
-			
-			
 			
 			<div align = "center">
 				<form method = "POST" action = "autok_modositasa_action.php" enctype = "multipart/form-data" name = "car_update">
@@ -255,6 +250,9 @@
 					</table>	
 				</form>
 			</div>
+			</br>
+			</br>
+			
 		</body>
 	</table>
 </html>

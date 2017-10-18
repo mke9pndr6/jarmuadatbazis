@@ -90,7 +90,7 @@
 										<td>
 										<?php
 										echo '
-											<input type = "submit" class = "input" style = "border-radius: 0 0 0 0; font-size: 28px; " value = "'.$row["kolcsonzes"].'" name = "'.$row["id"].'"/></td>
+											<input type = "submit" class = "input" style = "border-radius: 0 0 0 0; font-size: 28px; " value = "Kölcsönzés" name = "'.$row["id"].'"/></td>
 										</td>';
 										?>
 									</tr>
