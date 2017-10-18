@@ -120,9 +120,11 @@
 											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="jelszo_modosit.php";'>Új jelszó</td></button>
 										</tr>
 										<tr>
-											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="kolcsonzeseim.php";'>Kölcsönzéseim</td></button>
+											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="kolcsonzeseim_auto.php";'>Autós kölcsönzéseim</td></button>
 										</tr>
-					
+										<tr>
+											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="kolcsonzeseim_motor.php";'>Motoros kölcsönzéseim</td></button>
+										</tr>
 										<tr>
 											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="felhasznalo_torlese.php";'>Fiók törlése</td></button>
 										</tr>
@@ -172,10 +174,11 @@
 						<tr>
 							<td height = "33px" id = "styleofwords7" >Kép feltöltése<font id = "styleofwords8"></font></td>
 							
-							<td height = "33px" id = "styleofwords9"><form action="insert_product.php" method="POST" enctype="multipart/form-data">
+							<td height = "33px" id = "styleofwords9">
 							</label><input type="file" name="image" style="height:26px;" size = "29"/></td>
 							
 						</tr>
+
 						
 						<tr>
 							<td height = "33px" id = "styleofwords10" >Ár (1-6 napig)<font id = "styleofwords12"></font></td>
@@ -256,7 +259,7 @@
 						
 						<?php
 						
-							if(isset($_POST['autofelvetel'])){
+							if(isset($_POST['motorfelvetel'])){
 								
 								$automarka_id = $_POST['automarka_id'];
 								$kategoria = $_POST['kategoria'];
@@ -281,10 +284,7 @@
 								
 								$image = addslashes(file_get_contents($_FILES['image']['tmp_name'])); 
 								$image_name = addslashes($_FILES['image']['name']);
-								
-				
-		
-								
+	
 								$sql = "INSERT INTO auto
 											(fenykep, kategoria, automarka_id, ar_1, ar_2, ar_3, marka_tipus,
 											evjarat, allapot, km_ora_allasa, szallithato_szemelyek, uzemanyag,
@@ -296,7 +296,7 @@
 											'".$teljesitmeny."','".$sajat_tomeg."','".$maximalis_tomeg."','".$tank_meret."',
 											'".$atlagfogyasztas."','".$vegsebesseg."','".$gyorsulas."','".$oktanszam."');";
 							
-								echo $sql;
+								//echo $sql;
 								mysqli_query($conn, $sql);
 								$last_id = mysqli_insert_id($conn);
 								
@@ -304,7 +304,7 @@
 								echo '<div align = "center">
 											<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
 												<tr>
-													<td height = "33px" id = "styleofwords7a2">Hozzáadtuk az adatbázishoz a következő autót: '.$automarka_id.' '.$marka_tipus.' </td>
+													<td height = "33px" id = "styleofwords7a2">Hozzáadtuk az adatbázishoz a következő motort: '.$automarka_id.' '.$marka_tipus.' </td>
 													<td height = "33px" id = "styleofwords7a2"></td>
 												</tr>
 											</table>
@@ -315,7 +315,7 @@
 						?>
 						<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
 							<tr>
-								<td width = "100%"><input type = "submit" class = "input" value = "Autó felvétele" name = "autofelvetel" /></td>
+								<td width = "100%"><input type = "submit" class = "input" value = "Autó felvétele" name = "motorfelvetel" /></td>
 							</tr>
 					</table>
 				</form>

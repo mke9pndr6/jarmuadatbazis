@@ -120,7 +120,10 @@
 											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="jelszo_modosit.php";'>Új jelszó</td></button>
 										</tr>
 										<tr>
-											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="kolcsonzeseim.php";'>Kölcsönzéseim</td></button>
+											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="kolcsonzeseim_auto.php";'>Autós kölcsönzéseim</td></button>
+										</tr>
+										<tr>
+											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="kolcsonzeseim_motor.php";'>Motoros kölcsönzéseim</td></button>
 										</tr>
 					
 										<tr>
@@ -141,11 +144,7 @@
 			</br>
 			</br>
 			</br>
-			</br>
-			</br>
-			</br>
-			
-			
+		
 			
 			<div align = "center">
 				<form method = "POST" action = "motorok_hozzaadasa.php" enctype = "multipart/form-data" name = "motor_upload">
@@ -166,6 +165,10 @@
 							<td height = "33px" id = "styleofwords9"><input type = "text" style="height:26px;" name = "marka_tipus" size = "45" required /></td>
 						</tr>
 						<tr>
+							<td height = "33px" id = "styleofwords7" >Kategória<font id = "styleofwords8"></font></td>
+							<td height = "33px" id = "styleofwords9"><input type = "text" style="height:26px;" name = "kategoria" size = "45" required /></td>
+						</tr>
+						<tr>
 							<td height = "33px" id = "styleofwords10" >Ár (1-6 napig)<font id = "styleofwords12"></font></td>
 							<td height = "33px" id = "styleofwords11"><input type = "number" 
 							style="height:26px;" name = "ar_1" size = "45" placeholder = "" required /></td>
@@ -178,7 +181,13 @@
 							<td height = "33px" id = "styleofwords10" >Ár (31-365 napig)<font id = "styleofwords12"></font></td>
 							<td height = "33px" id = "styleofwords11"><input type = "number" style="height:26px;" name = "ar_3" size = "45" height = "20" required /></td>
 						</tr>
-						
+						<tr>
+							<td height = "33px" id = "styleofwords7" >Kép feltöltése<font id = "styleofwords8"></font></td>
+							
+							<td height = "33px" id = "styleofwords9">
+							</label><input type="file" name="image" style="height:26px;" size = "29"/></td>
+							
+						</tr>
 						<tr>
 							<td height = "33px" id = "styleofwords10" >Évjárat<font id = "styleofwords12"></font></td>
 							<td height = "33px" id = "styleofwords11"><input type = "number" style="height:26px;" name = "evjarat" size = "45" required /></td>
@@ -248,6 +257,7 @@
 								$ar_1 = $_POST['ar_1'];
 								$ar_2 = $_POST['ar_2'];
 								$ar_3 = $_POST['ar_3'];
+								$kategoria= $_POST['kategoria'];
 								
 								$evjarat = $_POST['evjarat'];
 								$allapot = $_POST['allapot'];
@@ -264,16 +274,15 @@
 								$gyorsulas = $_POST['gyorsulas'];
 								$munkautem = $_POST['munkautem'];
 								
-								
-				
-		
-								
+								$image = addslashes(file_get_contents($_FILES['image']['tmp_name'])); 
+								$image_name = addslashes($_FILES['image']['name']);
+	
 								$sql = "INSERT INTO motor
-											(motormarka_id, jarmutipus_id, ar_1, ar_2, ar_3, marka_tipus,
+											(fenykep, kategoria, motormarka_id, ar_1, ar_2, ar_3, marka_tipus,
 											evjarat, allapot, km_ora_allasa, uzemanyag,
 											hengerurtartalom, teljesitmeny, sajat_tomeg, maximalis_tomeg,
 											tank_meret, atlagfogyasztas, vegsebesseg, gyorsulas, munkautem) 
-											VALUES('".$motormarka_id."','Motor','".$ar_1."','".$ar_2."',
+											VALUES('pictures/jarmuadatbazis_kepek/".$image_name."','".$kategoria."','".$motormarka_id."','".$ar_1."','".$ar_2."',
 											'".$ar_3."','".$marka_tipus."','".$evjarat."','".$allapot."',
 											'".$km_ora_allasa."','".$uzemanyag."','".$hengerurtartalom."',
 											'".$teljesitmeny."','".$sajat_tomeg."','".$maximalis_tomeg."','".$tank_meret."',
@@ -291,7 +300,7 @@
 										</div>';
 							
 							}
-
+				
 						?>
 						<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
 							<tr>
@@ -300,6 +309,8 @@
 					</table>
 				</form>
 			</div>
+			
+			</br></br>
 		</body>
 	</table>
 </html>
