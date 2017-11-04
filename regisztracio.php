@@ -38,12 +38,7 @@
 		<body id = "bgStyle">
 					
 			</br>
-			</br>
-			</br>
-			</br>
-			</br>
-			
-			
+		
 			
 			<div align = "center">
 			<form method = "POST" action = "regisztracio.php" enctype = "multipart/form-data" name = "register">

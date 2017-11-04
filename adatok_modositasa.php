@@ -154,10 +154,6 @@
 			</br>
 			</br>
 			</br>
-			</br>
-			</br>
-			</br>
-			
 			
 			<div align = "center">
 			<form method = "POST" action = "adatok_modositasa.php" enctype = "multipart/form-data" name = "update_user">
@@ -356,7 +352,7 @@
 												</tr>
 												<tr>
 													<td width = "50%"><input type = "submit" class = "input" value = "Adatok módosítása" name = "felh_modosit" /></td>
-													<td width = "50%"><button class = "button" href = "index.php" align = "center" onclick = "location.href="index.php";">Mégsem</td></button>
+													<td width = "50%"><button class = "button" href = "index.php" align = "center" onclick = "location.href="fooldal.php";">Mégsem</td></button>
 												</tr>
 											</table>
 										</div>
@@ -384,7 +380,7 @@
 											</tr>
 											<tr>
 												<td width = "50%"><input type = "submit" class = "input" value = "Adatok módosítása" name = "felh_modosit" /></td>
-												<td width = "50%"><button class = "button" href = "index.php" align = "center" onclick = "location.href="index.php";">Mégsem</td></button>
+												<td width = "50%"><button class = "button" href = "index.php" align = "center" onclick = "location.href="fooldal.php";">Mégsem</td></button>
 											</tr>
 										</table>
 									</div>
@@ -409,7 +405,7 @@
 											</tr>
 											<tr>
 												<td width = "50%"><input type = "submit" class = "input" value = "Adatok módosítása" name = "felh_modosit" /></td>
-												<td width = "50%"><button class = "button" href = "index.php" align = "center" onclick = "location.href="index.php";">Mégsem</td></button>
+												<td width = "50%"><button class = "button" href = "index.php" align = "center" onclick = "location.href="fooldal.php";">Mégsem</td></button>
 											</tr>
 										</table>
 									</div>
@@ -429,7 +425,7 @@
 						</tr>
 						<tr>
 							<td width = "50%"><input type = "submit" class = "input" value = "Adatok módosítása" name = "felh_modosit" /></td>
-							<td width = "50%"><button class = "button" href = "index.php" align = "center" onclick = "location.href='index.php';">Mégsem</td></button>
+							<td width = "50%"><button class = "button" href = "index.php" align = "center" onclick = "location.href='fooldal.php';">Mégsem</td></button>
 						</tr>
 					</table>
 				</div>

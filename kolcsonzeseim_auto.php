@@ -151,21 +151,22 @@
 			
 			<?php
 			
+			$rents = "SELECT * FROM auto, autokolcsonzes, felhasznalo 
+			WHERE auto.id = autokolcsonzes.auto_id AND autokolcsonzes.felhasznalo_nev = '".$login_session."' AND felhasznalo.felhasznalo_nev = '".$login_session."'";
+			$rentcars = mysqli_query($conn, $rents);
+			$number_of_rents = mysqli_num_rows($rentcars);
+			
 			echo '
 				<div align = "center" id = "cars">
 					<table align = "center" width = "55%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = "border-style: solid; border-width: 0px;
 					margin: 0 0px 0 0; border-color: #000;background: linear-gradient(#0E0F15, #0B3861); display: inline-block; font-family: Electrolize; color: #ffffff; font-size: 32px; border-radius: 19 19 0 0" >
 						<tr>
-							<td width = "15%"></td>
-							<td width = "70%" align = "center" style = "padding: 10px;">'.$login_session.' kölcsönzései</td>
-							<td width = "15%"></td>
+							<td width = "100%" align = "center" style = "padding:5px 0px 5px 0px ;">'.$login_session.' kölcsönzései'?><?php 
+							echo ' <font color = "yellow"> - összesen '. $number_of_rents.' db'; ?><?php echo '</font></td>
 						</tr>
 					</table>
 				</div>';
 			
-			$rents = "SELECT * FROM auto, autokolcsonzes, felhasznalo 
-			WHERE auto.id = autokolcsonzes.auto_id AND autokolcsonzes.felhasznalo_nev = '".$login_session."' AND felhasznalo.felhasznalo_nev = '".$login_session."'";
-			$rentcars = mysqli_query($conn, $rents);
 			
 			$rowindex = 1;
 			if (mysqli_num_rows($rentcars) > 0){
@@ -244,14 +245,14 @@
 									</tr>
 									<tr>
 										<td width = "20%" height = "33px" style = "padding: 0% 4% 0% 0%; font-size: 20px; " align = "right">
-										Kölcsönzés időtartama </td>
+										Kölcsönzés ára naponta </td>
 										<td width = "20%" height = "33px" style = "padding: 0% 0% 0% 2%; font-size: 20px; " align = "left">
-										'.$row["ar_naponta"].' nap</td>
+										'.$row["ar_naponta"].' HUF</td>
 									</tr>
 									
 									<tr>
 										<td width = "20%" height = "33px" style = "padding: 0% 4% 0% 0%; font-size: 20px; " align = "right">
-										Kölcsönzés ára naponta</td>
+										Kölcsönzés ára összesen</td>
 										<td width = "20%" height = "33px" style = "padding: 0% 0% 0% 2%; font-size: 20px; " align = "left">
 										'.$row["ar_osszesen"].' HUF</td>
 									</tr>

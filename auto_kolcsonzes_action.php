@@ -22,15 +22,15 @@
 			$rowindex = 1;
 			if (mysqli_num_rows($cars) > 0){
 				while($row = mysqli_fetch_assoc($cars)){
-					if(isset($_POST[$row["id"]])){
+					if(isset($_GET[$row["id"]])){
 									
-									$rent_start = $_POST['kolcsonzes_kezdet'];
-									$rent_end = $_POST['kolcsonzes_veg'];
+									$rent_start = $_GET['kolcsonzes_kezdet'];
+									$rent_end = $_GET['kolcsonzes_veg'];
+									$ar_1 = $_GET['ar_1'];
+									$ar_2 = $_GET['ar_2'];
+									$ar_3 = $_GET['ar_3'];
 									
-									
-									$ar_1 = $row["ar_1"];
-									$ar_2 = $row["ar_2"];
-									$ar_3 = $row["ar_3"];
+									$rent_takeback = date('Y-m-d', strtotime($rent_end .' +1 day'));
 									
 									$date1=date_create($rent_start);
 									$date2=date_create($rent_end);
@@ -129,7 +129,12 @@
 													<td width = "20%" height = "33px" style = "padding: 0% 0% 0% 2%; font-size: 20px; " align = "left">
 													'.$interval->y.' év, '.$interval->m.' hónap, '.$interval->d.' nap</td>
 												</tr>
-												
+												<tr>
+													<td width = "20%" height = "33px" style = "padding: 0% 4% 0% 0%; font-size: 20px; " align = "right">
+													Autó visszahozatalának a dátuma </td>
+													<td width = "20%" height = "33px" style = "padding: 0% 0% 0% 2%; font-size: 20px; " align = "left">
+													'.$rent_takeback.' 12:00-ig</td>
+												</tr>
 												<tr>
 													<td width = "20%" height = "33px" style = "padding: 0% 4% 0% 0%; font-size: 20px; " align = "right">
 													Kölcsönzés ára naponta</td>
@@ -245,6 +250,12 @@
 												</tr>
 												<tr>
 													<td width = "20%" height = "33px" style = "padding: 0% 4% 0% 0%; font-size: 20px; " align = "right">
+													Autó visszahozatalának a dátuma </td>
+													<td width = "20%" height = "33px" style = "padding: 0% 0% 0% 2%; font-size: 20px; " align = "left">
+													'.$rent_takeback.' 12:00-ig</td>
+												</tr>
+												<tr>
+													<td width = "20%" height = "33px" style = "padding: 0% 4% 0% 0%; font-size: 20px; " align = "right">
 													Kölcsönzés ára naponta</td>
 													<td width = "20%" height = "33px" style = "padding: 0% 0% 0% 2%; font-size: 20px; " align = "left">
 													'.$ar_2.' HUF</td>
@@ -356,6 +367,12 @@
 													Kölcsönzés időtartama </td>
 													<td width = "20%" height = "33px" style = "padding: 0% 0% 0% 2%; font-size: 20px; " align = "left">
 													'.$interval->d.' nap</td>
+												</tr>
+												<tr>
+													<td width = "20%" height = "33px" style = "padding: 0% 4% 0% 0%; font-size: 20px; " align = "right">
+													Autó visszahozatalának a dátuma </td>
+													<td width = "20%" height = "33px" style = "padding: 0% 0% 0% 2%; font-size: 20px; " align = "left">
+													'.$rent_takeback.' 12:00-ig</td>
 												</tr>
 												<tr>
 													<td width = "20%" height = "33px" style = "padding: 0% 4% 0% 0%; font-size: 20px; " align = "right">

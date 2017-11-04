@@ -22,15 +22,15 @@
 			$rowindex = 1;
 			if (mysqli_num_rows($motors) > 0){
 				while($row = mysqli_fetch_assoc($motors)){
-					if(isset($_POST[$row["id"]])){
+					if(isset($_GET[$row["id"]])){
 									
-									$rent_start = $_POST['kolcsonzes_kezdet'];
-									$rent_end = $_POST['kolcsonzes_veg'];
+									$rent_start = $_GET['kolcsonzes_kezdet'];
+									$rent_end = $_GET['kolcsonzes_veg'];
+									$ar_1 = $_GET['ar_1'];
+									$ar_2 = $_GET['ar_2'];
+									$ar_3 = $_GET['ar_3'];
+									
 									$rent_takeback = date('Y-m-d', strtotime($rent_end .' +1 day'));
-									
-									$ar_1 = $row["ar_1"];
-									$ar_2 = $row["ar_2"];
-									$ar_3 = $row["ar_3"];
 									
 									$date1=date_create($rent_start);
 									$date2=date_create($rent_end);
@@ -48,7 +48,7 @@
 										$sql = "INSERT INTO `motorkolcsonzes` ( `felhasznalo_nev`, `motor_id`, `mettol`, `meddig`, `ar_naponta`, `ar_osszesen`) 
 										VALUES ( '".$login_session."', '".$row['id']."', '".$rent_start."', '".$rent_end."', '".$ar_1."', '".$whole_price."');";
 										mysqli_query($conn, $sql);
-											
+										exit;
 										$last_id = mysqli_insert_id($conn);
 										$getName = "SELECT * FROM felhasznalo, motorkolcsonzes
 										WHERE felhasznalo.felhasznalo_nev = motorkolcsonzes.felhasznalo_nev AND motorkolcsonzes.id  = '".$last_id."'" ;

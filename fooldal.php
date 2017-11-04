@@ -319,14 +319,9 @@
 						}
 				}
 							?>
-							<?php
-								
-							echo '</form>';
-							
-				
-					
-					
-		?>
+			<?php				
+				echo '</form>';
+			?>
 			
 		</br></br></br></br>
 	</body>

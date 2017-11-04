@@ -594,18 +594,18 @@
 		}
 		
 		
-		.pop-out
-			{
-				transition: transform .7s;
-			}
-
-			.pop-out:hover
-		{
-				-ms-transform: scale(1.7, 1.7);
-				-webkit-transform: scale(1.7, 1.7);
-				transform: scale(1.7, 1.7);
+		.pop-out{
+			transition: transform 0.3s;
 		}
-		
+			
+		.pop-out:hover{
+			opacity: 1;
+			-ms-transform: scale(1.7, 1.7);
+			-webkit-transform: scale(1.7, 1.7);
+			transform: scale(1.7, 1.7);
+			cursor: zoom-in;
+			
+		}
 		
 		.comment {
 		padding: 1;
