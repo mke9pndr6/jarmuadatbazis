@@ -1,4 +1,4 @@
-	
+
 </html>
 	<head>
 		<title>
@@ -13,7 +13,6 @@
 		</br></br>
 			
 			<?php
-		
 			include('connection.php');
 			
 			$newestMotorsIndex = "SELECT * FROM `motor` ORDER BY evjarat DESC";

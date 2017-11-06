@@ -1,13 +1,9 @@
 
-
 <!--
 	version: 0.0.1
 	date: 2017.08.01
 	author: Hegedűs Viktor
 -->
-
-
-
 
 <?php 
 	ob_start();
@@ -26,26 +22,6 @@
 		<title>
 			<?php echo $login_session; ?> kölcsönzései 
 		</title>
-		
-		<script type = "text/javascript">
-			$(document).ready(function(){
-				$("ul#menu div").click(function(){
-					$(this).parent().find("ul").slideDown("slow");
-				});
-			});
-		</script>
-		
-		<script>
-				function loginMessage() {
-					alert("Kérjük jelentkezzen be a kölcsönzéshez!");
-				}
-				
-				function loginComment() {
-					alert("Kérjük jelentkezzen be, hogy tudjon hozzászólást írni!");
-				}
-		</script>
-		
-		
 	</head>
 	
 		<body id = "bgStyle">
@@ -141,13 +117,11 @@
 				<div style = "clear:both"></div>
 			</div>
 			
-			
 			</br>
 			</br>
 			</br>
 			</br>
 			</br>
-			
 			
 			<?php
 			
