@@ -52,7 +52,7 @@
 									$interval = $date1->diff($date2);
 									$interval->d = $interval->d + 1;
 									
-									if($today >= $rent_start || $rent_start >= $rent_end){
+									if($today >= $rent_start || $rent_start > $rent_end){
 										echo '</br></br></br><div align = "center" id = "cars">
 											<table align = "center" width = "55%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = "border-style: solid; border-width: 0px;
 											margin: 0 0px 0 0; border-color: #000;background: linear-gradient(#0E0F15, #084B8A); font-family: Electrolize; color: #ffffff; font-size: 14.5px; border-radius: 21 21 19 19" >
@@ -305,13 +305,15 @@
 													<td width = "20%" height = "33px" style = "padding: 0% 4% 0% 0%; font-size: 20px; " align = "right">
 													Kölcsönzés ára naponta</td>
 													<td width = "20%" height = "33px" style = "padding: 0% 0% 0% 2%; font-size: 20px; " align = "left">
-													'.$ar_2.' HUF</td>
+													<font color = "yellow">
+													'.$ar_2.' HUF </font> </td>
 												</tr>
 												<tr>
 													<td width = "20%" height = "33px" style = "padding: 0% 4% 3% 0%; font-size: 20px; " align = "right">
 													Teljes ár</td>
 													<td width = "20%" height = "33px" style = "padding: 0% 0% 3% 2%; font-size: 20px; " align = "left">
-													'.$whole_price.' HUF</td>
+													<font color = "yellow">
+													'.$whole_price.' HUF  </font></td>
 												</tr>
 												<tr>
 													<td colspan = "2">';
@@ -426,13 +428,15 @@
 													<td width = "20%" height = "33px" style = "padding: 0% 4% 0% 0%; font-size: 20px; " align = "right">
 													Kölcsönzés ára naponta</td>
 													<td width = "20%" height = "33px" style = "padding: 0% 0% 0% 2%; font-size: 20px; " align = "left">
-													'.$ar_3.' HUF</td>
+													<font color = "yellow">
+													'.$ar_3.' HUF </font> </td>
 												</tr>
 												<tr>
 													<td width = "20%" height = "33px" style = "padding: 0% 4% 3% 0%; font-size: 20px; " align = "right">
 													Teljes ár</td>
 													<td width = "20%" height = "33px" style = "padding: 0% 0% 3% 2%; font-size: 20px; " align = "left">
-													'.$whole_price.' HUF</td>
+													<font color = "yellow">
+													'.$whole_price.' HUF  </font></td>
 												</tr>
 												<tr>
 													<td colspan = "2">';
