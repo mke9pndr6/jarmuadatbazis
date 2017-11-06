@@ -2,13 +2,22 @@
 </html>
 	<head>
 		<title>
-			Sikeres motorkölcsönzés
+			Autókölcsönzés
 		</title>
 	</head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta HTTP-EQUIV="Content-Language" Content="hu">
 		<link rel = "stylesheet" href = "style.css"/>
 		<link href='https://fonts.googleapis.com/css?family=Electrolize' rel='stylesheet'/>
+		
+		
+		<script>
+			function goBack() {
+				window.history.back();
+			}
+		</script>
+		
+		
 	<body id = "bgStyle">
 		</br></br></br>
 			
@@ -30,6 +39,8 @@
 									$ar_2 = $_GET['ar_2'];
 									$ar_3 = $_GET['ar_3'];
 									
+									$today = date("Y-m-d");									
+									
 									$rent_takeback = date('Y-m-d', strtotime($rent_end .' +1 day'));
 									
 									$date1=date_create($rent_start);
@@ -41,8 +52,40 @@
 									$interval = $date1->diff($date2);
 									$interval->d = $interval->d + 1;
 									
-									if($interval->d <= 6){
+									if($today >= $rent_start || $rent_start >= $rent_end){
+										echo '</br></br></br><div align = "center" id = "cars">
+											<table align = "center" width = "55%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = "border-style: solid; border-width: 0px;
+											margin: 0 0px 0 0; border-color: #000;background: linear-gradient(#0E0F15, #084B8A); font-family: Electrolize; color: #ffffff; font-size: 14.5px; border-radius: 21 21 19 19" >
+												<tr>
+													<td colspan = "2" width = "20%" height = "35px" style = "padding: 3% 2% 3% 2%; font-size: 40px; " align = "center">
+													Sikertelen kölcsönzés!</td>
+												</tr>
+												<tr>
+													<td width = "20%" height = "33px" style = "padding: 0% 0% 0% 5%; font-size: 20px; " align = "left">
+													A probléma okai a következők lehetnek:</br>
+													<ul>
+														</br>
+														<li> A mai dátum: <font color = "yellow">'.$today.' </font> - A megadott kezdeti dátum: <font color = "yellow">'.$rent_start.'. </font></li>
+														<li> A kezdeti dátum: <font color = "yellow">'.$rent_start.' </font> - A kölcsönzés végének a dátuma: <font color = "yellow">'.$rent_end.'</font>.</li>														
+														</br>
+														<li> A kölcsönzés kezdetének a mai (<font color = "yellow">'.$today.'</font>) dátumnál későbbi időpontot kell megadni!</li>
+														<li> A kölcsönzés végének a mai (<font color = "yellow">'.$today.'</font>) dátumnál későbbi időpontot kell megadni!</li>
+														<li> A kölcsönzés végének a kezdeti dátumnál későbbi időpontot kell megadni!</li>
+													</td>
+												</tr>
+												<tr>
+													<td style="padding-top: 40px;">
+														<button type = "submit" class = "input" onclick="goBack()">Vissza a kölcsönzéshez.</button>
+													</td>
+												</tr>
+											</table>
+										</div>';
+									}
+							
+									
+									else if($interval->d <= 6 && $interval->d >= 0 && $interval->m == 0 && $interval->y == 0){
 										$whole_price = $ar_1 * $interval->d;
+									
 										$sql = "INSERT INTO `autokolcsonzes` ( `felhasznalo_nev`, `auto_id`, `mettol`, `meddig`, `ar_naponta`, `ar_osszesen`) 
 										VALUES ( '".$login_session."', '".$row['id']."', '".$rent_start."', '".$rent_end."', '".$ar_1."', '".$whole_price."');";
 										mysqli_query($conn, $sql);
@@ -139,13 +182,15 @@
 													<td width = "20%" height = "33px" style = "padding: 0% 4% 0% 0%; font-size: 20px; " align = "right">
 													Kölcsönzés ára naponta</td>
 													<td width = "20%" height = "33px" style = "padding: 0% 0% 0% 2%; font-size: 20px; " align = "left">
-													'.$ar_1.' HUF</td>
+													<font color = "yellow">
+													'.$ar_1.' HUF </font> </td>
 												</tr>
 												<tr>
 													<td width = "20%" height = "33px" style = "padding: 0% 4% 3% 0%; font-size: 20px; " align = "right">
 													Teljes ár</td>
 													<td width = "20%" height = "33px" style = "padding: 0% 0% 3% 2%; font-size: 20px; " align = "left">
-													'.$whole_price.' HUF</td>
+													<font color = "yellow">
+													'.$whole_price.' HUF  </font></td>
 												</tr>
 												<tr>
 													<td colspan = "2">';
@@ -161,8 +206,10 @@
 									}
 									}
 									
-									else if($interval->d > 6 && $interval->d <= 30){
+									else if($interval->d > 6 && $interval->d <= 30 && $interval->m == 0 && $interval->y == 0){
+										
 										$whole_price = $ar_2 * $interval->d;
+											
 										$sql = "INSERT INTO `autokolcsonzes` ( `felhasznalo_nev`, `auto_id`, `mettol`, `meddig`, `ar_naponta`, `ar_osszesen`) 
 										VALUES ( '".$login_session."', '".$row['id']."', '".$rent_start."', '".$rent_end."', '".$ar_2."', '".$whole_price."');";
 										mysqli_query($conn, $sql);
@@ -246,7 +293,7 @@
 													<td width = "20%" height = "33px" style = "padding: 0% 4% 0% 0%; font-size: 20px; " align = "right">
 													Kölcsönzés időtartama </td>
 													<td width = "20%" height = "33px" style = "padding: 0% 0% 0% 2%; font-size: 20px; " align = "left">
-													'.$interval->d.' nap</td>
+													'.$interval->y.' év, '.$interval->m.' hónap, '.$interval->d.' nap</td>
 												</tr>
 												<tr>
 													<td width = "20%" height = "33px" style = "padding: 0% 4% 0% 0%; font-size: 20px; " align = "right">
@@ -281,8 +328,9 @@
 										
 									}
 									
-									else if($interval->d > 30 && $interval->d <= 366){
-										$whole_price = $ar_3 * $interval->d;
+									else if($interval->m >= 1 && $interval->m <= 12 && $interval->y < 1){
+										$whole_price = $ar_3 * $interval->m * 30 * $interval->d;
+										
 										$sql = "INSERT INTO `autokolcsonzes` ( `felhasznalo_nev`, `auto_id`, `mettol`, `meddig`, `ar_naponta`, `ar_osszesen`) 
 										VALUES ( '".$login_session."', '".$row['id']."', '".$rent_start."', '".$rent_end."', '".$ar_3."', '".$whole_price."');";
 										mysqli_query($conn, $sql);
@@ -366,7 +414,7 @@
 													<td width = "20%" height = "33px" style = "padding: 0% 4% 0% 0%; font-size: 20px; " align = "right">
 													Kölcsönzés időtartama </td>
 													<td width = "20%" height = "33px" style = "padding: 0% 0% 0% 2%; font-size: 20px; " align = "left">
-													'.$interval->d.' nap</td>
+													'.$interval->y.' év, '.$interval->m.' hónap, '.$interval->d.' nap</td>
 												</tr>
 												<tr>
 													<td width = "20%" height = "33px" style = "padding: 0% 4% 0% 0%; font-size: 20px; " align = "right">
@@ -398,6 +446,27 @@
 											 
 									</div>';
 									}
+								}
+								else{
+									echo '</br></br></br></br><div align = "center" id = "cars">
+											<table align = "center" width = "55%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = "border-style: solid; border-width: 0px;
+											margin: 0 0px 0 0; border-color: #000;background: linear-gradient(#0E0F15, #084B8A); font-family: Electrolize; color: #ffffff; font-size: 14.5px; border-radius: 21 21 19 19" >
+												<tr>
+													<td colspan = "2" width = "20%" height = "35px" style = "padding: 3% 2% 3% 2%; font-size: 40px; " align = "center">
+													Sikertelen kölcsönzés!		</td>	
+												</tr>
+												<tr>
+													<td width = "20%" height = "33px" style = "padding: 0% 0% 0% 0%; font-size: 30px; " align = "center">
+													<font color = "#FE2E2E">Nem kölcsönözhet autót egy évnél hosszabb időtartamra!</font></br></td>
+												</tr>
+												</br>
+												<tr>
+													<td style="padding-top: 40px;">
+														<button type = "submit" class = "input" onclick="goBack()">Vissza a kölcsönzéshez.</button>
+													</td>
+												</tr>
+											</table>
+									</div>';
 								}
 							}
 						}
