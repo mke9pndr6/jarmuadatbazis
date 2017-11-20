@@ -115,9 +115,6 @@
 								<div align = "center">
 									<table align = "center" width = "100%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
 										<tr>
-											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="adatok_modositasa.php";'>Adataim</td></button>
-										</tr>
-										<tr>
 											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="adatok_modositasa.php";'>Adatok módosítása</td></button>
 										</tr>
 										<tr>

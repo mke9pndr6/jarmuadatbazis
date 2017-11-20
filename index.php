@@ -67,7 +67,7 @@
 							<td height = "33px" ><font id = "style_login">Jelszó</font></td>
 						</tr>
 						<tr>
-							<td height = "33px" align = "center"><input type = "password" style="height:26px; width: 98%; 
+							<td height = "33px" align = "center"><input type = "text" style="height:26px; width: 98%; 
 							padding: 12px 20px; margin: 8px 0; box-sizing: border-box; border: none; border-bottom: 3px solid black; color:#13105C;"
 							name = "login_jelszo" size = "45" align = "center" placeholder = "*****************"/></td>
 						</tr>
