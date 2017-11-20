@@ -8,6 +8,7 @@
 <?php 
 	include('reg_conn.php');
 	//include('style.php');
+	ob_start();
 ?>
 
 <html>
@@ -231,6 +232,11 @@
 												<td height = "33px" id = "styleofwords2"><font id = "styleofwords2"><a href = "index.php" id = "styleofword2"
 												style = "text-decoration: none; text-color: white; text-align: center;"><font size = "3" color = "#ffffff" align = "center">Tovább a belépéshez...</a></font></td>
 											</tr>';	
+											
+											
+									header("Refresh:0; url=index.php");
+									ob_end_flush();
+											
 										
 								}
 								
@@ -253,8 +259,8 @@
 												<td height = "33px" id = "styleofwords7"></td>
 											</tr>
 											<tr>
-												<td width = "50%"><input type = "submit" class = "input" value = "Regisztráció" name = "regisztracio" /></td>
-												<td width = "50%"><button class = "button" href = "index.php" align = "center" onclick = "location.href="index.php";">Mégsem</td></button>
+												<td ><input type = "submit" class = "input" value = "Regisztráció" name = "regisztracio" /></td>
+	
 											</tr>
 										</table>
 									</div>
@@ -280,8 +286,7 @@
 												<td height = "33px" id = "styleofwords7"></td>
 											</tr>
 											<tr>
-												<td width = "50%"><input type = "submit" class = "input" value = "Regisztráció" name = "regisztracio" /></td>
-												<td width = "50%"><button class = "button" href = "index.php" align = "center" onclick = "location.href="index.php";">Mégsem</td></button>
+												<td ><input type = "submit" class = "input" value = "Regisztráció" name = "regisztracio" /></td>
 											</tr>
 										</table>
 									</div>
@@ -306,8 +311,7 @@
 												<td height = "33px" id = "styleofwords7"></td>
 											</tr>
 											<tr>
-												<td width = "50%"><input type = "submit" class = "input" value = "Regisztráció" name = "regisztracio" /></td>
-												<td width = "50%"><button class = "button" href = "index.php" align = "center" onclick = "location.href="index.php";">Mégsem</td></button>
+												<td ><input type = "submit" class = "input" value = "Regisztráció" name = "regisztracio" /></td>
 											</tr>
 										</table>
 									</div>
@@ -332,8 +336,7 @@
 												<td height = "33px" id = "styleofwords7"></td>
 											</tr>
 											<tr>
-												<td width = "50%"><input type = "submit" class = "input" value = "Regisztráció" name = "regisztracio" /></td>
-												<td width = "50%"><button class = "button" href = "index.php" align = "center" onclick = "location.href="index.php";">Mégsem</td></button>
+												<td ><input type = "submit" class = "input" value = "Regisztráció" name = "regisztracio" /></td>
 											</tr>
 										</table>
 									</div>
@@ -354,8 +357,7 @@
 							<td height = "33px" id = "styleofwords7"></td>
 						</tr>
 						<tr>
-							<td width = "50%"><input type = "submit" class = "input" value = "Regisztráció" name = "regisztracio" /></td>
-							<td width = "50%"><button class = "button" href = "index.php" align = "center" onclick = "location.href='index.php';">Mégsem</td></button>
+							<td ><input type = "submit" class = "input" value = "Regisztráció" name = "regisztracio" /></td>
 						</tr>
 					</table>
 				</div>

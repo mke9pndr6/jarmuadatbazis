@@ -30,7 +30,7 @@
 								cellspacing = "0" style = "background: linear-gradient(#0E0F15, #084B8A); border-radius: 19 19 0 0 ">
 								<form method = "get" action = "auto_kolcsonzes_action.php" enctype = "multipart/form-data" name = "rent_a_car">
 									<tr>
-										<td align = "center"height = "60px" colspan = "2" style = "padding: 2% 1% 2% 1%;"><font color = "white" style = "font-family: Electrolize;" size = "6">Véglegesítse kölcsönzését</td>
+										<td align = "center"height = "60px" colspan = "2" style = "padding: 2% 1% 2% 1%;"><font color = "white" style = "font-family: Electrolize;" size = "6">Adja meg a kölcsönzés dátumát!</td>
 									</tr>
 									<tr>
 										<td colspan = "2" style = "padding: 0% 0% 2% 0%;">

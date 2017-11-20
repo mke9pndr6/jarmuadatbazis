@@ -26,23 +26,6 @@
 			Összes autó adminpage
 		</title>
 		
-		<script type = "text/javascript">
-			$(document).ready(function(){
-				$("ul#menu div").click(function(){
-					$(this).parent().find("ul").slideDown("slow");
-				});
-			});
-			  
-			  
-			//click on the "tetszik" button increments the value of the number 
-			function incrementValue(){
-				var value = parseInt(document.getElementById('number').value, 10);
-				value = isNaN(value) ? 0 : value;
-				value++;
-				document.getElementById('number').value = value;
-			}
-		
-		</script>
 		
 		<style type="text/css">
 			  
@@ -50,15 +33,6 @@
 			  input[type="checkbox"]:required:valid + label { color: white; }
 		</style>
 		
-		<script>
-				function loginMessage() {
-					alert("Kérjük jelentkezzen be a kölcsönzéshez!");
-				}
-				
-				function loginComment() {
-					alert("Kérjük jelentkezzen be, hogy tudjon hozzászólást írni!");
-				}
-		</script>
 		
 		
 	</head>
@@ -145,13 +119,7 @@
 										<tr>
 											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="jelszo_modosit.php";'>Új jelszó</td></button>
 										</tr>
-										<tr>
-											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="kolcsonzeseim_auto.php";'>Autós kölcsönzéseim</td></button>
-										</tr>
-										<tr>
-											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="kolcsonzeseim_motor.php";'>Motoros kölcsönzéseim</td></button>
-										</tr>
-					
+										
 										<tr>
 											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="felhasznalo_torlese.php";'>Fiók törlése</td></button>
 										</tr>

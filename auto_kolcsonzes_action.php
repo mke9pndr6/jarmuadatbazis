@@ -52,7 +52,18 @@
 									$interval = $date1->diff($date2);
 									$interval->d = $interval->d + 1;
 									
-									if($today >= $rent_start || $rent_start > $rent_end){
+									$rent_sql = "SELECT * FROM `autokolcsonzes` WHERE auto_id = '".$row['id']."' AND
+												(('".$rent_start."' >= mettol AND '".$rent_start."' <= meddig)
+												OR ('".$rent_end."' >= mettol AND '".$rent_end."' <= meddig) OR ('".$rent_start."' <= mettol AND '".$rent_end."' >= meddig))";
+									$rented_cars = mysqli_query($conn, $rent_sql);
+									$count_rentedcars = mysqli_num_rows($rented_cars);
+									
+									$rents = "SELECT * FROM autokolcsonzes WHERE auto_id = '".$row['id']."'";
+									$rents_from_to = mysqli_query($conn, $rents);
+									$count_rents_from_to = mysqli_num_rows($rents_from_to);
+									
+									/*ellenőrizzük, hogy a megadtott kezdeti dátum és végső dátum helyes-e*/
+									if($today > $rent_start || $rent_start > $rent_end){
 										echo '</br></br></br><div align = "center" id = "cars">
 											<table align = "center" width = "55%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = "border-style: solid; border-width: 0px;
 											margin: 0 0px 0 0; border-color: #000;background: linear-gradient(#0E0F15, #084B8A); font-family: Electrolize; color: #ffffff; font-size: 14.5px; border-radius: 21 21 19 19" >
@@ -81,7 +92,47 @@
 											</table>
 										</div>';
 									}
-							
+									
+									/*ellenőrizzük, hogy ki van-e már kölcsönözve ebben az időszakban az autó*/
+								
+									else if($count_rentedcars > 0){
+										echo '</br></br></br><div align = "center" id = "cars">
+											<table align = "center" width = "55%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = "border-style: solid; border-width: 0px;
+											margin: 0 0px 0 0; border-color: #000;background: linear-gradient(#0E0F15, #084B8A); font-family: Electrolize; color: #ffffff; font-size: 14.5px; border-radius: 21 21 19 19" >
+												<tr>
+													<td colspan = "2" width = "20%" height = "35px" style = "padding: 3% 2% 3% 2%; font-size: 40px; " align = "center">
+													Sikertelen kölcsönzés!</td>
+												</tr>
+												<tr>
+													<td width = "20%" height = "33px" style = "padding: 0% 0% 0% 5%; font-size: 20px; " align = "left">
+													A probléma okai a következők lehetnek:</br>
+													<ul>
+														</br>
+														<li> A mai dátum: <font color = "yellow">'.$today.' </font> - A megadott kezdeti dátum: <font color = "yellow">'.$rent_start.'. </font></li>
+														<li> A kezdeti dátum: <font color = "yellow">'.$rent_start.' </font> - A kölcsönzés végének a dátuma: <font color = "yellow">'.$rent_end.'</font>.</li>														
+														</br>
+														<li> A megadott időszakban nem lehet kibérelni ezt az autót: <font color = "yellow"> '.$row['automarka_id'].' '.$row['marka_tipus'].'</font></li>';
+														
+														/*írassuk ki a lefoglalt időpontokat ehhez a kocsihoz */
+															while($rows = mysqli_fetch_assoc($rents_from_to)){
+															echo $rows['mettol']. " <font color='yellow'> - </font> ". $rows['meddig'] . "</br>";
+														}
+										
+										
+										echo '
+												<li> Válasszon másik alkalmat! </li>
+													</td>
+												</tr>
+												<tr>
+													<td style="padding-top: 40px;">
+														<button type = "submit" class = "input" onclick="goBack()">Vissza a kölcsönzéshez.</button>
+													</td>
+												</tr>
+											</table>
+										</div>';
+									}
+									
+					
 									
 									else if($interval->d <= 6 && $interval->d >= 0 && $interval->m == 0 && $interval->y == 0){
 										$whole_price = $ar_1 * $interval->d;
@@ -194,9 +245,18 @@
 												</tr>
 												<tr>
 													<td colspan = "2">';
-													?>
-														<button type = "submit" class = "input" style = "border-radius: 0 0 19 19; font-size: 28px;" onclick = "location.href='fooldal.php';" >Vissza a nyitóoldalra </<td>
-													<?php
+													if($login_session == "admin"){
+														?>
+														<button type = "submit" class = "input" style = "border-radius: 0 0 19 19; font-size: 28px;" onclick = "location.href='adminpage.php';" />Vissza a nyitóoldalra </td>
+														<?php
+													}
+													
+													else{
+														?>
+														<button type = "submit" class = "input" style = "border-radius: 0 0 19 19; font-size: 28px;" onclick = "location.href='fooldal.php';" />Vissza a nyitóoldalra </td>';
+														<?php
+													}
+													
 													echo '
 													</td>
 												</tr>
@@ -317,9 +377,18 @@
 												</tr>
 												<tr>
 													<td colspan = "2">';
-													?>
-														<button type = "submit" class = "input" style = "border-radius: 0 0 19 19; font-size: 28px;" onclick = "location.href='fooldal.php';" >Vissza a nyitóoldalra </<td>
-													<?php
+													if($login_session == "admin"){
+														?>
+														<button type = "submit" class = "input" style = "border-radius: 0 0 19 19; font-size: 28px;" onclick = "location.href='adminpage.php';" />Vissza a nyitóoldalra </td>
+														<?php
+													}
+													
+													else{
+														?>
+														<button type = "submit" class = "input" style = "border-radius: 0 0 19 19; font-size: 28px;" onclick = "location.href='fooldal.php';" />Vissza a nyitóoldalra </td>';
+														<?php
+													}
+													
 													echo '
 													</td>
 												</tr>
@@ -331,7 +400,7 @@
 									}
 									
 									else if($interval->m >= 1 && $interval->m <= 12 && $interval->y < 1){
-										$whole_price = $ar_3 * $interval->m * 30 * $interval->d;
+										$whole_price = ($ar_3 * $interval->m * 30) + ($ar_3 * $interval->d);
 										
 										$sql = "INSERT INTO `autokolcsonzes` ( `felhasznalo_nev`, `auto_id`, `mettol`, `meddig`, `ar_naponta`, `ar_osszesen`) 
 										VALUES ( '".$login_session."', '".$row['id']."', '".$rent_start."', '".$rent_end."', '".$ar_3."', '".$whole_price."');";
@@ -440,9 +509,18 @@
 												</tr>
 												<tr>
 													<td colspan = "2">';
-													?>
-														<button type = "submit" class = "input" style = "border-radius: 0 0 19 19; font-size: 28px;" onclick = "location.href='fooldal.php';" >Vissza a nyitóoldalra </<td>
-													<?php
+													if($login_session == "admin"){
+														?>
+														<button type = "submit" class = "input" style = "border-radius: 0 0 19 19; font-size: 28px;" onclick = "location.href='adminpage.php';" />Vissza a nyitóoldalra </td>
+														<?php
+													}
+													
+													else{
+														?>
+														<button type = "submit" class = "input" style = "border-radius: 0 0 19 19; font-size: 28px;" onclick = "location.href='fooldal.php';" />Vissza a nyitóoldalra </td>';
+														<?php
+													}
+													
 													echo '
 													</td>
 												</tr>

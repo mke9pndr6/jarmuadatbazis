@@ -69,7 +69,7 @@
 						<tr>
 							<td height = "33px" align = "center"><input type = "password" style="height:26px; width: 98%; 
 							padding: 12px 20px; margin: 8px 0; box-sizing: border-box; border: none; border-bottom: 3px solid black; color:#13105C;"
-							name = "login_jelszo" size = "45" required align = "center" placeholder = "*****************"/></td>
+							name = "login_jelszo" size = "45" align = "center" placeholder = "*****************"/></td>
 						</tr>
 						<tr>
 							<td height = "33px"><label for="remember-me" style = "font-size: 18px; font-family: Electrolize; text-align: left; color:#fff; padding: 0 0 0 1%;" >

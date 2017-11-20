@@ -129,13 +129,7 @@
 										<tr>
 											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="jelszo_modosit.php";'>Új jelszó</td></button>
 										</tr>
-										<tr>
-											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="kolcsonzeseim_auto.php";'>Autós kölcsönzéseim</td></button>
-										</tr>
-										<tr>
-											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="kolcsonzeseim_motor.php";'>Motoros kölcsönzéseim</td></button>
-										</tr>
-					
+						
 										<tr>
 											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="felhasznalo_torlese.php";'>Fiók törlése</td></button>
 										</tr>
@@ -160,11 +154,11 @@
 					<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
 						<tr>
 							<td height = "33px" id = "styleofwords9" width = "66.6666%"><input type = "text" style="height:26px; width: 100%;" name = "carsearch" size = "45" placeholder = "Autó keresése..."/></td>
-							<td width = "33.33%"><input type = "submit" class = "buttonlog" value = "Autó keresése" name = "autokeres" /></td>
+							<td width = "33.33%"><input type = "submit" class = "buttonlog" value = "Autó keresése" name = "autokeres_1" /></td>
 						</tr>
 						<tr>
 							<td height = "33px" id = "styleofwords9" width = "66.6666%"><input type = "text" style="height:26px; width: 100%;" name = "motorsearch" size = "45" placeholder = "Motor keresés..."/></td>
-							<td width = "33.33%"><input type = "submit" class = "buttonlog" value = "Motor keresése" name = "motorkeres" /></td>
+							<td width = "33.33%"><input type = "submit" class = "buttonlog" value = "Motor keresése" name = "motorkeres_1" /></td>
 						</tr>
 					</table>
 			</div>
@@ -175,7 +169,7 @@
 					
 					include('connection.php');
 					
-					if(isset($_GET['autokeres'])){
+					if(isset($_GET['autokeres_1'])){
 						
 						$autokeres = $_GET['carsearch'];
 						$carSearchSql = "SELECT * FROM auto WHERE auto.automarka_id LIKE '%".$autokeres."%'
@@ -348,7 +342,7 @@
 					}
 					
 					
-					if(isset($_POST['motorkeres'])){
+					if(isset($_POST['motorkeres_1'])){
 							
 						$motorkeres = $_POST['motorsearch'];
 						$motorSearchSql = "SELECT * FROM motor WHERE motor.motormarka_id LIKE '%".$motorkeres."%'
