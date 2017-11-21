@@ -253,7 +253,7 @@
 													
 													else{
 														?>
-														<button type = "submit" class = "input" style = "border-radius: 0 0 19 19; font-size: 28px;" onclick = "location.href='fooldal.php';" />Vissza a nyitóoldalra </td>';
+														<button type = "submit" class = "input" style = "border-radius: 0 0 19 19; font-size: 28px;" onclick = "location.href='fooldal.php';" />Vissza a nyitóoldalra </td>
 														<?php
 													}
 													
@@ -385,7 +385,7 @@
 													
 													else{
 														?>
-														<button type = "submit" class = "input" style = "border-radius: 0 0 19 19; font-size: 28px;" onclick = "location.href='fooldal.php';" />Vissza a nyitóoldalra </td>';
+														<button type = "submit" class = "input" style = "border-radius: 0 0 19 19; font-size: 28px;" onclick = "location.href='fooldal.php';" />Vissza a nyitóoldalra </td>
 														<?php
 													}
 													
@@ -517,7 +517,7 @@
 													
 													else{
 														?>
-														<button type = "submit" class = "input" style = "border-radius: 0 0 19 19; font-size: 28px;" onclick = "location.href='fooldal.php';" />Vissza a nyitóoldalra </td>';
+														<button type = "submit" class = "input" style = "border-radius: 0 0 19 19; font-size: 28px;" onclick = "location.href='fooldal.php';" />Vissza a nyitóoldalra </td>
 														<?php
 													}
 													
