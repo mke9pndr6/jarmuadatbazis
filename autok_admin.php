@@ -113,7 +113,7 @@
 							<a href = "motorok_hozzaadasa.php">Motorok felvétele</a>
 							<a href = "motorok_modositasa.php">Motorok módosítása</a>
 							<a href = "motorok_torlese.php">Motorok törlése</a>
-							<a href = "hozzaszolasok.php">Hozzászólások</a>
+							<a href = "hozzaszolasok_admin.php">Hozzászólások</a>
 						</div>
 					</li>
 					<li><a href="kereses_admin.php">Keresés</a></li>
@@ -129,15 +129,25 @@
 										<tr>
 											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="jelszo_modosit.php";'>Új jelszó</td></button>
 										</tr>
-							
-					
+										<tr>
+											<td width = "100%" align = "center"><button class = "buttonlog" align = "left" onclick = 'location.href="online_felhasznalok.php";'>Online tagok</td></button>
+										</tr>
+										<tr>
+											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="reg_felhasznalok.php";'>Regisztrált tagok</td></button>
+										</tr>
+										<tr>
+											<td width = "100%" align = "center"><button class = "buttonlog" align = "left" onclick = 'location.href="kolcsonzeseim_auto_admin.php";'>Autós kölcsönzések</td></button>
+										</tr>
+										<tr>
+											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="kolcsonzeseim_motor_admin.php";'>Motoros kölcsönzések</td></button>
+										</tr>
 										<tr>
 											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="felhasznalo_torlese.php";'>Fiók törlése</td></button>
 										</tr>
-										
 										<tr>
 											<td width = "100%"><button class = "buttonlog" align = "left" onclick = 'location.href="kijelentkezes.php";'>Kijelentkezés</td></button>
 										</tr>
+										
 										</table>
 									</div>
 	
