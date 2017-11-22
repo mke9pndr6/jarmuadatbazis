@@ -168,7 +168,7 @@
 						
 						<tr>
 							<td colspan = "2"width = "50%">
-							<input style = "padding: 0; border-radius: 0;" type = "submit" class = "input" value = "Hozzászólás írása" name = "comment_write" /></td>
+							<input style = "padding: 0; border-radius: 0;" type = "submit" class = "input" value = "Hozzászólás írása" name = "comment_write" required/></td>
 						</tr>
 						
 
@@ -186,18 +186,6 @@
 											(felhasznalo_nev, hozzaszolas, kategoria, datum) 
 											VALUES('".$login_session."','".$hozzaszolas."','Autó','".$currentDateTime."');";
 								mysqli_query($conn, $writecomment);
-								/*$emptyname = "Anonymous";
-								
-								if($felhasznalo_nev != ""){
-									
-									
-								}
-								else{
-								$writecomment = "INSERT INTO hozzaszolasok
-											(felhasznalo_nev, hozzaszolas, kategoria, datum) 
-											VALUES('Anonymous','".$hozzaszolas."','Autó','".$currentDateTime."');";
-								mysqli_query($conn, $writecomment);
-								}*/
 								
 							}
 							

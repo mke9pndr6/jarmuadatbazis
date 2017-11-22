@@ -172,55 +172,34 @@
 							text-align: center; padding: 10 0 10 0">Írja meg véleményét!</td>
 						</tr>
 						<tr>
-							<td height = "33px" id = "styleofwords11" style = "padding:0;"><input  type = "text" 
-							style="height:26px; width: 100%; font-size: 14px; font-family: Electrolize;" name = "felhasznalo_nev" size = "45" placeholder = "Adja meg felhasználónevét... (Nem kötelező!)" /></td>
+							<td height = "33px" id = "styleofwords11" style = "padding:0;">Hozzászólás írása a következő felhasználónévvel: <?php echo "<b><i>".$login_session."</i></b>"; ?></td>
 						</tr>
 						<tr>
-							<td><textarea cols = "93" rows = "4" placeholder = "Írja le véleményét az autókról, motorokról, vagy fejtse ki gondolatait más témában...Sortörésre használja a '</br' tag-et, pl.: Kedves xy! </br> - ennek javítása folyamatban van." 
+							<td><textarea cols = "93" rows = "4" placeholder = "Írja meg véleményét az autókról, motorokról, vagy fejtse ki gondolatait más témában." 
 							style="font-family: Electrolize; font-size: 14px; padding: 2 2 2 2;" cols = "93" rows = "4" name = "hozzaszolas" required></textarea></td>
 						</tr>
 						
-						<tr>
-							<td style = "padding: 2 2 2 4;"><input type="checkbox" name="vehicle1" value="kategoria_auto"><font color = "black"> Vélemény írása autóról (nem működik még) - Ezért a default érték az "Autó"</font></input></td>
-						</tr>
-						<tr>
-							<td style = "padding: 2 2 2 4;"><input type="checkbox" name="vehicle2" value="kategoria_motor"><font color = "black"> Vélemény írása motorról (nem működik még)</font></input></td>
-						</tr>
-						<tr>
-							<td style = "padding: 2 2 2 4;"><input type="checkbox" name="vehicle2" value="kategoria_egyeb"><font color = "black"> Egyéb (nem működik még)</font></input></td>
-						</tr>
+						
 						<tr>
 							<td colspan = "2"width = "50%">
-							<input style = "padding: 0; border-radius: 0;" type = "submit" class = "input" value = "Hozzászólás írása" name = "comment_write" /></td>
+							<input style = "padding: 0; border-radius: 0;" type = "submit" class = "input" value = "Hozzászólás írása" name = "comment_write" required/></td>
 						</tr>
-						
+						</form>
 
 						<?php
 						
 							if(isset($_GET['comment_write'])){
 								
-								$felhasznalo_nev = $_GET['felhasznalo_nev'];
+								
 								$hozzaszolas = $_GET['hozzaszolas'];
 								$currentDateTime = date('Y-m-d H:i:s');
 								
 								$breaks = array("</br>","<br>","<br/>","\r\n");  
 								$text = str_ireplace($breaks, "</br>", $hozzaszolas);  
-								
-								$emptyname = "Anonymous";
-								
-								if($felhasznalo_nev != ""){
-									
-									$writecomment = "INSERT INTO hozzaszolasok
-											(felhasznalo_nev, hozzaszolas, kategoria, datum) 
-											VALUES('".$felhasznalo_nev."','".$hozzaszolas."','Autó','".$currentDateTime."');";
-								mysqli_query($conn, $writecomment);
-								}
-								else{
 								$writecomment = "INSERT INTO hozzaszolasok
 											(felhasznalo_nev, hozzaszolas, kategoria, datum) 
-											VALUES('Anonymous','".$hozzaszolas."','Autó','".$currentDateTime."');";
+											VALUES('".$login_session."','".$hozzaszolas."','Autó','".$currentDateTime."');";
 								mysqli_query($conn, $writecomment);
-								}
 								
 							}
 							
@@ -243,7 +222,17 @@
 										echo '
 											<tr>
 												<td height = "20px" bgcolor = "white" style = "padding: 2 2 2 4;">
-												<font color = "black">'.$row["felhasznalo_nev"].'  -  '.$row["datum"].'  -  '.$row["kategoria"].'</font></td>
+												<font color = "black">'.$row["felhasznalo_nev"].'  -  '.$row["datum"].'  -  '.$row["kategoria"].' - <b>'.$row["id"].'</b></font>
+												';
+												?>
+													<form method = "get" action = "hozzaszolasok_admin_action.php" enctype = "multipart/form-data" name = "deletecomment">
+													<?php echo '<input type = "submit" style = "border-radius: 1px; " value = "Törlés" name = "'.$row["id"].'" />';?>
+													
+												<?php
+												
+												echo'
+												
+												</td>
 											</tr>
 											<tr>
 												<td style = "padding: 8 2 8 4; height: auto; width: 100%;"><font color = "black" style = "font-size: 15.5px;">'.$row["hozzaszolas"].'</font></td>
@@ -263,6 +252,8 @@
 				</div>
 				</br>
 				</br>
+				
+				
 	
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 			
