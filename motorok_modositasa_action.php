@@ -11,8 +11,6 @@
 		</title>
 	</head>
 	<body id = "bgStyle">
-	</body>
-</html>
 
 <?php
 
@@ -26,11 +24,10 @@
 		
 		$id = $_POST['id'];
 		$motormarka_id = $_POST['motormarka_id'];
-		$marka_tipus = $_POST['marka_tipus'];
+		$marka_tipus= $_POST['marka_tipus'];
 		$ar_1 = $_POST['ar_1'];
 		$ar_2 = $_POST['ar_2'];
 		$ar_3 = $_POST['ar_3'];
-		
 		$evjarat = $_POST['evjarat'];
 		$allapot = $_POST['allapot'];
 		$km_ora_allasa = $_POST['km_ora_allasa'];
@@ -45,15 +42,15 @@
 		$gyorsulas = $_POST['gyorsulas'];
 		$munkautem = $_POST['munkautem'];
 		
-		$motorexist = "SELECT * FROM motor WHERE id = '".$id."'";
-		$motor_conn = mysqli_query($conn, $motorexist);
-		$countMotors = mysqli_num_rows($motor_conn);
+		$carexist = "SELECT * FROM motor WHERE id = '".$id."'";
+		$car_conn = mysqli_query($conn, $carexist);
+		$countCars = mysqli_num_rows($car_conn);
 		
-		if($countMotors == 1){
+		if($countCars == 1){
 			   
 		   // mysql query to Update data
-		   $sql = "UPDATE motor SET marka_id ='".$motormarka_id."', marka_tipus ='".$marka_tipus."', ar_1 ='".$ar_1."',
-		   ar_2 ='".$ar_2."', ar_3 ='".$ar_3."', evjarat ='".$evjarat."', allapot ='".$allapot."', km_ora_allasa ='".$km_ora_allasa."',
+		   $sql = "UPDATE motor SET motormarka_id ='".$motormarka_id."', marka_tipus ='".$marka_tipus."', ar_1 ='".$ar_1."',
+		   ar_2 ='".$ar_2."', ar_3 ='".$ar_3."',  evjarat ='".$evjarat."', allapot ='".$allapot."', km_ora_allasa ='".$km_ora_allasa."',
 		   uzemanyag ='".$uzemanyag."', hengerurtartalom ='".$hengerurtartalom."', teljesitmeny ='".$teljesitmeny."', 
 		   sajat_tomeg ='".$sajat_tomeg."', maximalis_tomeg ='".$maximalis_tomeg."', tank_meret ='".$tank_meret."', atlagfogyasztas ='".$atlagfogyasztas."', 
 		   vegsebesseg ='".$vegsebesseg."', gyorsulas ='".$gyorsulas."', munkautem ='".$munkautem."' WHERE id = '".$id."'";
@@ -68,71 +65,78 @@
 		   </br>
 		   </br></br>
 		   </br>
-		  
+		   <div align = "center">
+						
+						<div align = "center" id = "cars">
+								<table align = "center" width = "43.2%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = "border-style: solid; border-width: 0px;
+								margin: 0 0px 0 0; border-color: #000;background: linear-gradient(#0E0F15, #0B3861); display: inline-block; font-family: Electrolize; color: #ffffff; font-size: 32px; border-radius: 19 19 0 0" >
+								<tr>
+								<td width = "15%"></td>
+								<td width = "70%" align = "center" style = "padding: 10px;">Sikeres módosítás!</td>
+								<td width = "15%"></td>
+								
+							</tr>
+						</table>
+			</div>
 		   
 			<div align = "center">
 				<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
 					<tr>
-						<td height = "33px"  width = "30%" id = "styleofwords2a"><font id = "styleofwords2a">A módosítás megtörtént, a motor adatai:</font></td>
-						<td height = "33px"  width = "70%" id = "styleofwords2a"><font id = "styleofwords2a"></font></td>
+						<td height = "33px"  width = "100%" id = "styleofwords2a"><font id = "styleofwords2a">A módosítás megtörtént, az ID = '.$id.' motor adatai</font></td>
+						<td height = "33px"  width = "0%" id = "styleofwords2a"><font id = "styleofwords2a"></font></td>
 					</tr>
 					<tr>
-						<td height = "33px"  width = "30%" id = "styleofwords2"><font id = "styleofwords2">Azonosító (id): '.$id.'</font></td>
-						<td height = "33px"  width = "70%" id = "styleofwords2"><font id = "styleofwords2"></font></td>
+						<td height = "33px"  width = "100%" id = "styleofwords2"><font id = "styleofwords2"> Motor márkája: '.$motormarka_id.'</font></td>
+						<td height = "33px"  width = "0%" id = "styleofwords2"><font id = "styleofwords2"></font></td>
 					</tr>
 					<tr>
-						<td height = "33px"  width = "30%" id = "styleofwords2"><font id = "styleofwords2">Motor márkája: '.$motormarka_id.'</font></td>
-						<td height = "33px"  width = "70%" id = "styleofwords2"><font id = "styleofwords2"></font></td>
+						<td height = "33px"  width = "100%" id = "styleofwords2"><font id = "styleofwords2">Márka típusa: '.$marka_tipus.'</font></td>
+						<td height = "33px"  width = "0%" id = "styleofwords2"><font id = "styleofwords2"></font></td>
 					</tr>
 					<tr>
-						<td height = "33px"  width = "30%" id = "styleofwords2"><font id = "styleofwords2">Márka típusa: '.$marka_tipus.'</font></td>
-						<td height = "33px"  width = "70%" id = "styleofwords2"><font id = "styleofwords2"></font></td>
+						<td height = "33px"  width = "100%" id = "styleofwords2"><font id = "styleofwords2">Teljesítmény: '.$teljesitmeny.'</font></td>
+						<td height = "33px"  width = "0%" id = "styleofwords2"><font id = "styleofwords2"></font></td>
 					</tr>
 					<tr>
-						<td height = "33px"  width = "30%" id = "styleofwords2"><font id = "styleofwords2">Teljesítmény: '.$teljesitmeny.' LE</font></td>
-						<td height = "33px"  width = "70%" id = "styleofwords2"><font id = "styleofwords2"></font></td>
+						<td height = "33px"  width = "100%" id = "styleofwords2"><font id = "styleofwords2">Végsebesség: '.$vegsebesseg.'</font></td>
+						<td height = "33px"  width = "0%" id = "styleofwords2"><font id = "styleofwords2"></font></td>
 					</tr>
 					<tr>
-						<td height = "33px"  width = "30%" id = "styleofwords2"><font id = "styleofwords2">Végsebesség: '.$vegsebesseg.' km/h</font></td>
-						<td height = "33px"  width = "70%" id = "styleofwords2"><font id = "styleofwords2"></font></td>
+						<td height = "33px"  width = "100%" id = "styleofwords2"><font id = "styleofwords2">Átlagfogyasztás '.$atlagfogyasztas.'</font></td>
+						<td height = "33px"  width = "0%" id = "styleofwords2"><font id = "styleofwords2"></font></td>
 					</tr>
 					<tr>
-						<td height = "33px"  width = "30%" id = "styleofwords2"><font id = "styleofwords2">Átlagfogyasztás '.$atlagfogyasztas.' l/100 km</font></td>
-						<td height = "33px"  width = "70%" id = "styleofwords2"><font id = "styleofwords2"></font></td>
+						<td height = "33px"  width = "100%" id = "styleofwords2"><font id = "styleofwords2">Gyorsulás: '.$gyorsulas.'</font></td>
+						<td height = "33px"  width = "0%" id = "styleofwords2"><font id = "styleofwords2"></font></td>
 					</tr>
 					<tr>
-						<td height = "33px"  width = "30%" id = "styleofwords2"><font id = "styleofwords2">Gyorsulás: '.$gyorsulas.' mp</font></td>
-						<td height = "33px"  width = "70%" id = "styleofwords2"><font id = "styleofwords2"></font></td>
-					</tr>
-					<tr>
-						<td height = "33px"  width = "70%" id = "styleofwords2a"><font id = "styleofwords2a">
+						<td height = "33px"  width = "0%" id = "styleofwords2a"><font id = "styleofwords2a">
 						<a href = "autok_modositasa.php" style = "text-decoration: none; text-color: white;" id = "styleofwords2a">Vissza a módosításhoz...</a></font></td>
 					</tr>
 				</table>
 			</div>';
 			
-			header('refresh:15; url = adminpage.php');
+			header('refresh:7; url = motorok_modositasa.php');
 		}
-	
+		
 		else{
 			echo '
 			</br></br></br></br></br></br></br></br>
 			<div align = "center">
 				<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
 					<tr>
-						<td height = "33px"  width = "100%" id = "styleofwords2a"><font id = "styleofwords2a">Nincs ilyen motor az adatbázisban!</font></td>
+						<td height = "33px"  width = "100%" id = "styleofwords2a"><font id = "styleofwords2a">Nincs ilyen autó az adatbázisban!</font></td>
 					</tr>
 					<tr>
 					<td height = "33px"  width = "0%" id = "styleofwords2a"><font id = "styleofwords2a">
-					<a href = "motorok_modositasa.php" style = "text-decoration: none; text-color: white;" id = "styleofwords2a">Vissza a módosításhoz...</a></font></td>
+					<a href = "autok_modositasa.php" style = "text-decoration: none; text-color: white;" id = "styleofwords2a">Vissza a módosításhoz...</a></font></td>
 					</tr>
 				</table>
 				</div>';
-			header('refresh:7; url = autok_modositasa.php');
+			header('refresh:7; url = motorok_modositasa.php');
 		}
-	}
-				  	   
+	}	
+					   
 ?>
-
-	</body>
+</body>
 </html>
