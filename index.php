@@ -81,8 +81,11 @@
 						
 						-->
 						<tr>
+							<td height = "33px" ><font id = "style_login"><font size = "4" color = "#ffffff">Még nem regisztrált?</font></td>
+						</tr>
+						<tr>
 							<td height = "33px" ><font id = "style_login"><a href = "regisztracio.php"
-							style = "text-decoration: none; text-color: white;"><font size = "4" color = "#ffffff">Még nem regisztrált?</a></font></td>
+							style = "text-decoration: none; text-color: white;" title = "Kattintson ide a regisztrációhoz"><font size = "4" color = "#ffffff"><b>Regisztráció</b></a></font></td>
 						</tr>
 						
 						<!-- elfelejtett jelszó
