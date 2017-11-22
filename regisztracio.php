@@ -159,7 +159,7 @@
 				<div align = "center">
 					<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
 						<tr>
-							<td height = "33px" width = "90%" id = "styleofwords7" ><input id ="field_terms" type="checkbox" required name = "terms">
+							<td height = "33px" width = "90%" id = "styleofwords7" ><input id ="field_terms" type="checkbox"  name = "terms">
 								<label for="field_terms">Elolvastam és elfogadom a felhasználói feltételeket.</label></td>
 							<td height = "33px" width = "10%" id = "styleofwords7"></td>
 						</tr>
