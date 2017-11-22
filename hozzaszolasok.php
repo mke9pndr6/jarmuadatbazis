@@ -93,21 +93,12 @@
 						</div>
 					</li>
 					<li>
-						<a href="hozzaszolasok.php">Összes jármű</a>
-						<div>
-							<?php
-								class Vehicles extends Controller{}
-								
-								
-								echo '<a href = "autok_osszes.php">Autók</a>';
-								
-								echo '<a href = "motorok_osszes.php">Motorok</a>';
-							
-							?>
-						</div>
+						<a href="hozzaszolasok.php">Vélemények</a>
 					</li>
-					<li><a href="fooldal.php">Nyitólap</a><div align = "center"><a href = "hozzaszolasok.php">Hozzászólások</a></div></li>
-					<li><a href="kereses.php">Keresés</a></li>
+					<li><a href="fooldal.php">Nyitólap</a>
+					</li>
+					<li><a href="kereses.php">Keresés</a>
+					</li>
 					<li>
 					
 						<a href="felhasznalo_profil.php">Profilom</a>
@@ -183,8 +174,8 @@
 								$breaks = array("</br>","<br>","<br/>","\r\n");  
 								$text = str_ireplace($breaks, "</br>", $hozzaszolas);  
 								$writecomment = "INSERT INTO hozzaszolasok
-											(felhasznalo_nev, hozzaszolas, kategoria, datum) 
-											VALUES('".$login_session."','".$hozzaszolas."','Autó','".$currentDateTime."');";
+											(felhasznalo_nev, hozzaszolas, datum) 
+											VALUES('".$login_session."','".$hozzaszolas."','".$currentDateTime."');";
 								mysqli_query($conn, $writecomment);
 								
 							}
@@ -208,7 +199,7 @@
 										echo '
 											<tr>
 												<td height = "20px" bgcolor = "white" style = "padding: 2 2 2 4;">
-												<font color = "black">'.$row["felhasznalo_nev"].'  -  '.$row["datum"].'  -  '.$row["kategoria"].'</font></td>
+												<font color = "black">'.$row["felhasznalo_nev"].'  -  '.$row["datum"].'</font></td>
 											</tr>
 											<tr>
 												<td style = "padding: 8 2 8 4; height: auto; width: 100%;"><font color = "black" style = "font-size: 15.5px;">'.$row["hozzaszolas"].'</font></td>

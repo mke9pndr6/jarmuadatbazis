@@ -81,18 +81,7 @@
 						</div>
 					</li>
 					<li>
-						<a href="hozzaszolasok_admin.php">Összes jármű</a>
-						<div>
-							<?php
-								class Vehicles extends Controller{}
-								
-								
-								echo '<a href = "autok_osszes_admin.php">Autók</a>';
-								
-								echo '<a href = "motorok_osszes_admin.php">Motorok</a>';
-							
-							?>
-						</div>
+						<a href="hozzaszolasok_admin.php">Vélemények</a>
 					</li>
 					<li><a href="adminpage.php">Nyitólap</a>
 						<div align = "center">
@@ -103,7 +92,6 @@
 							<a href = "motorok_hozzaadasa.php">Motorok felvétele</a>
 							<a href = "motorok_modositasa.php">Motorok módosítása</a>
 							<a href = "motorok_torlese.php">Motorok törlése</a>
-							<a href = "hozzaszolasok_admin.php">Hozzászólások</a>
 						</div>
 					</li>
 					<li><a href="kereses_admin.php">Keresés</a></li>

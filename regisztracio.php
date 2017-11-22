@@ -203,12 +203,26 @@
 								$query_email = mysqli_query($conn, "SELECT * FROM Felhasznalo WHERE email = '".$email."'");
 								$count_email = mysqli_num_rows($query_email);
 								
-								//helyes regisztrációhoz szükséges adatok ellenőrzése
 								
+								
+								//ez csak a felhasználónevet ellenőrzi
+								if((!$count_user > 0)){
+									
+								/*
+								
+								//helyes regisztrációhoz szükséges adatok ellenőrzése
 								if($jelszo1 == $jelszo2 && (!$count_email > 0) && (!$count_idnumber > 0) && (!$count_user > 0) && (!$email == $email_ures)){
 									
-									//$jelszo1 = md5($jelszo1);
+									//ez a kód kellene a helyes regisztrációhoz
+								*/
 									
+									
+									/*
+									
+									$jelszo1 = md5($jelszo1);
+									
+									md5 (hash)-ként (ez egy 32 hosszú karaktersorozat) kellene tárolni a jelszót, vagy más hasonló eljárással
+									*/
 									$sql = "INSERT INTO felhasznalo
 											(felhasznalo_nev, jelszo, vezetek_nev, kereszt_nev,
 											szemelyig_szam, anyja_vnev, anyja_knev, email, telszam, ir_szam,
@@ -270,6 +284,8 @@
 								
 								//szig.szám ellenőrzése
 								
+								/*
+								
 								if($count_idnumber > 0){
 									die('<div align = "center">
 											<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
@@ -292,8 +308,12 @@
 									</div>
 								</form>');
 								}
+								
+								*/
 		
 								//email ellenőrzése
+								
+								/*
 								
 								if($count_email > 0){
 									die('<div align = "center">
@@ -318,7 +338,11 @@
 								</form>');
 								}
 								
+								*/
+								
 								//jelszavak ellenőrzése
+								
+								/*
 								
 								if($jelszo1 != $jelszo2){
 									die('<div align = "center">
@@ -342,6 +366,8 @@
 									</div>
 								</form>');
 								}
+								
+								*/
 								
 							}
 							//header("refresh:6; url = index.php");

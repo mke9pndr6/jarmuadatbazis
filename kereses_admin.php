@@ -91,18 +91,7 @@
 						</div>
 					</li>
 					<li>
-						<a href="hozzaszolasok_admin.php">Összes jármű</a>
-						<div>
-							<?php
-								class Vehicles extends Controller{}
-								
-								
-								echo '<a href = "autok_osszes_admin.php">Autók</a>';
-								
-								echo '<a href = "motorok_osszes_admin.php">Motorok</a>';
-							
-							?>
-						</div>
+						<a href="hozzaszolasok_admin.php">Vélemények</a>
 					</li>
 					<li><a href="adminpage.php">Nyitólap</a>
 						<div align = "center">
@@ -113,7 +102,6 @@
 							<a href = "motorok_hozzaadasa.php">Motorok felvétele</a>
 							<a href = "motorok_modositasa.php">Motorok módosítása</a>
 							<a href = "motorok_torlese.php">Motorok törlése</a>
-							<a href = "hozzaszolasok_admin.php">Hozzászólások</a>
 						</div>
 					</li>
 					<li><a href="kereses_admin.php">Keresés</a></li>
@@ -165,11 +153,11 @@
 				<form method = "get" action = "kereses_admin.php" enctype = "multipart/form-data" name = "search">
 					<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
 						<tr>
-							<td height = "33px" id = "styleofwords9" width = "66.6666%"><input type = "text" style="height:26px; width: 100%;" name = "carsearch" size = "45" placeholder = "Autó keresése..."/></td>
+							<td height = "33px" id = "styleofwords9" width = "66.6666%"><input type = "text" style="height:26px; width: 100%;" name = "carsearch" size = "45" placeholder = "Márka, márka típusa, üzemanyag fajtája, autó állapota..."/></td>
 							<td width = "33.33%"><input type = "submit" class = "buttonlog" value = "Autó keresése" name = "autokeres" /></td>
 						</tr>
 						<tr>
-							<td height = "33px" id = "styleofwords9" width = "66.6666%"><input type = "text" style="height:26px; width: 100%;" name = "motorsearch" size = "45" placeholder = "Motor keresés..."/></td>
+							<td height = "33px" id = "styleofwords9" width = "66.6666%"><input type = "text" style="height:26px; width: 100%;" name = "motorsearch" size = "45" placeholder = "Márka, márka típusa, üzemanyag fajtája, motor állapota..."/></td>
 							<td width = "33.33%"><input type = "submit" class = "buttonlog" value = "Motor keresése" name = "motorkeres" /></td>
 						</tr>
 					</table>
