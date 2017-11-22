@@ -505,7 +505,7 @@
 										</tr>
 									</form>
 										<tr>
-									<form method = "get" action = "motorok_kolcsonzes.php" enctype = "multipart/form-data" name = "comment">
+									<form method = "get" action = "motorok_kolcsonzese.php" enctype = "multipart/form-data" name = "comment">
 									<td width = "50%" colspan = "3">
 									<input type = "submit" class = "input" style = "border-radius: 0 0 0 0; " value = "Kölcsönzés" name = "'.$row["id"].'" /></td>
 								</tr>

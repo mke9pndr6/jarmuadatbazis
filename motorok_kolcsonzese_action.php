@@ -59,7 +59,7 @@
 									$rented_motors = mysqli_query($conn, $rent_sql);
 									$count_rentedmotors = mysqli_num_rows($rented_motors);
 								
-									$rents = "SELECT * FROM motorkolcsonzes WHERE auto_id = '".$row['id']."'";
+									$rents = "SELECT * FROM motorkolcsonzes WHERE motor_id = '".$row['id']."'";
 									$rents_from_to = mysqli_query($conn, $rents);
 									$count_rents_from_to = mysqli_num_rows($rents_from_to);
 									
@@ -96,7 +96,7 @@
 									}
 									
 								
-									else if($count_rentedcars > 0){
+									else if($count_rentedmotors > 0){
 										echo '</br></br></br><div align = "center" id = "cars">
 											<table align = "center" width = "55%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = "border-style: solid; border-width: 0px;
 											margin: 0 0px 0 0; border-color: #000;background: linear-gradient(#0E0F15, #084B8A); font-family: Electrolize; color: #ffffff; font-size: 14.5px; border-radius: 21 21 19 19" >
@@ -112,7 +112,7 @@
 														<li> A mai dátum: <font color = "yellow">'.$today.' </font> - A megadott kezdeti dátum: <font color = "yellow">'.$rent_start.'. </font></li>
 														<li> A kezdeti dátum: <font color = "yellow">'.$rent_start.' </font> - A kölcsönzés végének a dátuma: <font color = "yellow">'.$rent_end.'</font>.</li>														
 														</br>
-														<li> A megadott időszakban nem lehet kibérelni ezt az autót: <font color = "yellow"> '.$row['automarka_id'].' '.$row['marka_tipus'].'</font></li>';
+														<li> A megadott időszakban nem lehet kibérelni ezt a motort: <font color = "yellow"> '.$row['motormarka_id'].' '.$row['marka_tipus'].'</font></li>';
 														while($rows = mysqli_fetch_assoc($rents_from_to)){
 															echo $rows['mettol']. " <font color='yellow'> - </font> ". $rows['meddig'] . "</br>";
 														}
