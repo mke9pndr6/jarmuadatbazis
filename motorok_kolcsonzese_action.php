@@ -65,6 +65,8 @@
 									
 								
 									/*ellenőrizzük, hogy a megadtott kezdeti dátum és végső dátum helyes-e*/
+									
+									/*
 									if($today > $rent_start || $rent_start > $rent_end){
 										echo '</br></br></br><div align = "center" id = "cars">
 											<table align = "center" width = "55%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = "border-style: solid; border-width: 0px;
@@ -95,7 +97,10 @@
 										</div>';
 									}
 									
-								
+									*/
+									
+									
+									/*
 									else if($count_rentedmotors > 0){
 										echo '</br></br></br><div align = "center" id = "cars">
 											<table align = "center" width = "55%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = "border-style: solid; border-width: 0px;
@@ -128,6 +133,8 @@
 											</table>
 										</div>';
 									}
+									
+									*/
 						
 									else if($interval->d <= 6 && $interval->d >= 0 && $interval->m == 0 && $interval->y == 0){
 										$whole_price = $ar_1 * $interval->d;
@@ -523,6 +530,10 @@
 									</div>';
 									}
 								}
+								
+								
+								//egy évnél hosszabb időtartam
+								/*
 								else{
 									echo '</br></br></br></br><div align = "center" id = "cars">
 											<table align = "center" width = "55%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = "border-style: solid; border-width: 0px;
@@ -544,6 +555,7 @@
 											</table>
 									</div>';
 								}
+								*/
 							}
 						}
 					}

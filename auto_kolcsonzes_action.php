@@ -62,7 +62,9 @@
 									$rents_from_to = mysqli_query($conn, $rents);
 									$count_rents_from_to = mysqli_num_rows($rents_from_to);
 									
-									/*ellenőrizzük, hogy a megadtott kezdeti dátum és végső dátum helyes-e*/
+									//ellenőrizzük, hogy a megadtott kezdeti dátum és végső dátum helyes-e
+									
+									/*
 									if($today > $rent_start || $rent_start > $rent_end){
 										echo '</br></br></br><div align = "center" id = "cars">
 											<table align = "center" width = "55%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = "border-style: solid; border-width: 0px;
@@ -93,7 +95,12 @@
 										</div>';
 									}
 									
-									/*ellenőrizzük, hogy ki van-e már kölcsönözve ebben az időszakban az autó*/
+									*/
+									
+									//ellenőrizzük, hogy ki van-e már kölcsönözve ebben az időszakban az autó
+									
+									
+									/*
 								
 									else if($count_rentedcars > 0){
 										echo '</br></br></br><div align = "center" id = "cars">
@@ -114,6 +121,8 @@
 														<li> A megadott időszakban nem lehet kibérelni ezt az autót: <font color = "yellow"> '.$row['automarka_id'].' '.$row['marka_tipus'].'</font></li>';
 														
 														/*írassuk ki a lefoglalt időpontokat ehhez a kocsihoz */
+														
+														/*
 															while($rows = mysqli_fetch_assoc($rents_from_to)){
 															echo $rows['mettol']. " <font color='yellow'> - </font> ". $rows['meddig'] . "</br>";
 														}
@@ -131,7 +140,7 @@
 											</table>
 										</div>';
 									}
-									
+									*/
 					
 									
 									else if($interval->d <= 6 && $interval->d >= 0 && $interval->m == 0 && $interval->y == 0){
@@ -529,6 +538,10 @@
 									</div>';
 									}
 								}
+								
+								
+								//egy évnél hosszabb időtartam
+								/*
 								else{
 									echo '</br></br></br></br><div align = "center" id = "cars">
 											<table align = "center" width = "55%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = "border-style: solid; border-width: 0px;
@@ -550,6 +563,7 @@
 											</table>
 									</div>';
 								}
+								*/
 							}
 						}
 					}
