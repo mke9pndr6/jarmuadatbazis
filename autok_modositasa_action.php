@@ -66,6 +66,19 @@
 		   </br>
 		   </br></br>
 		   </br>
+		   <div align = "center">
+						
+						<div align = "center" id = "cars">
+								<table align = "center" width = "43.2%" id = "cars" id = "tableborders2"cellpadding = "0" cellspacing = "0" style = "border-style: solid; border-width: 0px;
+								margin: 0 0px 0 0; border-color: #000;background: linear-gradient(#0E0F15, #0B3861); display: inline-block; font-family: Electrolize; color: #ffffff; font-size: 32px; border-radius: 19 19 0 0" >
+								<tr>
+								<td width = "15%"></td>
+								<td width = "70%" align = "center" style = "padding: 10px;">Sikeres módosítás!</td>
+								<td width = "15%"></td>
+								
+							</tr>
+						</table>
+			</div>
 		   
 			<div align = "center">
 				<table align = "center" width = "43.2%" id = "styleofwords" border = "0px" cellpadding = "0" cellspacing = "0">
