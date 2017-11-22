@@ -226,7 +226,8 @@
 												';
 												?>
 													<form method = "get" action = "hozzaszolasok_admin_action.php" enctype = "multipart/form-data" name = "deletecomment">
-													<?php echo '<input type = "submit" style = "border-radius: 1px; " value = "Törlés" name = "'.$row["id"].'" />';?>
+													<?php echo '<input type = "submit"  value = "Törlés" name = "'.$row["id"].'"
+													style = "background: #0040FF; color: white; border: 1px solid black; cursor: pointer; padding: 2px; border-radius: 4px;" >';?>
 													
 												<?php
 												
